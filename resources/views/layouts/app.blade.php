@@ -17,7 +17,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/main.min.css')) }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/main.min.css') }}?v={{ filemtime(public_path('css/main.min.css')) }}">
+    <link rel="stylesheet" href="{{asset('css/slick.min.css')}}?v={{ filemtime(public_path('css/main.min.css')) }}"/>
+    <link rel="stylesheet" href="{{ asset('css/mmenu.min.css') }}?v={{ filemtime(public_path('css/main.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}?v={{ filemtime(public_path('css/main.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?v={{ filemtime(public_path('css/main.min.css')) }}">
 </head>
 <body>
     <div id="app">
@@ -76,5 +81,8 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/mmenu.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
+    <script src="{{asset('js/slick.min.js')}}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
 </body>
 </html>
