@@ -1,69 +1,109 @@
-<div class="row justify-content-between ">
-    <div class="col-auto m-0">
-        <a href="">
-            <img src="{{asset('img/logo.png')}}" class="img-header pt-2 pt-md-2" alt="logo">
-        </a>
-    </div>
-    <div class="col-auto col-md-4 m-0">
-        <ul class="nav justify-content-end lighten-4">
+<nav class="navbar navbar-expand-lg navbar-light my-menu z-depth-0 bg-nintex-color" id="menu_yak">
+    <a class="navbar-brand" style="width: 80px;" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}"
+                                                                                 class="img-fluid" alt=""></a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-5 mr-auto mt-2 mt-lg-0 ">
             <li class="nav-item">
-                <a href="#" class="search-sprite waves-effect waves-light mt-3"></a>
+                <a class="nav-link text-uppercase" href="" title="ALL TIRES">All tires</a>
+            </li>
+            <li class="nav-item mx-3">
+                <a class="nav-link text-uppercase" href="" title="bestsellers">Bestsellers</a>
             </li>
             <li class="nav-item">
-                <a href=""
-                   class="user-sprite my-3 waves-effect waves-light mx-3 mx-md-5"></a>
+                <a class="nav-link text-uppercase" href="" title="Why Online Tires">Why Online Tires</a>
             </li>
             <li class="nav-item">
-                <a href="#menu2"
-                   class="hamburger-sprite mt-3 waves-effect waves-light" style="padding-top: 25px"></a>
+                <a class="nav-link text-uppercase" href="" title="DELIVERY & INSTALLERS">Delivery & Installers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase" href="" title="Contacts">Contacts</a>
+            </li>
+        </ul>
+        <form class="form-inline md-form form-sm active-cyan-2 my-1">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                   aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+        </form>
+        <ul class="navbar-nav ml-5 mt-2 mt-lg-0">
+            <li class="nav-item mr-4">
+                <a href="#menu" class="border-bottom-0 border-top-0 border-right-0 border-left-0 rounded-0 border-dark my-2 my-sm-0"><img src="img/hamburger.png" alt="" class="img-fluid"></a>
+            </li>
+            <li class="nav-item mr-4">
+                <a href="{{ auth()->check() ? route('profile') : route('login') }}"
+                   class="border-bottom-0 border-top-0 border-right-0 border-left-0 rounded-0 border-dark my-2 my-sm-0"><img
+                        src="img/user_avatar.svg" class="img-fluid" alt=""></a>
             </li>
         </ul>
     </div>
-</div>
-<nav id="menu2" class="btn-submit-your-application">
+</nav>
+<nav id="menu">
     <ul>
-        <li><a href="{{ route('homepage') }}">Главная</a></li>
-            <li><a href="{{ route('profile') }}">Добавить объявления</a></li>
-        @if(auth()->check() && auth()->user()->role_id == 5)
-            <li><a href="{{ route('profile.announce.create') }}">Разместить заказ</a></li>
-        @endif
-        <li class="btn-submit-your-application"><a href="#modalContactForm" data-toggle="modal" data-target="#modalContactForm" >Задать вопрос</a></li>
-        {{--        <li><a href="{{ route('customer_list') }}">Список заявок от заказчиков</a></li>--}}
-        <li><span>Объявления</span>
+        <li><a href="/">Home</a></li>
+        <li><a href="/work">Our work</a></li>
+        <li><span>About us</span>
             <ul>
-                <li><a href="{{ route('production', ['type' => 'productions']) }}">Производственные цеха и фабрики</a></li>
-                <li><a href="{{ route('production', ['type' => 'product']) }}">Товары</a></li>
-                <li><a href="{{ route('production', ['type' => 'service']) }}">Услуги</a></li>
+                <li><a href="/about/history">History</a></li>
+                <li><span>The team</span>
+                    <ul>
+                        <li><a href="/about/team/management">Management</a></li>
+                        <li><a href="/about/team/sales">Sales</a></li>
+                        <li><a href="/about/team/development">Development</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
-        <li><span>О компании</span>
+        <li><span>Services</span>
             <ul>
-                <li><a href="{{ route('about') }}">О нас</a></li>
-                <li><a href="{{ route('blog_index') }}">Блог</a></li>
-                <li><a href="{{ route('contacts') }}">Контакты</a></li>
+                <li><a href="/services/design">Design</a></li>
+                <li><a href="/services/development">Development</a></li>
+                <li><a href="/services/marketing">Marketing</a></li>
             </ul>
         </li>
-        <li><span>Наши услуги</span>
-            <ul>
-                <li><a href="{{ route('consulting') }}">Консультация</a></li>
-                <li><a href="{{ route('logistics') }}">Логистика</a></li>
-                <li><a href="{{ route('quality') }}">Проверка качества</a></li>
-            </ul>
-        </li>
-        <li><a href="#reviews">Отзывы</a></li>
-        <li><a href="{{ route('contacts') }}">Контакты</a></li>
+        <li><a href="/contact">Contact</a></li>
     </ul>
 </nav>
 
-
-<form action="{{ route('logout') }}" method="POST" class="d-none logout-form">
-    @csrf
-</form>
-@push("scripts")
-    <script>
-
-    </script>
+@push('styles')
 
 @endpush
+@push("scripts")
 
+    <script>
+
+        new Mmenu( "#menu", {
+            "extensions": [
+                "pagedim-black",
+                "position-right"
+            ],
+            "iconbar": {
+                "use": true,
+                "top": [
+                    "<a href='#/'><i class='fa fa-home'></i></a>",
+                    "<a href='#/'><i class='fa fa-user'></i></a>"
+                ],
+                "bottom": [
+                    "<a href='#/'><i class='fab fa-twitter'></i></a>",
+                    "<a href='#/'><i class='fab fa-facebook'></i></a>",
+                    "<a href='#/'><i class='fab fa-linkedin'></i></a>"
+                ]
+            },
+            "navbars": [
+                {
+                    "position": "top",
+                    "content": [
+                        "searchfield"
+                    ]
+                },
+                {
+                    "position": "bottom",
+                    "content": [
+                        "<a class='fas fa-envelope' href='#/'></a>",
+                        "<a class='fab fa-twitter' href='#/'></a>",
+                        "<a class='fab fa-facebook' href='#/'></a>"
+                    ]
+                }
+            ]
+        });
+    </script>
+@endpush
 
