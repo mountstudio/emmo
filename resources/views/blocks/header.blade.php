@@ -1,109 +1,52 @@
-<nav class="navbar navbar-expand-lg navbar-light my-menu z-depth-0 bg-nintex-color" id="menu_yak">
-    <a class="navbar-brand" style="width: 80px;" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}"
-                                                                                 class="img-fluid" alt=""></a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-5 mr-auto mt-2 mt-lg-0 ">
-            <li class="nav-item">
-                <a class="nav-link text-uppercase" href="" title="ALL TIRES">All tires</a>
-            </li>
-            <li class="nav-item mx-3">
-                <a class="nav-link text-uppercase" href="" title="bestsellers">Bestsellers</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-uppercase" href="" title="Why Online Tires">Why Online Tires</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-uppercase" href="" title="DELIVERY & INSTALLERS">Delivery & Installers</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-uppercase" href="" title="Contacts">Contacts</a>
-            </li>
-        </ul>
-        <form class="form-inline md-form form-sm active-cyan-2 my-1">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                   aria-label="Search">
-            <i class="fas fa-search" aria-hidden="true"></i>
-        </form>
-        <ul class="navbar-nav ml-5 mt-2 mt-lg-0">
-            <li class="nav-item mr-4">
-                <a href="#menu" class="border-bottom-0 border-top-0 border-right-0 border-left-0 rounded-0 border-dark my-2 my-sm-0"><img src="img/hamburger.png" alt="" class="img-fluid"></a>
-            </li>
-            <li class="nav-item mr-4">
-                <a href="{{ auth()->check() ? route('profile') : route('login') }}"
-                   class="border-bottom-0 border-top-0 border-right-0 border-left-0 rounded-0 border-dark my-2 my-sm-0"><img
-                        src="img/user_avatar.svg" class="img-fluid" alt=""></a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<nav id="menu">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/work">Our work</a></li>
-        <li><span>About us</span>
-            <ul>
-                <li><a href="/about/history">History</a></li>
-                <li><span>The team</span>
-                    <ul>
-                        <li><a href="/about/team/management">Management</a></li>
-                        <li><a href="/about/team/sales">Sales</a></li>
-                        <li><a href="/about/team/development">Development</a></li>
-                    </ul>
+<nav class="navbar navbar-expand-md navbar-light shadow-none" >
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}"
+                                                                class="img-fluid" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" style="color: white!important;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white" href="" title="ALL TIRES">All tires</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white" href="" title="bestsellers">Bestsellers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white" href="" title="DELIVERY & INSTALLERS">Delivery & Installers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white    " href="" title="Contacts">Contacts</a>
                 </li>
             </ul>
-        </li>
-        <li><span>Services</span>
-            <ul>
-                <li><a href="/services/design">Design</a></li>
-                <li><a href="/services/development">Development</a></li>
-                <li><a href="/services/marketing">Marketing</a></li>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form class="form-inline md-form form-sm mt-0">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                               aria-label="Search">
+                    </form>
+                </li>
+                <li class="nav-item text-center" style="width: 40%;background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%);">
+                    <a href="" class="" style="position:absolute;padding-top: 38px;padding-left: 4px;"><img src="img/0.png" alt="" class="img-fluid"></a>
+                    <a href="" class=""><img src="img/basket.png" alt="" class="img-fluid"></a>
+                </li>
             </ul>
-        </li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
+        </div>
+    </div>
 </nav>
+
 
 @push('styles')
 
 @endpush
 @push("scripts")
 
-    <script>
-
-        new Mmenu( "#menu", {
-            "extensions": [
-                "pagedim-black",
-                "position-right"
-            ],
-            "iconbar": {
-                "use": true,
-                "top": [
-                    "<a href='#/'><i class='fa fa-home'></i></a>",
-                    "<a href='#/'><i class='fa fa-user'></i></a>"
-                ],
-                "bottom": [
-                    "<a href='#/'><i class='fab fa-twitter'></i></a>",
-                    "<a href='#/'><i class='fab fa-facebook'></i></a>",
-                    "<a href='#/'><i class='fab fa-linkedin'></i></a>"
-                ]
-            },
-            "navbars": [
-                {
-                    "position": "top",
-                    "content": [
-                        "searchfield"
-                    ]
-                },
-                {
-                    "position": "bottom",
-                    "content": [
-                        "<a class='fas fa-envelope' href='#/'></a>",
-                        "<a class='fab fa-twitter' href='#/'></a>",
-                        "<a class='fab fa-facebook' href='#/'></a>"
-                    ]
-                }
-            ]
-        });
-    </script>
 @endpush
 
