@@ -16,12 +16,14 @@ use Sunra\PhpSimple\HtmlDomParser;
 
 class MyParserController extends Controller
 {
+//    public $count = 0;
+
     public function parser()
     {
         $html = $this->file_get_contents_curl('https://www.tirerack.com/content/tirerack/desktop/en/tires/by-brand.html');
         $html = HTMLDomParser::str_get_html($html);
         $aBrandLinks = $html->find('#ui-brandListBlog > ul.clearfix > a');
-
+        $i=0;
         //раскручивание бренд листа
         foreach ($aBrandLinks as $aBrandLink)
         {
@@ -46,26 +48,28 @@ class MyParserController extends Controller
                 foreach ($prefCats1 as $prefCat1)
                 {
                     $productTires = $prefCat1->find('.productTire');
-                    foreach ($productTires as $productTire)
-                    {
+                    foreach ($productTires as $productTire) {
                         $productName = $productTire->find('a')[0]->text();
 
                         $aProductTire = $productTire->find('a');
-                        $aProductTireLink = $this->file_get_contents_curl('https://www.tirerack.com'.$aProductTire[0]->href);
+                        $aProductTireLink = $this->file_get_contents_curl('https://www.tirerack.com' . $aProductTire[0]->href);
                         $productDetails = HtmlDomParser::str_get_html($aProductTireLink);
                         $productDetails = $productDetails->find('#product-details');
                         //извлечение подкатегории продукта
                         $subcategoryName = $productDetails[0]->find('.product-details > .perfCat > a')[0]->text();
-                        $productImage = $productDetails[0]->find('#largeTireLink > img');
-                        $productImage = $this->file_get_contents_curl('https://www.tirerack.com'.$productImage[0]->src);
+                        $productImage = $productDetails[0]->find('.image-container > img');
+                        $productImage = $this->file_get_contents_curl('https://www.tirerack.com' . $productImage[0]->src);
                         $tabbedPanelsContentGroup = $productDetails[0]->find('.TabbedPanelsContentGroup');
+//                        $productDescriptions = $productDetails[0]->find('div.productDescription > div#TabbedPanels2 > div#englishCopy')[0]->outertext();
 
                         //извличение описания продукта
-                        $productDescriptions = $tabbedPanelsContentGroup[0]->find('#englishCopy')[0]->outertext();
-                        $allP = $tabbedPanelsContentGroup[0]->find('#englishCopy > p');
+//                        if ( empty($productDescriptions) == true) {
+//                            dd($productDescriptions, $productName, $i, $tabbedPanelsContentGroup);
+//                        }
+                        $productDescriptions = $productDetails[0]->find('div.productDescription > div#TabbedPanels2 > div#englishCopy')[0]->outertext();
+                        $allP = $tabbedPanelsContentGroup[0]->find('div#englishCopy > p');
 
-                        foreach ($allP as $p)
-                        {
+                        foreach ($allP as $p) {
                             $pOutertext = $p->outertext();
                             if (strstr($pOutertext, "img") != false) {
                                 $imgSrc = $p->find('img');
@@ -78,45 +82,47 @@ class MyParserController extends Controller
                                 $productDescriptions = str_replace($aHref, 'https://www.tirerack.com' . $aHref, $productDescriptions);
                             }
                         }
+
                         //извлечение размеров продукта в виде массива
                         $productSizes = $tabbedPanelsContentGroup[0]->find('section.size > ul > li');
 
                         //извлечение таблицы характеристиик в формате html
-                        $specsTable = $tabbedPanelsContentGroup[0]->find('table.specification')[1]->outertext();
+                        $specsTable = $productDetails[0]->find('div.productDescription > div#TabbedPanels2 > div#allSpecs > table.specification')[1]->outertext();
                         $this->productSave($brandName, $brandImage, $categoryName, $subcategoryName, $productName, $productImage,
                            $productDescriptions, $productSizes, $specsTable);
                     }
                 }
                 // ПЕРВЫЙ СТОЛБЕЦ ПЕРВЫЙ СТОЛБЕЦ ПЕРВЫЙ СТОЛБЕЦ ПЕРВЫЙ СТОЛБЕЦ ПЕРВЫЙ СТОЛБЕЦ
 
-
-                // ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ
+                // ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ
                 $column2 = $listColumn->find('.column-two');
                 $prefCats2 = $column2[0]->find('.perf-cat');
                 //раскручивание категорий первого столбца
                 foreach ($prefCats2 as $prefCat2)
                 {
                     $productTires = $prefCat2->find('.productTire');
-                    foreach ($productTires as $productTire)
-                    {
+                    foreach ($productTires as $productTire) {
                         $productName = $productTire->find('a')[0]->text();
 
                         $aProductTire = $productTire->find('a');
-                        $aProductTireLink = $this->file_get_contents_curl('https://www.tirerack.com'.$aProductTire[0]->href);
+                        $aProductTireLink = $this->file_get_contents_curl('https://www.tirerack.com' . $aProductTire[0]->href);
                         $productDetails = HtmlDomParser::str_get_html($aProductTireLink);
                         $productDetails = $productDetails->find('#product-details');
                         //извлечение подкатегории продукта
                         $subcategoryName = $productDetails[0]->find('.product-details > .perfCat > a')[0]->text();
-                        $productImage = $productDetails[0]->find('#largeTireLink > img');
-                        $productImage = $this->file_get_contents_curl('https://www.tirerack.com'.$productImage[0]->src);
+                        $productImage = $productDetails[0]->find('.image-container > img');
+                        $productImage = $this->file_get_contents_curl('https://www.tirerack.com' . $productImage[0]->src);
                         $tabbedPanelsContentGroup = $productDetails[0]->find('.TabbedPanelsContentGroup');
+//                        $productDescriptions = $productDetails[0]->find('div.productDescription > div#TabbedPanels2 > div#englishCopy')[0]->outertext();
 
                         //извличение описания продукта
-                        $productDescriptions = $tabbedPanelsContentGroup[0]->find('#englishCopy')[0]->outertext();
-                        $allP = $tabbedPanelsContentGroup[0]->find('#englishCopy > p');
+//                        if ( empty($productDescriptions) == true) {
+//                            dd($productDescriptions, $productName, $i, $tabbedPanelsContentGroup);
+//                        }
+                        $productDescriptions = $productDetails[0]->find('div.productDescription > div#TabbedPanels2 > div#englishCopy')[0]->outertext();
+                        $allP = $tabbedPanelsContentGroup[0]->find('div#englishCopy > p');
 
-                        foreach ($allP as $p)
-                        {
+                        foreach ($allP as $p) {
                             $pOutertext = $p->outertext();
                             if (strstr($pOutertext, "img") != false) {
                                 $imgSrc = $p->find('img');
@@ -129,19 +135,20 @@ class MyParserController extends Controller
                                 $productDescriptions = str_replace($aHref, 'https://www.tirerack.com' . $aHref, $productDescriptions);
                             }
                         }
+
                         //извлечение размеров продукта в виде массива
                         $productSizes = $tabbedPanelsContentGroup[0]->find('section.size > ul > li');
 
                         //извлечение таблицы характеристиик в формате html
-                        $specsTable = $tabbedPanelsContentGroup[0]->find('table.specification')[1]->outertext();
+                        $specsTable = $productDetails[0]->find('div.productDescription > div#TabbedPanels2 > div#allSpecs > table.specification')[1]->outertext();
                         $this->productSave($brandName, $brandImage, $categoryName, $subcategoryName, $productName, $productImage,
                             $productDescriptions, $productSizes, $specsTable);
                     }
                 }
-                // ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ
+                // ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ ВТОРОЙ СТОЛБЕЦ
             }
         }
-        dd('Парсинг успешно пройден!');
+        dd('Парсинг прошел успешно!');
     }
 
     function file_get_contents_curl( $url ) {
@@ -162,6 +169,7 @@ class MyParserController extends Controller
     function productSave($brandName, $brandImage, $categoryName, $subcategoryName, $productName, $productImage,
                          $productDescriptions, $productSizes, $specsTable){
         //id записей
+        $myP = new MyParserController();
         $brandID = null;
         $sizeID = null;
         $productID = null;
@@ -169,15 +177,15 @@ class MyParserController extends Controller
         $subcategoryID = null;
         $productSizeID = null;
 
-        //не существующие запросы
-        $nullRequest = Brand::where('name', "=", 'weqeerdcfgcfg')->get();
+        //специальный ошибочный запрос
+        $nullRequest = Brand::where('name', "=", 'wfegrhtgmjhngbfvdvgbnhfd')->get();
 
         $brand = Brand::where('name', "=", $brandName)->get();
         if ($brand == $nullRequest)
         {
             $brand = new Brand();
             $brand->name = $brandName;
-            $brandImageName = uniqid().'.jpg';
+            $brandImageName = 'log'.uniqid().'.jpg';
             Image::make($brandImage)->save(public_path('img/'. $brandImageName ));
             $brand->image = $brandImageName;
             $brand->save();
@@ -241,9 +249,20 @@ class MyParserController extends Controller
 
         foreach ($productSizes as $productSize)
         {
+
             $numberSize = substr(trim($productSize->find('.sizes')[0]->text(), " "), -2);
             $fullSize = trim($productSize->find('.sizes')[0]->text(), " ");
-            $servDesc = trim($productSize->find('.servDesc')[0]->text(), " ");
+
+            $nullArrayRequest = $productSize->find('.fdgfhgjhuyftrtd');
+            $servDesc = $productSize->find('.servDesc');
+            if($servDesc == $nullArrayRequest)
+            {
+                $servDesc = "";
+            }
+            else
+            {
+                $servDesc = trim($productSize->find('.servDesc')[0]->text(), " ");
+            }
 
             $size = Size::where('number_size', "=", $numberSize)->where('full_size', "=", $fullSize)->where('serv_desc', "=", $servDesc)->get();
             if($size == $nullRequest)
@@ -277,7 +296,5 @@ class MyParserController extends Controller
                 $productSizeID = $productSizeTable[0]->id;
             }
         }
-
-//        dd($brand, $category, $subcategory, $product, $size, $productSizeTable);
     }
 }
