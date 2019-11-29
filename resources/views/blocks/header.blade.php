@@ -1,69 +1,52 @@
-<div class="row justify-content-between ">
-    <div class="col-auto m-0">
-        <a href="">
-            <img src="{{asset('img/logo.png')}}" class="img-header pt-2 pt-md-2" alt="logo">
-        </a>
+<nav class="navbar navbar-expand-md navbar-light shadow-none" >
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}"
+                                                                class="img-fluid" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" style="color: white!important;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white" href="" title="ALL TIRES">All tires</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white" href="" title="bestsellers">Bestsellers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white" href="" title="DELIVERY & INSTALLERS">Delivery & Installers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white    " href="" title="Contacts">Contacts</a>
+                </li>
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form class="form-inline md-form form-sm mt-0">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                               aria-label="Search">
+                    </form>
+                </li>
+                <li class="nav-item text-center" style="width: 40%;background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%);">
+                    <a href="" class="" style="position:absolute;padding-top: 38px;padding-left: 4px;"><img src="img/0.png" alt="" class="img-fluid"></a>
+                    <a href="" class=""><img src="img/basket.png" alt="" class="img-fluid"></a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-auto col-md-4 m-0">
-        <ul class="nav justify-content-end lighten-4">
-            <li class="nav-item">
-                <a href="#" class="search-sprite waves-effect waves-light mt-3"></a>
-            </li>
-            <li class="nav-item">
-                <a href=""
-                   class="user-sprite my-3 waves-effect waves-light mx-3 mx-md-5"></a>
-            </li>
-            <li class="nav-item">
-                <a href="#menu2"
-                   class="hamburger-sprite mt-3 waves-effect waves-light" style="padding-top: 25px"></a>
-            </li>
-        </ul>
-    </div>
-</div>
-<nav id="menu2" class="btn-submit-your-application">
-    <ul>
-        <li><a href="{{ route('homepage') }}">Главная</a></li>
-            <li><a href="{{ route('profile') }}">Добавить объявления</a></li>
-        @if(auth()->check() && auth()->user()->role_id == 5)
-            <li><a href="{{ route('profile.announce.create') }}">Разместить заказ</a></li>
-        @endif
-        <li class="btn-submit-your-application"><a href="#modalContactForm" data-toggle="modal" data-target="#modalContactForm" >Задать вопрос</a></li>
-        {{--        <li><a href="{{ route('customer_list') }}">Список заявок от заказчиков</a></li>--}}
-        <li><span>Объявления</span>
-            <ul>
-                <li><a href="{{ route('production', ['type' => 'productions']) }}">Производственные цеха и фабрики</a></li>
-                <li><a href="{{ route('production', ['type' => 'product']) }}">Товары</a></li>
-                <li><a href="{{ route('production', ['type' => 'service']) }}">Услуги</a></li>
-            </ul>
-        </li>
-        <li><span>О компании</span>
-            <ul>
-                <li><a href="{{ route('about') }}">О нас</a></li>
-                <li><a href="{{ route('blog_index') }}">Блог</a></li>
-                <li><a href="{{ route('contacts') }}">Контакты</a></li>
-            </ul>
-        </li>
-        <li><span>Наши услуги</span>
-            <ul>
-                <li><a href="{{ route('consulting') }}">Консультация</a></li>
-                <li><a href="{{ route('logistics') }}">Логистика</a></li>
-                <li><a href="{{ route('quality') }}">Проверка качества</a></li>
-            </ul>
-        </li>
-        <li><a href="#reviews">Отзывы</a></li>
-        <li><a href="{{ route('contacts') }}">Контакты</a></li>
-    </ul>
 </nav>
 
 
-<form action="{{ route('logout') }}" method="POST" class="d-none logout-form">
-    @csrf
-</form>
-@push("scripts")
-    <script>
-
-    </script>
+@push('styles')
 
 @endpush
+@push("scripts")
 
+@endpush
 
