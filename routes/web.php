@@ -15,7 +15,7 @@
 //    return view('welcome');
 //});
 
-Route::get('/', 'MyParserController@parser');
+Route::get('/parser', 'MyParserController@parser');
 
 Auth::routes();
 
