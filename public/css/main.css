@@ -8,3 +8,11 @@
     -o-background-size: cover;
     -webkit-background-size: cover;
 }
+.footer_text{
+    font-weight: bold;
+}
+.footer_hr {
+    border: 2px solid #FFFFFF;
+    width: 30%;
+    margin-left: 0px!important;
+}
