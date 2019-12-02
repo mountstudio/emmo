@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row text-center text-xs-center text-sm-left text-md-left">
-        <div class="mr-4">
+        <div class="col-lg-3">
             <img src="{{asset('img/logo_footer.png')}}" alt="">
         </div>
         <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 mb-4 mb-md-0">

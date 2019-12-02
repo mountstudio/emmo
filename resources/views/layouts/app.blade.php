@@ -14,17 +14,16 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mmenu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    @stack('styles')
 </head>
 <body>
     <div id="app">
-
-
         <main class="">
             @yield('content')
         </main>
@@ -33,5 +32,6 @@
 
     <script src="{{ asset('js/mmenu.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
