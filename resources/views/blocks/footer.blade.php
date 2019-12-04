@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid pt-5">
     <div class="row text-center text-xs-center text-sm-left text-md-left">
         <div class="col-lg-3">
             <img src="{{asset('img/logo_footer.png')}}" alt="">

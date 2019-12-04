@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-12  pt-5">
+        <div class="col-12 pt-5">
             <div id="owl-text" class="owl-carousel owl-theme">
                 <div class="item text-white">
                     <h1 class="display-3 text-white text_for_welcome m-0">Summer Tyres</h1>
