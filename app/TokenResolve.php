@@ -1,11 +1,8 @@
 <?php
 
 namespace App;
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
-
-class TokenResolve extends Model
+class TokenResolve
 {
     public static function resolve($token)
     {

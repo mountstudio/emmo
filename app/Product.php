@@ -12,13 +12,18 @@ class Product extends Model
         'sizes' => 'array',
     ];
 
-    public function brands() {
+    public function brand() {
         return $this->belongsTo(Brand::class);
     }
-    public function subcategories() {
+    public function subcategory() {
         return $this->belongsTo(Subcategory::class);
     }
-    public function product_sizes() {
-        return $this->hasMany(Product_size::class);
+    public function sizes() {
+        return $this->belongsToMany(Size::class);
+    }
+
+    public function category()
+    {
+        return $this->hasOneThrough(Category::class, Subcategory::class);
     }
 }

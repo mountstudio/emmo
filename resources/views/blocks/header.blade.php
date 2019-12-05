@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-none" >
     <div class="container-fluid">
-
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}"
                                                                 class="img-fluid" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" style="color: white!important;">
@@ -11,7 +10,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto text-center">
                 <li class="nav-item">
-                    <a class="nav-link text-uppercase text-white" href="" title="ALL TIRES">All tires</a>
+                    <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES">All tires</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-uppercase text-white" href="" title="bestsellers">Bestsellers</a>
@@ -34,8 +33,8 @@
                     </form>
                 </li>
                 <li class="nav-item text-center" style="width: 40%;background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%);">
-                    <a href="" class="" style="position:absolute;padding-top: 38px;padding-left: 4px;"><img src="img/0.png" alt="" class="img-fluid"></a>
-                    <a href="" class=""><img src="img/basket.png" alt="" class="img-fluid"></a>
+                    <a href="{{ route('cart.checkout') }}" class="cart cart-count" style="position:absolute; padding-top: 38px; padding-left: 22px; color: white; size: 150px; "></a>
+                    <a href="{{ route('cart.checkout') }}" class="cart"><img src="{{ asset('img/basket.png') }}"  alt="" class="img-fluid"></a>
                 </li>
             </ul>
         </div>

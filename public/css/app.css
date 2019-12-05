@@ -21252,10 +21252,10 @@ body.scrollable {
 .modal-dialog.cascading-modal .modal-c-tabs {
   /*
   .md-tabs {
-   border-radius: $md-card-border-radius;
+   border-radius: $md-cart-border-radius;
    .nav-item {
      .nav-link {
-       border-radius: $md-card-border-radius;
+       border-radius: $md-cart-border-radius;
        background-color: inherit;
        color: $white-base;
      }
