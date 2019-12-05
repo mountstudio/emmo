@@ -18,6 +18,7 @@
                  style="background: url({{ asset('img/bg.png') }}) no-repeat; background-size: cover;height: 2000px;padding: 0;margin: 0">
             @include('blocks.our_advantages')
             @include('blocks.best_sellers')
+{{--            @include('blocks.alime')--}}
 
         </section>
         <section class="bg-black"
