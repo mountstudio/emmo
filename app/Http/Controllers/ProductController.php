@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Product;
 use App\Product_size;
 use App\Size;
@@ -49,18 +50,28 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-//        $sizes = $product->sizes();
+        $brand = Brand::find($product->brand_id);
 
         $productSizes = [];
-        foreach ($product->sizes as $product) {
-            $productSizes[] = $product->sizes;
+        foreach ($product->product_sizes as $product_size) {
+            $productSizes[] = $product_size;
         }
-        $productSizes = array_unique($productSizes, SORT_REGULAR);
-        dd($productSizes);
 
+        $sizes = [];
+        foreach ($productSizes as $productSize)
+        {
+            $sizes[] = $productSize->size;
+        }
         return view('product.show', [
+            'brand' => $brand,
             'product' => $product,
+            'sizes' => $sizes,
         ]);
+    }
+
+    public function selectSize(Size $size)
+    {
+        return response()->json($size);
     }
 
     /**

@@ -23,7 +23,8 @@ class Cart extends Model
                 'quantity' => $count,
             ]);
         } else {
-            return CartFacade::session($token)->add($options['product_id'], $product->name, $product->price, $count ? $count : 1, ['size'=> $options['size'], 'colors' => $options['color']]);
+            $product_size = Product_size::find($product->id);
+            return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size']]);
         }
     }
 

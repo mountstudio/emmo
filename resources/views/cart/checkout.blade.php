@@ -24,6 +24,14 @@
                             <input type="text" id="name" name="name" class="form-control input-erudit" required>
                         </div>
                         <div class="form-group">
+                            <label for="state_name">Штат <span class="text-danger">*</span></label>
+                            <input type="text" id="state_name" name="state_name" class="form-control input-erudit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_index">Почтовый индекс <span class="text-danger">*</span></label>
+                            <input type="text" id="postal_index" name="postal_index" class="form-control input-erudit" required>
+                        </div>
+                        <div class="form-group">
                             <label for="address">Адрес <span class="text-danger">*</span></label>
                             <input type="text" id="address" name="address" class="form-control input-erudit" required>
                         </div>
@@ -71,14 +79,16 @@
                 <div class="col-12 col-lg-5 mt-4 mt-lg-0">
                     <div style="max-height: 500px; overflow-y: auto">
                         @foreach($cartItems as $item)
-                            <div class="d-flex py-3">
-                                <div class="col-5 col-md-4 col-lg-3 pr-0">
-                                    <img src="{{ asset('storage/'.\App\Product::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
+                            <div class="d-flex py-2">
+                                <div class="col-5 col-md-4 col-lg-5 pr-0">
+                                    <img src="{{ asset('img/'.\App\Product::find($item->id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                                 </div>
                                 <div class="col p-0">
-                                    <p class="font-weight-bold h5">{{ $item->title }}</p>
-                                    <p><span class="font-weight-bold">Количество:</span> {{ $item->quantity }}</p>
-                                    <p class="text-muted">{{ $item->price }} сом</p>
+                                    <p class="font-weight-bold h6">Бренд: {{ \App\Brand::find(\App\Product::find($item->id)->brand_id)->name }}</p>
+                                    <p><b>Модель:</b> {{ $item->name }} </p>
+                                    <p><b>Количество:</b> {{ $item->quantity }} шт.</p>
+                                    <p><b>Стоимость:</b> {{ $item->price }} $</p>
+                                    <p><b>Итог::</b> {{ $item->price * $item->quantity }} $</p>
                                 </div>
                             </div>
                         @endforeach
@@ -88,7 +98,7 @@
             <div class="row justify-content-end mt-5 py-5">
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
                     <div class="col-6 m-0 h6 font-weight-bold">
-                        Итого
+                        Общий итог
                     </div>
                     <div class="col-6 m-0 h5 font-weight-bold">
                         {{ $total }} сом

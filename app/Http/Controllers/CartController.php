@@ -32,20 +32,6 @@ class CartController extends Controller
         ]);
     }
 
-    public function count($token)
-    {
-        $token = $token ? $token : uniqid();
-        TokenResolve::resolve($token);
-        $cart = CartFacade::session($token);
-        $cart = $cart->getContent();
-        $i = 0;
-        foreach ($cart as $c)
-        {
-            $i++;
-        }
-        return $i;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -70,6 +56,8 @@ class CartController extends Controller
         $newCart->email = $request->email;
         $newCart->phone = $request->phone;
         $newCart->address = $request->address;
+        $newCart->state_name = $request->state_name;
+        $newCart->postal_index = $request->postal_index;
 //        $newCart->total = $request->total;
         if ($request->delivery == 'on'){
             $newCart->delivery = true;
@@ -117,7 +105,7 @@ class CartController extends Controller
         $product = Product::find($request->product_id);
         $count = $request->count;
         $size = $request->size;
-        $color = $request->color;
+//        $color = $request->color;
         $token = $request->token ? $request->token : uniqid();
         $product_id = $request->product_id;
 
@@ -129,7 +117,7 @@ class CartController extends Controller
         }
         $token = TokenResolve::resolve($token);
 
-        Cart::add($product, $count, $token, ['product_id' => $product_id, 'color' => $color, 'size' => $size]);
+        Cart::add($product, $count, $token, ['product_id' => $product_id, 'size' => $size]);
 
         Session::put('cart', CartFacade::session($token)->getContent());
         if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {

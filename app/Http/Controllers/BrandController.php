@@ -67,8 +67,6 @@ class BrandController extends Controller
         }
         $categories = array_unique($categories, 0);
 
-//        dd($categories, $subCategories, $products);
-
         return view('product.index', [
             'categories' => $categories,
             'brand' => $brand,

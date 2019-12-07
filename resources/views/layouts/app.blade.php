@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('css/table.css') }}">--}}
+
 </head>
 <body>
     <div id="app">
@@ -68,27 +70,24 @@
         }
 
         function registerCartBuyButtons(data) {
-
             data.click(e => {
                 e.preventDefault();
                 console.log('registered');
-
                 let btn = $(e.currentTarget);
                 let id = btn.data('id');
                 let cart = null;
-                let color = btn.data('color');
                 let size = btn.data('size');
-                let newId = id + size + color;
-                console.log(newId, id);
+                // let newId = id + size;
+                console.log(id, size);
 
                 $.ajax({
                     url: '{{ route('cart.add') }}',
                     data: {
-                        product_id: size ? newId : id,
+                        // product_id: size ? newId : id,
+                        product_id: id,
                         count: 1,
                         token: token,
-                        size: size,
-                        color: color
+                        size: size
                     },
                     success: data => {
                         btn.addClass('btn-success').delay(2000).queue(function(){
@@ -112,7 +111,6 @@
             }
         }
         function registerCartRemoveButtons(data) {
-
             data.click(e => {
                 e.preventDefault();
                 console.log('registered');
