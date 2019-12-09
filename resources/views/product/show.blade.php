@@ -12,6 +12,9 @@
                 <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
                 <h3>{{ $brand->name }}</h3>
                 <h4>{{ $product->name }}</h4>
+{{--                <a href="{{ route('') }}">--}}
+                    <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
+{{--                </a>--}}
                 <div id="for-add-cart-btn">
 
                 </div>

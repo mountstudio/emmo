@@ -38,6 +38,8 @@ Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
 Route::resources([
     'product' => 'ProductController',
     'brand' => 'BrandController',
+    'category' => 'CategoryController',
+    'subcategory' => 'SubcategoryController',
 ]);
 //End resources
 
@@ -45,3 +47,7 @@ Route::get('/products', 'Api\ProductController@index')->name('product.all');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

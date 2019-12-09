@@ -10,334 +10,71 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mmenu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-{{--    <link rel="stylesheet" href="{{ asset('css/table.css') }}">--}}
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-        <main class="">
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                @if (Route::has('register'))
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                @endif
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <script src="{{ asset('js/mmenu.js') }}"></script>
-    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-
-    @stack('scripts')
-    <script>
-        let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
-
-        let url = $('.cart').attr('href');
-        url += '?token=' + token;
-        $('.cart').attr('href', url);
-
-        function fetchCart() {
-            $.ajax({
-                url: '{{ route('cart.index') }}',
-                data: {
-                    token: token
-                },
-                success: data => {
-                    console.log(data);
-                    let result = freshCartHtml(data.html, data.total);
-                    result.find('.buy_book').each((index, item) => {
-                        registerCartBuyButtons($(item));
-                    });
-                    result.find('.remove_book').each((index, item) => {
-                        registerCartRemoveButtons($(item));
-                    });
-                    result.find('.delete_book').each((index, item) => {
-                        registerCartDeleteButtons($(item));
-                    });
-                },
-                error: () => {
-                    console.log('error');
-                }
-            });
-        }
-
-        function registerCartBuyButtons(data) {
-            data.click(e => {
-                e.preventDefault();
-                console.log('registered');
-                let btn = $(e.currentTarget);
-                let id = btn.data('id');
-                let cart = null;
-                let size = btn.data('size');
-                // let newId = id + size;
-                console.log(id, size);
-
-                $.ajax({
-                    url: '{{ route('cart.add') }}',
-                    data: {
-                        // product_id: size ? newId : id,
-                        product_id: id,
-                        count: 1,
-                        token: token,
-                        size: size
-                    },
-                    success: data => {
-                        btn.addClass('btn-success').delay(2000).queue(function(){
-                            btn.removeClass("btn-success").dequeue();
-                        });
-
-                        $('.carts').addClass('btn-success');
-                        doBounce($('.cart-count'), 3, '5px', 90);
-                        cart = fetchCart();
-                    },
-                    error: () => {
-                        console.log('error');
-                    }
-                });
-            });
-        }
-        function doBounce(element, times, distance, speed) {
-            for(var i = 0; i < times; i++) {
-                element.animate({marginTop: '-='+distance}, speed)
-                    .animate({marginTop: '+='+distance}, speed);
-            }
-        }
-        function registerCartRemoveButtons(data) {
-            data.click(e => {
-                e.preventDefault();
-                console.log('registered');
-
-                let btn = $(e.currentTarget);
-                let id = btn.data('id');
-                let cart = null;
-
-                $.ajax({
-                    url: '{{ route('cart.remove') }}',
-                    data: {
-                        product_id: id,
-                        count: 1,
-                        token: token,
-                    },
-                    success: data => {
-                        cart = fetchCart();
-                    },
-                    error: () => {
-                        console.log('error');
-                    }
-                });
-            });
-        }
-
-        function registerCartDeleteButtons(data) {
-
-            data.click(e => {
-                e.preventDefault();
-                console.log('registered');
-
-                let btn = $(e.currentTarget);
-                let id = btn.data('id');
-                let cart = null;
-
-                $.ajax({
-                    url: '{{ route('cart.delete') }}',
-                    data: {
-                        product_id: id,
-                        token: token,
-                    },
-                    success: data => {
-                        cart = fetchCart();
-                    },
-                    error: () => {
-                        console.log('error');
-                    }
-                })
-            });
-        }
-
-        $('.buy_book').each((index, item) => {
-            registerCartBuyButtons($(item));
-        });
-
-        $('.remove_book').each((index, item) => {
-            registerCartRemoveButtons($(item));
-        });
-
-        $('.delete_book').each((index, item) => {
-            registerCartDeleteButtons($(item));
-        });
-
-        function freshCartHtml(html, total) {
-            total > 0 ? $('.cart-count').addClass('d-flex').html(total) : $('.cart-count').removeClass('d-flex').html('');
-            return $('.modal-body-cart').html(html);
-        }
-
-        fetchCart();
-
-        // $('.cart').click(e => {
-        //     e.preventDefault();
-        //     $('#cart-modal').modal('show');
-        //     // freshCartHtml(fetchedCart);
-        // });
-
-
-    </script>
-    <script>
-        let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
-
-        let url = $('.cart').attr('href');
-        url += '?token=' + token;
-        $('.cart').attr('href', url);
-
-        function fetchCart() {
-            $.ajax({
-                url: '{{ route('cart.index') }}',
-                data: {
-                    token: token
-                },
-                success: data => {
-                    console.log(data);
-                    let result = freshCartHtml(data.html, data.total);
-                    result.find('.buy_book').each((index, item) => {
-                        registerCartBuyButtons($(item));
-                    });
-                    result.find('.remove_book').each((index, item) => {
-                        registerCartRemoveButtons($(item));
-                    });
-                    result.find('.delete_book').each((index, item) => {
-                        registerCartDeleteButtons($(item));
-                    });
-                },
-                error: () => {
-                    console.log('error');
-                }
-            });
-        }
-
-        function registerCartBuyButtons(data) {
-
-            data.click(e => {
-                e.preventDefault();
-                console.log('registered');
-
-                let btn = $(e.currentTarget);
-                let id = btn.data('id');
-                let cart = null;
-
-                $.ajax({
-                    url: '{{ route('cart.add') }}',
-                    data: {
-                        product_id: id,
-                        count: 1,
-                        token: token
-                    },
-                    success: data => {
-                        btn.addClass('btn-success').delay(2000).queue(function(){
-                            btn.removeClass("btn-success").dequeue();
-                        });
-                        $('.carts').addClass('btn-success');
-                        doBounce($('.cart-count'), 3, '5px', 90);
-                        cart = fetchCart();
-                    },
-                    error: () => {
-                        console.log('error');
-                    }
-                });
-            });
-        }
-        function doBounce(element, times, distance, speed) {
-            for(var i = 0; i < times; i++) {
-                element.animate({marginTop: '-='+distance}, speed)
-                    .animate({marginTop: '+='+distance}, speed);
-            }
-        }
-        function registerCartRemoveButtons(data) {
-
-            data.click(e => {
-                e.preventDefault();
-                console.log('registered');
-
-                let btn = $(e.currentTarget);
-                let id = btn.data('id');
-                let cart = null;
-
-                $.ajax({
-                    url: '{{ route('cart.remove') }}',
-                    data: {
-                        product_id: id,
-                        count: 1,
-                        token: token
-                    },
-                    success: data => {
-                        cart = fetchCart();
-                    },
-                    error: () => {
-                        console.log('error');
-                    }
-                });
-            });
-        }
-
-        function registerCartDeleteButtons(data) {
-
-            data.click(e => {
-                e.preventDefault();
-                console.log('registered');
-
-                let btn = $(e.currentTarget);
-                let id = btn.data('id');
-                let cart = null;
-
-                $.ajax({
-                    url: '{{ route('cart.delete') }}',
-                    data: {
-                        product_id: id,
-                        token: token
-                    },
-                    success: data => {
-                        cart = fetchCart();
-                    },
-                    error: () => {
-                        console.log('error');
-                    }
-                })
-            });
-        }
-
-        $('.buy_book').each((index, item) => {
-            registerCartBuyButtons($(item));
-        });
-
-        $('.remove_book').each((index, item) => {
-            registerCartRemoveButtons($(item));
-        });
-
-        $('.delete_book').each((index, item) => {
-            registerCartDeleteButtons($(item));
-        });
-
-        function freshCartHtml(html, total) {
-            total > 0 ? $('.cart-count').addClass('d-flex').html(total) : $('.cart-count').removeClass('d-flex').html('');
-            return $('.modal-body-cart').html(html);
-        }
-
-        fetchCart();
-
-        // $('.cart').click(e => {
-        //     e.preventDefault();
-        //     $('#cart-modal').modal('show');
-        //     // freshCartHtml(fetchedCart);
-        // });
-
-
-    </script>
-
 </body>
 </html>
