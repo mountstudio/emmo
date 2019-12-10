@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Product;
 use App\Subcategory;
 use Illuminate\Http\Request;
@@ -51,8 +52,7 @@ class SubcategoryController extends Controller
 
         $brands = [];
         foreach ($products as $product) {
-            dd($product);
-            $brands[] = $product->brands;
+            $brands[] = Brand::find($product->brand_id);
         }
         $brands = array_unique($brands, SORT_REGULAR);
 
