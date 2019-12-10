@@ -1,10 +1,211 @@
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
-.bg-emmo{
+
+.bg-emmo {
     background: url('../img/bg_emmo.png') no-repeat center center;
     background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
 }
+
+.footer_text {
+    font-weight: bold;
+}
+
+.footer_hr {
+    border: 2px solid #FFFFFF;
+    width: 30%;
+    margin-left: 0px !important;
+    border-radius: 3px;
+}
+
+.middle_hr {
+    border: 2px solid #FFFFFF;
+    width: 10%;
+    margin-left: 0px !important;
+    border-radius: 3px;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.text_for_welcome {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.text_for_price {
+    color: #FD595A;
+}
+
+#owl-text .owl-nav {
+    text-align: left;
+}
+
+#owl-text .owl-prev {
+    margin: 0;
+}
+
+#owl-text .owl-prev span {
+    padding-right: 10px;
+}
+
+#owl-text .owl-nav .owl-prev,
+#owl-text .owl-nav .owl-next {
+    color: #FFFFFF;
+    font-size: 65px;
+}
+
+#owl-brands .owl-nav .owl-prev,
+#owl-brands .owl-nav .owl-next {
+    position: absolute;
+    top: 25%;
+    font-size: 35px;
+    left: -6%;
+    transform: translate(0, -50%);
+    width: 70px;
+    text-align: left;
+    padding: 0px 20px !important;
+    color: #FFFFFF;
+}
+
+.btn-all-brands {
+    background: linear-gradient(180deg, #FD595A 0%, #911617 100%);
+    border-radius: 10px;
+    padding: 9px 32px;
+    text-transform: uppercase;
+}
+
+#owl-brands .owl-nav .owl-next {
+    left: auto;
+    text-align: right !important;
+    right: -6%;
+}
+
+#owl-brands .owl-theme .owl-dots, .owl-theme .owl-nav {
+    padding: 10px;
+}
+
+.img-our {
+    background: linear-gradient(180.13deg, #FFFFFF 0.46%, rgba(194, 194, 194, 0.51) 117.65%);
+    border-radius: 0px 0px 10px 10px;
+    height: 480px !important;
+}
+
+@media (min-width: 768px) {
+    .img-our {
+        background: linear-gradient(180.13deg, #FFFFFF 0.46%, rgba(194, 194, 194, 0.51) 117.65%);
+        border-radius: 0px 0px 10px 10px;
+        height: 240px !important;
+    }
+}
+
+.choose_btn {
+    border-radius: 10px;
+    padding: 9px 32px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #FD595A 13.08%, #911617 100%);
+}
+
+.text-red {
+    font-family: 'Open Sans', sans-serif;
+    color: #FD595A;
+}
+
+.text-grey {
+    color: #B3B3B3 !important;
+
+}
+
+.text-grey.active {
+    color: #ff3547 !important;
+}
+
+.text-for-desc {
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+}
+
+.text-for-price-1 {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.text-for-price-2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #FD595A;
+    text-decoration: line-through;
+}
+
+.buy_btn {
+    padding: 5px 26px;
+    background: linear-gradient(180deg, #FD595A 0%, #911617 100%);
+
+}
+
+.add-in-cart_btn {
+    padding: 5px 26px;
+    background: linear-gradient(180deg, #3D3D3D 0%, #222222 100%);
+}
+
+.bg_for_goodyear {
+    background: url('../img/bg_for_goodyear.png') no-repeat center left;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    height: 350px;
+}
+
+.bg-contacts {
+    background: url('../img/bg_contact.png') no-repeat center left;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    height: 350px;
+}
+
+.text-for-contacts {
+    font-size: 55px;
+}
+
+/*.accordion {*/
+/*    color: white;*/
+/*    background-color: black;*/
+/*    cursor: pointer;*/
+/*    padding: 18px;*/
+/*    width: 100%;*/
+/*    border: none;*/
+/*    text-align: left;*/
+/*    outline: none;*/
+/*    font-size: 15px;*/
+/*    transition: 0.4s;*/
+/*}*/
+
+/*.active, .accordion:hover {*/
+
+/*}*/
+
+/*.accordion:after {*/
+/*    content: '\002B';*/
+/*    color: white;*/
+/*    font-weight: bold;*/
+/*    float: right;*/
+/*    margin-left: 5px;*/
+/*}*/
+
+/*.active:after {*/
+/*    content: "\2212";*/
+/*}*/
+
+/*.panel {*/
+/*    padding: 0 18px;*/
+/*    max-height: 0;*/
+/*    overflow: hidden;*/
+/*    transition: max-height 0.2s ease-out;*/
+/*}*/

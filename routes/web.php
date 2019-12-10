@@ -46,3 +46,23 @@ Route::get('/products', 'Api\ProductController@index')->name('product.all');
 
 
 
+
+Route::get('/warranty',function (){
+    return view('warranty');
+})->name('warranty');
+
+Route::get('/contact_faq',function (){
+    return view('contact_faq');
+})->name('contact_faq');
+
+Route::get('/subcategories',function (){
+    return view('subcategories');
+})->name('subcategories');
+
+Route::get('/empty_basket',function (){
+    return view('empty_basket');
+})->name('empty_basket');
+
+Route::get('/delivery_and_installation',function (){
+    return view('delivery_and_installation');
+})->name('delivery_and_installation');
