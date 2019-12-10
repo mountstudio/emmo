@@ -9,12 +9,12 @@
                 <img src="{{ asset('img/'.$product->product_image) }}" class="img-thumbnail">
             </div>
             <div class="col-6 text-left">
-                <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
+                <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-fluid" alt="">
                 <h3>{{ $brand->name }}</h3>
                 <h4>{{ $product->name }}</h4>
-                {{--                <a href="{{ route('') }}">--}}
-                <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
-                {{--                </a>--}}
+                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
+                    <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
+                </a>
                 <div id="for-add-cart-btn">
 
                 </div>

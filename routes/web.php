@@ -38,6 +38,7 @@ Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
 Route::resources([
     'product' => 'ProductController',
     'brand' => 'BrandController',
+    'subcategory' => 'SubcategoryController',
 ]);
 //End resources
 

@@ -86,6 +86,7 @@
                                 <div class="col p-0">
                                     <p class="font-weight-bold h6">Бренд: {{ \App\Brand::find(\App\Product::find($item->id)->brand_id)->name }}</p>
                                     <p><b>Модель:</b> {{ $item->name }} </p>
+                                    <p><b>Размер:</b> {{ \App\Size::find($item->attributes->size)->full_size }} {{ \App\Size::find($item->attributes->size)->serv_desc }} </p>
                                     <p><b>Количество:</b> {{ $item->quantity }} шт.</p>
                                     <p><b>Стоимость:</b> {{ $item->price }} $</p>
                                     <p><b>Итог::</b> {{ $item->price * $item->quantity }} $</p>
