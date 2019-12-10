@@ -24,6 +24,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/welcome',function (){
     return view('welcome');
 })->name('welcome');
+//Cart
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::get('/cart/add/book', 'CartController@add')->name('cart.add');
+Route::get('/cart/delete/book', 'CartController@delete')->name('cart.delete');
+Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
+//End Cart
+
+
+//Resources
+Route::resources([
+    'product' => 'ProductController',
+    'brand' => 'BrandController',
+]);
+//End resources
+
+Route::get('/products', 'Api\ProductController@index')->name('product.all');
+
+
+
 
 Route::get('/warranty',function (){
     return view('warranty');

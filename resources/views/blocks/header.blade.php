@@ -39,9 +39,9 @@
                <ul class="navbar-nav ml-5 col-12 col-md-5">
                    <li class="nav-item text-center pt-4 pb-5 px-3"
                        style="background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%);">
-                       <a href="" class="" style="position:absolute;padding-top: 38px;padding-left: 4px;"><img
+                       <a href="{{ route('cart.checkout') }}" class="" style="position:absolute;padding-top: 38px;padding-left: 4px;"><img
                                src="{{asset('img/0.png')}}" alt="" class="img-fluid"></a>
-                       <a href="" class=""><img src="{{asset('img/basket.png')}}" alt="" class="img-fluid"></a>
+                       <a href="{{ route('cart.checkout') }}" class=""><img src="{{asset('img/basket.png')}}" alt="" class="img-fluid"></a>
                    </li>
                </ul>
            </div>

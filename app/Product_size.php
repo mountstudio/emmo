@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product_size extends Model
 {
-    protected $fillable = [
-        'product_id', 'size_id',
-    ];
-
-    public function products() {
-        return $this->belongsTo(Product::class);
-    }
-    public function sizes() {
+    public function size() {
         return $this->belongsTo(Size::class);
+    }
+
+    public function product() {
+        return $this->belongsTo(Product::class);
     }
 }
