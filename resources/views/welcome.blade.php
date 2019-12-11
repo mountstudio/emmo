@@ -5,27 +5,24 @@
 @endsection
 @section('content')
     <div class="bg-black">
-        <section class="bg-black"
-                 style="background: url({{ asset('img/bg_emmo.png') }}) no-repeat; background-size: cover;height: 1000px">
-            <div class="container-fluid">
-                <div class="row">
-                    @include('blocks.header')
-                </div>
-            </div>
+        <section class="bg-black pb-5"
+                 style="background: url({{ asset('img/bg_emmo.png') }}) no-repeat; background-size: cover; padding-top: 150px;">
             @include('blocks.middle')
         </section>
-        <section class="bg-black"
-                 style="background: url({{ asset('img/bg.png') }}) no-repeat; background-size: cover;height: 2000px;padding: 0;margin: 0">
+        <section style="padding: 30px;filter: blur(10px);margin-top: -36px;margin-bottom: -15px;background: black;">
+        </section>
+        <section class="bg-black py-5"
+                 style="background: url({{ asset('img/bg.png') }}) no-repeat;">
             @include('blocks.our_advantages')
             @include('blocks.best_sellers')
 {{--            @include('blocks.alime')--}}
 
         </section>
-        <section class="bg-black"
-                 style="background: url({{ asset('img/bg_footer_5.png') }}) no-repeat; background-size: cover;height: 1700px;">
+        <section class="bg-black pb-5"
+                 style="background: url({{ asset('img/bg_footer_5.png') }}) no-repeat; background-size: cover;margin-top: -35px;">
             @include('blocks.brands')
             @include('blocks.articles')
-            @include('blocks.footer')
+
         </section>
     </div>
 @endsection

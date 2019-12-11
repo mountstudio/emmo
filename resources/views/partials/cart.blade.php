@@ -1,5 +1,6 @@
 <div class="container">
-    <h1 class="text-uppercase h3 py-4">Корзина</h1>
+    <p class="h1 pt-3 text-red">Shopping cart</p>
+    <p class="text-white">Confirm your items, delivery & installation method, total cost, then proceed.</p>
     @if(count($cartItems))
         <div class="row d-none d-md-flex">
             <div class="col-3 h5">
@@ -81,7 +82,14 @@
 
     @else
         <div class="row justify-content-center">
-            <p class="h3 text-muted">Корзина пуста!</p>
+            <div class="col-12 text-center">
+                <p class="h3 text-muted pt-5">Your cart is empty</p>
+                <img src="{{ asset('img/empty_tire.png') }}" alt="">
+                <p class="pt-2">
+                    <a href="" class="btn btn-danger choose_btn">Shop tires</a>
+                </p>
+            </div>
+
         </div>
 
     @endif

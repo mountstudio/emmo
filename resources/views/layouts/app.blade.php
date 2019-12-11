@@ -23,10 +23,16 @@
     @stack('styles')
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="bg-black">
+{{--        <section class="bg-dark">--}}
+{{--            @include('blocks.header')--}}
+{{--        </section>--}}
+                @include('blocks.header')
+
         <main class="">
             @yield('content')
         </main>
+        @include('blocks.footer')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 
@@ -92,7 +98,7 @@
                         });
 
                         $('.carts').addClass('btn-success');
-                        doBounce($('.cart-count'), 3, '5px', 90);
+                        doBounce($('.cart-count'), 3, 90);
                         cart = fetchCart();
                     },
                     error: () => {
