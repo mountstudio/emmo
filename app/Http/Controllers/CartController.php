@@ -102,10 +102,10 @@ class CartController extends Controller
     }
 
     public function add(Request $request){
-        $product = Product::find($request->product_id);
+        $product = Product::find($request->prod_id);
         $count = $request->count;
         $size = $request->size;
-//        $color = $request->color;
+        $sizeid = $request->sizeid;
         $token = $request->token ? $request->token : uniqid();
         $product_id = $request->product_id;
 
@@ -117,7 +117,7 @@ class CartController extends Controller
         }
         $token = TokenResolve::resolve($token);
 
-        Cart::add($product, $count, $token, ['product_id' => $product_id, 'size' => $size]);
+        Cart::add($product, $count, $token, ['product_id' => $product_id, 'size' => $size, 'sizeid' => $sizeid,]);
 
         Session::put('cart', CartFacade::session($token)->getContent());
         if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {

@@ -1,6 +1,5 @@
-@foreach($subCategories as $subCategory)
-    <div class="subcategoryList col-6">
-        <h2>{{ $subCategory->name }}</h2>
-        @include('subcategory.brands')
-    </div>
-@endforeach
+<div class="subcategoryList col-6">
+    <h2>{{ $category->name }}</h2>
+    <h3>{{ $subCategory->name }}</h3>
+    @include('subcategory.brands')
+</div>

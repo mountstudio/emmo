@@ -18,13 +18,19 @@ class Cart extends Model
     }
 
     public static function add(Product $product, $count = 1, $token, $options = []) {
-        if (CartFacade::session($token)->get($options['product_id'])){
-            return CartFacade::session($token)->update($options['product_id'], [
-                'quantity' => $count,
-            ]);
+        if ($pro = CartFacade::session($token)->get($options['product_id'])){
+            if ($pro->attributes['sizeid'] == $options['sizeid']) {
+                return CartFacade::session($token)->update($options['product_id'], [
+                    'quantity' => $count,
+                ]);
+            }else{
+                $product_size = Product_size::find($product->id);
+                return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size'], 'sizeid'=> $options['sizeid'], 'prod_id' => $product->id]);
+            }
+
         } else {
             $product_size = Product_size::find($product->id);
-            return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size']]);
+            return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size'], 'sizeid'=> $options['sizeid'], 'prod_id' => $product->id]);
         }
     }
 

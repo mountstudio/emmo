@@ -10,7 +10,7 @@
         <!-- Left Side Of Navbar -->
         <ul class="navbar-nav mr-auto text-center col-12 col-md-7">
             <li class="nav-item">
-                <a class="nav-link text-uppercase text-white" href="" title="ALL TIRES">All tires</a>
+                <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES">All tires</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-uppercase text-white" href="" title="bestsellers">Bestsellers</a>

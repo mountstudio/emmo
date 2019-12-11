@@ -56,12 +56,10 @@ class SubcategoryController extends Controller
         }
         $brands = array_unique($brands, SORT_REGULAR);
 
-        $subCategory = $products[0]->subcategory->name;
-        $category = $products[0]->subcategory->category->name;
+        $subCategory = $products[0]->subcategory;
+        $category = $products[0]->subcategory->category;
 
-        dd($products, $brands, $subCategory, $category);
-
-        return view('product.index', [
+        return view('subcategory.index', [
             'category' => $category,
             'brands' => $brands,
             'subCategory' => $subCategory,

@@ -25,7 +25,8 @@
                         </div>
                         <div class="form-group">
                             <label for="state_name">Штат <span class="text-danger">*</span></label>
-                            <input type="text" id="state_name" name="state_name" class="form-control input-erudit" required>
+                            <input type="text" id="state_name" name="state_name" class="form-control input-erudit"
+                                   required>
                         </div>
                         <div class="form-group">
                             <label for="postal_index">Почтовый индекс <span class="text-danger">*</span></label>
@@ -81,12 +82,12 @@
                         @foreach($cartItems as $item)
                             <div class="d-flex py-2">
                                 <div class="col-5 col-md-4 col-lg-5 pr-0">
-                                    <img src="{{ asset('img/'.\App\Product::find($item->id)->product_image) }}" style="height: 150px; width: auto;" alt="">
+                                    <img src="{{ asset('img/'.\App\Product::find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                                 </div>
                                 <div class="col p-0">
-                                    <p class="font-weight-bold h6">Бренд: {{ \App\Brand::find(\App\Product::find($item->id)->brand_id)->name }}</p>
+                                    <p class="font-weight-bold h6">Бренд: {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
                                     <p><b>Модель:</b> {{ $item->name }} </p>
-                                    <p><b>Размер:</b> {{ \App\Size::find($item->attributes->size)->full_size }} {{ \App\Size::find($item->attributes->size)->serv_desc }} </p>
+                                    <p><b>Размер:</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
                                     <p><b>Количество:</b> {{ $item->quantity }} шт.</p>
                                     <p><b>Стоимость:</b> {{ $item->price }} $</p>
                                     <p><b>Итог::</b> {{ $item->price * $item->quantity }} $</p>
@@ -102,7 +103,7 @@
                         Общий итог
                     </div>
                     <div class="col-6 m-0 h5 font-weight-bold">
-                        {{ $total }} сом
+                        {{ $total }} $
                     </div>
                 </div>
                 <div class="w-100"></div>
@@ -160,7 +161,7 @@
                     diffInput.val('');
                 } else {
                     diffError.hide(300);
-                    diffInput.val((parseInt(input.val()) - parseInt(total)) + ' сом');
+                    diffInput.val((parseInt(input.val()) - parseInt(total)) + ' $');
                 }
             }
         });

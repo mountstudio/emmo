@@ -1,6 +1,6 @@
 @foreach($brands as $brand)
     <div class="subcategoryList">
-            <h4>{{ $brand->name }}</h4>
+            <h5>{{ $brand->name }}</h5>
             @include('subcategory.products')
     </div>
 @endforeach
