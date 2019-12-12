@@ -17,6 +17,11 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function cart_products()
+    {
+        return $this->hasMany(Cart_product::class);
+    }
+
     public static function add(Product $product, $count = 1, $token, $options = []) {
         if ($pro = CartFacade::session($token)->get($options['product_id'])){
             if ($pro->attributes['sizeid'] == $options['sizeid']) {
