@@ -65,3 +65,8 @@ Route::get('/empty_basket',function (){
 Route::get('/delivery_and_installation',function (){
     return view('delivery_and_installation');
 })->name('delivery_and_installation');
+
+
+Route::get('/figuration',function (){
+    return view('figuration');
+})->name('figuration');
