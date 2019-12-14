@@ -80,17 +80,21 @@
                 let id = btn.data('id');
                 let cart = null;
                 let size = btn.data('size');
-                // let newId = id + size;
+                let sizeid = btn.data('sizeid');
+                let newId = id + sizeid;
+                newId = newId + 'id';
                 console.log(id, size);
 
                 $.ajax({
                     url: '{{ route('cart.add') }}',
                     data: {
-                        // product_id: size ? newId : id,
-                        product_id: id,
+                        // product_id: newId,
+                        product_id: size ? newId : id,
+                        prod_id: id,
                         count: 1,
                         token: token,
-                        size: size
+                        size: size,
+                        sizeid: sizeid,
                     },
                     success: data => {
                         btn.addClass('btn-success').delay(2000).queue(function(){
@@ -262,7 +266,6 @@
             }
         }
         function registerCartRemoveButtons(data) {
-
             data.click(e => {
                 e.preventDefault();
                 console.log('registered');

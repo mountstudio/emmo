@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Product;
-use App\Product_size;
-use App\Size;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class SubcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
-        return view('product', ['product' => $product,]);
+
     }
 
     /**
@@ -28,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create');
+        //
     }
 
     /**
@@ -39,7 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd("wfpkfwkfos");
+        //
     }
 
     /**
@@ -48,30 +46,25 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        $brand = Brand::find($product->brand_id);
+        $products = Product::Where('subcategory_id', $id)->get();
 
-        $productSizes = [];
-        foreach ($product->product_sizes as $product_size) {
-            $productSizes[] = $product_size;
+        $brands = [];
+        foreach ($products as $product) {
+            $brands[] = Brand::find($product->brand_id);
         }
+        $brands = array_unique($brands, SORT_REGULAR);
 
-        $sizes = [];
-        foreach ($productSizes as $productSize)
-        {
-            $sizes[] = $productSize->size;
-        }
-        return view('product.show', [
-            'brand' => $brand,
-            'product' => $product,
-            'sizes' => $sizes,
+        $subCategory = $products[0]->subcategory;
+        $category = $products[0]->subcategory->category;
+
+        return view('subcategory.index', [
+            'category' => $category,
+            'brands' => $brands,
+            'subCategory' => $subCategory,
+            'products' => $products,
         ]);
-    }
-
-    public function selectSize(Size $size)
-    {
-        return response()->json($size);
     }
 
     /**

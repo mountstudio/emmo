@@ -23,39 +23,39 @@
         @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center text-white">
                 <div class="col-10 col-md-3 col-lg-3 order-0 d-flex align-items-center">
-                    <img src="{{ asset('img/'.\App\Product::find($item->id)->product_image) }}"
+                    <img src="{{ asset("img/",\App\Product::find($item->attributes->prod_id)->product_image) }}"
                          style="height: 100px; width: auto;" alt="">
-                    <p class="small m-0 ml-3 font-weight-bold">{{ \App\Brand::find(\App\Product::find($item->id)->brand_id)->name }}
+                    <p class="small m-0 ml-3 font-weight-bold">{{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}
                         <br> {{ $item->name }}</p>
                 </div>
                 <div class="col">
                     <p class="m-0"><span
-                            class="d-inline-block d-md-none"></span>{{ \App\Size::find($item->attributes->size )->full_size }} {{ \App\Size::find($item->attributes->size )->serv_desc }}
+                        class="d-inline-block d-md-none"></span>{{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }}
                     </p>
                 </div>
                 <div class="col-6 col-md-2 my-3 my-md-0 col-lg-2 order-2">
-                    <p class=" m-0"><span class="d-inline-block d-md-none">Цена:&nbsp;</span>{{ $item->price }} сом</p>
+                    <p class=" m-0"><span class="d-inline-block d-md-none">Цена:&nbsp;</span>{{ $item->price }} $</p>
                 </div>
                 <div class="col-lg-2 col-md-3 col-6 my-3 my-md-0 order-3">
                     <div class="d-flex ml-auto ml-md-0 justify-content-between align-items-center"
                          style="width: 100px;">
                         <span
                             class="pointer cart-btn rounded-circle shadow p-2 remove_book d-flex justify-content-center align-items-center"
-                            data-id="{{ $item->id }}">-</span>
+                            data-sizeid="{{ $item->attributes->sizeid }}" data-id="{{ $item->id }}">-</span>
                         <span class="mx-2">{{ $item->quantity }}</span>
                         <span
                             class="pointer cart-btn rounded-circle shadow buy_book p-2 d-flex justify-content-center align-items-center"
-                            data-id="{{ $item->id }}">+</span>
+                            data-sizeid="{{ $item->attributes->sizeid }}" data-id="{{ $item->id }}">+</span>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-12 order-5 d-flex align-items-center">
                     <p class="m-0 text-left font-weight-bold"><span
-                            class="d-inline-block d-md-none">Итого:&nbsp;</span>{{ $item->getPriceSum() }} сом</p>
+                            class="d-inline-block d-md-none">Итого:&nbsp;</span>{{ $item->getPriceSum() }} $</p>
                 </div>
                 <div class="col-1 align-self-md-center align-self-start order-1 order-md-last">
                     <span
                         class="pointer cart-btn shadow rounded-circle d-flex justify-content-center align-items-center p-2 delete_book"
-                        data-id="{{ $item->id }}">&times;</span>
+                        data-sizeid="{{ $item->attributes->sizeid }}" data-id="{{ $item->id }}">&times;</span>
                 </div>
             </div>
         @endforeach
@@ -66,7 +66,7 @@
                     Итого
                 </div>
                 <div class="col-6 m-0 h5 font-weight-bold">
-                    {{ $total }} сом
+                    {{ $total }} $
                 </div>
             </div>
             <div class="w-100"></div>

@@ -9,12 +9,12 @@
                 <img src="{{ asset('img/'.$product->product_image) }}" class="img-thumbnail">
             </div>
             <div class="col-6 text-left">
-                <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
+                <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-fluid" alt="">
                 <h3>{{ $brand->name }}</h3>
                 <h4>{{ $product->name }}</h4>
-                {{--                <a href="{{ route('') }}">--}}
-                <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
-                {{--                </a>--}}
+                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
+                    <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
+                </a>
                 <div id="for-add-cart-btn">
 
                 </div>
@@ -87,12 +87,13 @@
 
             $('div#selectSizes').empty();
             $('div#selectSizes').append('<h5>Selected size</h5>');
-            $('div#selectSizes').append('<p><span>' + size.full_size + '    ' + size.serv_desc + '</span><br></p>');
+            $('div#selectSizes').append('<p><span>' + size.full_size + ' ' + size.serv_desc + '</span><br></p>');
 
             $('div#for-add-cart-btn').empty();
             const element = $('                <a href="#"' +
                 '                   class="btn btn-dark btn-block text-fut-book but-hov text-white buy_book d-lg-block d-none w-50"' +
-                '                   data-id=" {{ $product->id }}" data-size="' + size.id + '"' +
+                '                   data-id=" {{ $product->id }}" data-size="' + size.full_size +' '+ size.serv_desc + '"' +
+                '                   data-sizeid="' + size.id + '"' +
                 '                   id="basket">Add to cart' +
                 '                </a>');
 

@@ -204,6 +204,11 @@
 .bg_input{
     background: rgba(34, 34, 34, 0.64);
 }
+
+.mce-widget.mce-notification.mce-notification-warning.mce-has-close.mce-in{
+    display: none;
+}
+
 /*.accordion {*/
 /*    color: white;*/
 /*    background-color: black;*/

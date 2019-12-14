@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Cart_product;
 use App\Product;
 use App\TokenResolve;
 use Darryldecode\Cart\Facades\CartFacade;
@@ -65,11 +66,23 @@ class CartController extends Controller
             $newCart->diff = $request->diff;
         }
         $newCart->save();
+        //извлекаем последнюю запись из таблицы Cart
+        $cartID = Cart::latest()->first();
+//        dd($newCart->cart);
+
+        foreach ($newCart->cart['cart'] as $cart)
+        {
+            $cart_product = new Cart_product();
+            $cart_product->cart_id = $cartID->id;
+            $cart_product->product_id = $cart['attributes']['prod_id'];
+            $cart_product->size = $cart['attributes']['size'];
+            $cart_product->size_id = $cart['attributes']['sizeid'];
+            $cart_product->save();
+        }
 
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-
-        return redirect('/');
+        return redirect('/welcome');
     }
 //    /**
 ////     * Display a listing of the resource.
@@ -102,10 +115,10 @@ class CartController extends Controller
     }
 
     public function add(Request $request){
-        $product = Product::find($request->product_id);
+        $product = Product::find($request->prod_id);
         $count = $request->count;
         $size = $request->size;
-//        $color = $request->color;
+        $sizeid = $request->sizeid;
         $token = $request->token ? $request->token : uniqid();
         $product_id = $request->product_id;
 
@@ -117,7 +130,7 @@ class CartController extends Controller
         }
         $token = TokenResolve::resolve($token);
 
-        Cart::add($product, $count, $token, ['product_id' => $product_id, 'size' => $size]);
+        Cart::add($product, $count, $token, ['product_id' => $product_id, 'size' => $size, 'sizeid' => $sizeid,]);
 
         Session::put('cart', CartFacade::session($token)->getContent());
         if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {

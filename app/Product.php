@@ -19,16 +19,12 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
-//    public function sizes() {
-//        return $this->belongsToMany(Size::class);
-//    }
-
     public function product_sizes() {
         return $this->hasMany(Product_size::class);
     }
 
-//    public function category()
-//    {
-//        return $this->hasOneThrough(Category::class, Subcategory::class);
-//    }
+    public function cart_products()
+    {
+        return $this->hasMany(Cart_product::class);
+    }
 }

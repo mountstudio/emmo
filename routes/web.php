@@ -38,12 +38,14 @@ Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
 Route::resources([
     'product' => 'ProductController',
     'brand' => 'BrandController',
+    'subcategory' => 'SubcategoryController',
+    'blog' => 'BlogController',
 ]);
 //End resources
 
 Route::get('/products', 'Api\ProductController@index')->name('product.all');
 
-
+Route::post('/image-upload', 'BlogController@upload');
 
 
 Route::get('/warranty',function (){
