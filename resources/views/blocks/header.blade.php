@@ -1,5 +1,5 @@
 <nav class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 bg-transparent fixed-top" id="header">
-    <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}"
+    <a class="navbar-brand" href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}"
                                                             class="img-fluid" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
