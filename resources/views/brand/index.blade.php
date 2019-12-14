@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <section style="background-color: #060606">
-        @include('blocks.header')
-    </section>
-    <div class="container">
-        <div class="row justify-content-center">
-                @include('brand.list')
-        </div>
+    <div class="container" style="padding-top: 100px;">
+
     </div>
+    <section  style="background: white;">
+        <div class="container">
+            <p class="h1 text-center text-uppercase pt-5">Our brands</p>
+            <div class="row justify-content-center" style="">
+                @include('brand.list')
+            </div>
+        </div>
+
+    </section>
 @endsection

@@ -1,11 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="bg-black">
-        <div class="container-fluid">
-            <div class="row">
-                @include('blocks.header')
-            </div>
-        </div>
+
         <div class="bg_for_goodyear">
 
         </div>
@@ -35,6 +31,5 @@
                 <p class="h4 pt-3" style="color: #FD595A">PASSENGER TIRES</p>
             </div>
         </div>
-        @include('blocks.footer')
     </section>
 @endsection

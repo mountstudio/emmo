@@ -29,7 +29,7 @@
 }
 
 .bg-black {
-    background-color: #000000;
+    background-color: #000000!important;
 }
 
 .text_for_welcome {
@@ -72,6 +72,20 @@
 }
 
 .btn-all-brands {
+    background: linear-gradient(180deg, #FD595A 0%, #911617 100%);
+    border-radius: 10px;
+    padding: 9px 32px;
+    text-transform: uppercase;
+}
+
+.btn-search {
+    background: linear-gradient(180deg, #FD595A 0%, #911617 100%);
+    border-radius: 10px;
+    padding: 9px 32px;
+    text-transform: uppercase;
+}
+
+.btn-leave {
     background: linear-gradient(180deg, #FD595A 0%, #911617 100%);
     border-radius: 10px;
     padding: 9px 32px;
@@ -172,6 +186,23 @@
 
 .text-for-contacts {
     font-size: 55px;
+}
+.form-bg {
+    border-radius: 10px;
+    background: rgba(34, 34, 34, 0.64);
+    border: 1px solid #929292;
+}
+.fs-16{
+    font-size: 16px;
+}
+.arrow-for-select:focus{
+    background: rgba(34, 34, 34, 0.64) url('../icons/white_arrow.png') no-repeat right 0.75rem center/8px 10px;
+}
+.arrow-for-select{
+    background: rgba(34, 34, 34, 0.64) url('../icons/white_arrow.png') no-repeat right 0.75rem center/8px 10px;
+}
+.bg_input{
+    background: rgba(34, 34, 34, 0.64);
 }
 
 .mce-widget.mce-notification.mce-notification-warning.mce-has-close.mce-in{

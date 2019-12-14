@@ -1,7 +1,8 @@
 <div class="container">
-    <h1 class="text-uppercase h3 py-4">Корзина</h1>
+    <p class="h1 pt-3 text-red">Shopping cart</p>
+    <p class="text-white">Confirm your items, delivery & installation method, total cost, then proceed.</p>
     @if(count($cartItems))
-        <div class="row d-none d-md-flex">
+        <div class="row d-none d-md-flex text-white">
             <div class="col-3 h5">
                 Товар
             </div>
@@ -20,7 +21,7 @@
         </div>
 
         @foreach($cartItems as $item)
-            <div class="row border-top border-bottom py-3 align-items-center">
+            <div class="row border-top border-bottom py-3 align-items-center text-white">
                 <div class="col-10 col-md-3 col-lg-3 order-0 d-flex align-items-center">
                     <img src="{{ asset("img/",\App\Product::find($item->attributes->prod_id)->product_image) }}"
                          style="height: 100px; width: auto;" alt="">
@@ -81,7 +82,14 @@
 
     @else
         <div class="row justify-content-center">
-            <p class="h3 text-muted">Корзина пуста!</p>
+            <div class="col-12 text-center">
+                <p class="h3 text-muted pt-5">Your cart is empty</p>
+                <img src="{{ asset('img/empty_tire.png') }}" alt="">
+                <p class="pt-2">
+                    <a href="" class="btn btn-danger choose_btn">Shop tires</a>
+                </p>
+            </div>
+
         </div>
 
     @endif
