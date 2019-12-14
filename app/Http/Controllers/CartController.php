@@ -79,7 +79,7 @@ class CartController extends Controller
             $cart_product->size_id = $cart['attributes']['sizeid'];
             $cart_product->save();
         }
-        dd($cartID->id, $newCart->cart);
+
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
         return redirect('/welcome');
