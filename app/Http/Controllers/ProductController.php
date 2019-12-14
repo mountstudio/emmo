@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use App\Brand;
+use App\Category;
 use App\Product;
 use App\Product_size;
 use App\Size;
+use App\Subcategory;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -39,8 +43,72 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd("wfpkfwkfos");
+        if ($request->brand == null ||
+            $request->name == null ||
+            $request->sizeR == null ||
+            $request->full_size == null ||
+            $request->serv_desc == null ||
+            $request->description == null ||
+            $request->category == null ||
+            $request->subcategory == null ||
+            empty($request->product_image))
+        {
+            $this->validate($request, [
+                'brand' => 'required',
+                'name' => 'required',
+                'sizeR' => 'required',
+                'full_size' => 'required',
+                'serv_desc' => 'required',
+                'description' => 'required',
+                'category' => 'required',
+                'subcategory' => 'required',
+                'product_image' => 'required',
+            ]);
+        }
+        else
+        {
+            //сохранение продукта
+            $product = new Product();
+            $product->name = $request->name;
+            $product->description = $request->description;
+            $product->brand_id = $request->brand_id;
+            $product->subcategory_id = $request->subcategory_id;
+            $productImageName = uniqid().'.jpg';
+            Image::make($request->product_image)->save(public_path('img/'. $productImageName ), 40);
+            $product->product_image = $productImageName;
+            $product->save();
+            $product = Product::all()->where('name', $request->name)
+                                        ->where('description', $request->description)
+                                        ->where('brand_id', $request->brand_id)
+                                        ->where('subcategory_id', $request->subcategory_id)
+                                        ->where('product_image', $productImageName);
+            //сохранение продукта
+
+            //сохранение размеров
+            $size = Size::all()->where('number_size', $request->sizeR)
+                                ->where('full_size', $request->full_size)
+                                ->where('serv_desc', $request->serv_desc);
+            if (empty($size))
+            {
+                $size->number_size = $request->sizeR;
+                $size->full_size = $request->full_size;
+                $size->serv_desc = $request->serv_desc;
+                $size->save();
+                $size = Size::all()->where('number_size', $request->sizeR)
+                    ->where('full_size', $request->full_size)
+                    ->where('serv_desc', $request->serv_desc);
+            }
+            $product_size = new Product_size();
+            $product_size->product_id = $product->id;
+            $product_size->size_id = $size->id;
+            $product_size->save();
+            //сохранение размеров
+
+            return redirect()->back();
+        }
+        return redirect()->back();
     }
+
 
     /**
      * Display the specified resource.
