@@ -29,6 +29,17 @@ Route::get('/cart/delete/book', 'CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
 //End Cart
 
+//Dashboard
+Route::get('/dashboard/blog/create', 'DashboardController@blogCreate')->name('dashboard.blog.create');
+Route::post('/dashboard/blog/store', 'DashboardController@blogStore')->name('dashboard.blog.store');
+
+Route::get('/dashboard/product/create', 'DashboardController@productCreate')->name('dashboard.product.create');
+
+Route::get('/dashboard/brand/create', 'DashboardController@brandCreate')->name('dashboard.brand.create');
+Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('dashboard.brand.store');
+
+//Dashboard
+
 
 //Resources
 Route::resources([
@@ -40,6 +51,8 @@ Route::resources([
 //End resources
 
 Route::get('/products', 'Api\ProductController@index')->name('product.all');
+Route::get('/products', 'Api\ProductController@index')->name('product.selectSubcategory');
+
 
 Route::post('/image-upload', 'BlogController@upload');
 

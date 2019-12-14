@@ -72,7 +72,7 @@ class BlogController extends Controller
         {
             $this->validate($request, [
                 'title' => 'required|min:5',
-                'description' => 'required|',
+                'description' => 'required|min: 15',
                 'text' => 'required',
                 'blog_image' => 'required',
             ]);

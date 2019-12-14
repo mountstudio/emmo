@@ -5,7 +5,7 @@
         @include('blocks.header')
     </section>
     <div class="container">
-        <form class="border container p-4 bg-white z-depth-1" action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
+        <form class="border container p-4 bg-white z-depth-1" action="{{ route('dashboard.blog.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-6 form-group ">
