@@ -51,6 +51,22 @@
 #owl-text .owl-prev span {
     padding-right: 10px;
 }
+#owl-text .owl-next span {
+    padding-left: 10px;
+}
+
+#owl-text .owl-prev span:focus {
+    outline: none !important;
+}
+#owl-text .owl-next span:focus {
+    outline: none !important;
+}
+#owl-text .owl-prev:focus {
+    outline: none !important;
+}
+#owl-text .owl-next:focus {
+    outline: none !important;
+}
 
 #owl-text .owl-nav .owl-prev,
 #owl-text .owl-nav .owl-next {
