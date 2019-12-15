@@ -1,4 +1,4 @@
-<nav class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 bg-transparent fixed-top" id="header">
+<nav class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 {{ \Illuminate\Support\Facades\Request::routeIs('welcome') ? 'bg-transparent' : 'bg-black' }}  fixed-top" id="header">
     <a class="navbar-brand" href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}"
                                                             class="img-fluid" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -13,14 +13,14 @@
                 <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES">All tires</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-uppercase text-white" href="" title="bestsellers">Bestsellers</a>
+                <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers') }}" title="bestsellers">Bestsellers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-uppercase text-white" href="" title="DELIVERY & INSTALLERS">Delivery &
+                <a class="nav-link text-uppercase text-white" href="{{ route('delivery_and_installation') }}" title="DELIVERY & INSTALLERS">Delivery &
                     Installers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-uppercase text-white" href="" title="Contacts">Contacts</a>
+                <a class="nav-link text-uppercase text-white" href="{{ route('contact_faq') }}" title="Contacts">Contacts</a>
             </li>
         </ul>
 
@@ -55,42 +55,44 @@
 
 @endpush
 @push("scripts")
-    <script>
-        var cbpAnimatedHeader = (function () {
+    @if(\Illuminate\Support\Facades\Request::routeIs('welcome'))
+        <script>
+            var cbpAnimatedHeader = (function () {
 
-            var docElem = document.documentElement,
-                header = document.getElementById('header'),
-                didScroll = false,
-                changeHeaderOn = 20;
+                var docElem = document.documentElement,
+                    header = document.getElementById('header'),
+                    didScroll = false,
+                    changeHeaderOn = 20;
 
-            function init() {
-                window.addEventListener('scroll', function (event) {
-                    if (!didScroll) {
-                        didScroll = true;
-                        setTimeout(scrollPage, 250);
-                    }
-                }, false);
-            }
-
-            function scrollPage() {
-                var sy = scrollY();
-                if (sy >= changeHeaderOn) {
-                    header.classList.add('bg-black');
-                    console.log('add')
-                } else {
-                    header.classList.remove('bg-black');
-                    console.log('remove')
+                function init() {
+                    window.addEventListener('scroll', function (event) {
+                        if (!didScroll) {
+                            didScroll = true;
+                            setTimeout(scrollPage, 250);
+                        }
+                    }, false);
                 }
-                didScroll = false;
-            }
 
-            function scrollY() {
-                return window.pageYOffset || docElem.scrollTop;
-            }
+                function scrollPage() {
+                    var sy = scrollY();
+                    if (sy >= changeHeaderOn) {
+                        header.classList.add('bg-black');
+                        console.log('add')
+                    } else {
+                        header.classList.remove('bg-black');
+                        console.log('remove')
+                    }
+                    didScroll = false;
+                }
 
-            init();
+                function scrollY() {
+                    return window.pageYOffset || docElem.scrollTop;
+                }
 
-        })();
-    </script>
+                init();
+
+            })();
+        </script>
+    @endif
 @endpush
 

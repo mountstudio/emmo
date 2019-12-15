@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="py-3">
-                <a href="" class="text-white btn-all-brands ">All brands</a>
+                <a href="{{ route('brand.index')  }}" class="text-white btn-all-brands ">All brands</a>
             </div>
         </div>
     </div>
