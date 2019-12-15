@@ -4,15 +4,15 @@
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link  bg-none text-grey active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                       aria-controls="pills-home" aria-selected="true">Home</a>
+                       aria-controls="pills-home" aria-selected="true">Popular</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link border-right border-left rounded-0 bg-none text-grey" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                       aria-controls="pills-profile" aria-selected="false">Profile</a>
+                       aria-controls="pills-profile" aria-selected="false">New Arrivals</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  bg-none text-grey" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                       aria-controls="pills-contact" aria-selected="false">Contact</a>
+                       aria-controls="pills-contact" aria-selected="false">Best Sellers</a>
                 </li>
             </ul>
         </div>
