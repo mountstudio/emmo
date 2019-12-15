@@ -16,7 +16,7 @@
                     tires</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers') }}" title="bestsellers">Bestsellers</a>
+                <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers.index') }}" title="bestsellers">Bestsellers</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-uppercase text-white" href="{{ route('delivery_and_installation') }}"

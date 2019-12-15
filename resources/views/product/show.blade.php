@@ -10,9 +10,9 @@
                 <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
                 <p class="h1">{{ $brand->name }}</p>
                 <h4>{{ $product->name }}</h4>
-                                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
-                <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
-                                </a>
+                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
+                    <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
+                </a>
                 <div>
                     <p class="h5">Does this tire fit your vehicle?</p>
                     <p>Tires are designed specifically for different vehicles and wheel sizes. Tell us about your
@@ -95,7 +95,7 @@
             $('div#for-add-cart-btn').empty();
             const element = $('                <a href="#"' +
                 '                   class="btn btn-dark btn-block text-fut-book but-hov text-white buy_book d-lg-block d-none w-50"' +
-                '                   data-id=" {{ $product->id }}" data-size="' + size.full_size +' '+ size.serv_desc + '"' +
+                '                   data-id=" {{ $product->id }}" data-size="' + size.full_size + ' ' + size.serv_desc + '"' +
                 '                   data-sizeid="' + size.id + '"' +
                 '                   id="basket">Add to cart' +
                 '                </a>');
