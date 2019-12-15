@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/mmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     @stack('styles')
 </head>
 <body>
@@ -27,17 +28,16 @@
 {{--        <section class="bg-dark">--}}
 {{--            @include('blocks.header')--}}
 {{--        </section>--}}
-                @include('blocks.header')
-
+        @include('blocks.header')
         <main class="">
             @yield('content')
         </main>
         @include('blocks.footer')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
-
     <script src="{{ asset('js/mmenu.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
 
     @stack('scripts')
     <script>

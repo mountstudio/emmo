@@ -14,7 +14,8 @@
         <section class="bg-black py-5"
                  style="background: url({{ asset('img/bg.png') }}) no-repeat;">
             @include('blocks.our_advantages')
-            @include('blocks.best_sellers')
+            @include('blocks.nav_cards')
+            {{--@include('blocks.best_sellers')--}}
 {{--            @include('blocks.alime')--}}
 
         </section>

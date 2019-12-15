@@ -1,13 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <section class="bg-black">
-        <div class="container-fluid">
-            <div class="row">
-                @include('blocks.header')
-            </div>
-        </div>
-        <div class="container my-5">
-
+    <section class="bg-black pt-5">
+        <div class="container my-5 pt-5">
             <div class="row text-white text-left">
                 <p class="h1 mb-5">QUICK DELIVERY & INSTALLATION</p>
                 <p >We don't just help you get the right tires; we help you get the right tires installed. And we'll
@@ -21,7 +15,6 @@
                     installation prices listed on our site. You can be sure that what you see is what you'll pay.</p>
             </div>
         </div>
-        @include('blocks.footer')
     </section>
 
 @endsection
