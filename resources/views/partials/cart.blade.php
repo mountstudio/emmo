@@ -89,7 +89,7 @@
                 <p class="h3 text-muted pt-5">Your cart is empty</p>
                 <img src="{{ asset('img/empty_tire.png') }}" alt="">
                 <p class="pt-2">
-                    <a href="" class="btn reg_btn">Shop tires</a>
+                    <a href="{{ route('brand.index') }}" class="btn reg_btn">Shop tires</a>
                 </p>
             </div>
 

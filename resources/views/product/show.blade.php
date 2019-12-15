@@ -92,7 +92,7 @@
 
             $('div#for-add-cart-btn').empty();
             const element = $('                <a href="#"' +
-                '                   class="btn btn-dark btn-block text-fut-book but-hov text-white buy_book d-lg-block d-none w-50"' +
+                '                   class="btn reg_btn btn-block text-fut-book but-hov text-white buy_book d-lg-block d-none w-50"' +
                 '                   data-id=" {{ $product->id }}" data-size="' + size.full_size +' '+ size.serv_desc + '"' +
                 '                   data-sizeid="' + size.id + '"' +
                 '                   id="basket">Add to cart' +
