@@ -204,26 +204,25 @@
 .bg_input{
     background: rgba(34, 34, 34, 0.64);
 }
-<<<<<<< Updated upstream
+
 
 .mce-widget.mce-notification.mce-notification-warning.mce-has-close.mce-in{
     display: none;
 }
 
-/*.accordion {*/
-/*    color: white;*/
-/*    background-color: black;*/
-/*    cursor: pointer;*/
-/*    padding: 18px;*/
-/*    width: 100%;*/
-/*    border: none;*/
-/*    text-align: left;*/
-/*    outline: none;*/
-/*    font-size: 15px;*/
-/*    transition: 0.4s;*/
-/*}*/
-=======
->>>>>>> Stashed changes
+.accordion {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
 
 .accordion {
     color: white;
