@@ -77,12 +77,13 @@ class CartController extends Controller
             $cart_product->product_id = $cart['attributes']['prod_id'];
             $cart_product->size = $cart['attributes']['size'];
             $cart_product->size_id = $cart['attributes']['sizeid'];
+            $cart_product->quantity = $cart['quantity'];
             $cart_product->save();
         }
 
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-        return redirect('/welcome');
+        return redirect('/');
     }
 //    /**
 ////     * Display a listing of the resource.
