@@ -6,6 +6,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row row-cols-1 row-cols-md-4">
+
+
+
+
+
                         <div class="col mb-4">
                             <div class="card border-0 h-100">
                                 <img src="{{ asset('img/kartinka.jpg') }}" class="card-img-top" alt="...">

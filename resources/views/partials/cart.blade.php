@@ -23,8 +23,7 @@
         @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center text-white">
                 <div class="col-10 col-md-3 col-lg-3 order-0 d-flex align-items-center">
-                    <img src="{{ asset("img/",\App\Product::find($item->attributes->prod_id)->product_image) }}"
-                         style="height: 100px; width: auto;" alt="">
+                    <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                     <p class="small m-0 ml-3 font-weight-bold">{{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}
                         <br> {{ $item->name }}</p>
                 </div>

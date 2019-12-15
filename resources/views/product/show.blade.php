@@ -6,28 +6,18 @@
             <div class="col-12 col-md-6 text-center">
                 <img src="{{ asset('img/'.$product->product_image) }}" class="img-thumbnail">
             </div>
-<<<<<<< Updated upstream
-            <div class="col-6 text-left">
-                <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-fluid" alt="">
-                <h3>{{ $brand->name }}</h3>
-                <h4>{{ $product->name }}</h4>
-                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
-                    <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
-                </a>
-=======
             <div class="col-12 col-md-6 text-left">
                 <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
                 <p class="h1">{{ $brand->name }}</p>
                 <h4>{{ $product->name }}</h4>
-{{--                                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">--}}
+                                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
                 <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
-{{--                                </a>--}}
+                                </a>
                 <div>
                     <p class="h5">Does this tire fit your vehicle?</p>
                     <p>Tires are designed specifically for different vehicles and wheel sizes. Tell us about your
                         vehicle or the specific size you want so we can help find the right tires for you.</p>
                 </div>
->>>>>>> Stashed changes
                 <div id="for-add-cart-btn">
 
                 </div>

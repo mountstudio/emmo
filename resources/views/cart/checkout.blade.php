@@ -82,7 +82,7 @@
                         @foreach($cartItems as $item)
                             <div class="d-flex py-2">
                                 <div class="col-5 col-md-4 col-lg-5 pr-0">
-                                    <img src="{{ asset('img/'.\App\Product::find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
+                                    <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                                 </div>
                                 <div class="col p-0">
                                     <p class="font-weight-bold h6">Бренд: {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
