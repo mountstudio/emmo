@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <section style="background-color: #060606">
-        @include('blocks.header')
-    </section>
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-6">
+
+    <div class="container my-5 pt-5">
+        <div class="row justify-content-center text-white">
+            <div class="col-12 col-md-6 text-center">
                 <img src="{{ asset('img/'.$product->product_image) }}" class="img-thumbnail">
             </div>
+<<<<<<< Updated upstream
             <div class="col-6 text-left">
                 <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-fluid" alt="">
                 <h3>{{ $brand->name }}</h3>
@@ -15,11 +14,25 @@
                 <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
                     <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
                 </a>
+=======
+            <div class="col-12 col-md-6 text-left">
+                <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
+                <p class="h1">{{ $brand->name }}</p>
+                <h4>{{ $product->name }}</h4>
+{{--                                <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">--}}
+                <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
+{{--                                </a>--}}
+                <div>
+                    <p class="h5">Does this tire fit your vehicle?</p>
+                    <p>Tires are designed specifically for different vehicles and wheel sizes. Tell us about your
+                        vehicle or the specific size you want so we can help find the right tires for you.</p>
+                </div>
+>>>>>>> Stashed changes
                 <div id="for-add-cart-btn">
 
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 pt-5">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"

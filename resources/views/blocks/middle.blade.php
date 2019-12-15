@@ -1,4 +1,4 @@
-<div class="container">
+<div class="main-container">
     <div class="row">
         <div class="col-12 col-md-7 pt-3">
             <div id="owl-text" class="owl-carousel owl-theme">

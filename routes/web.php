@@ -19,11 +19,7 @@ Route::get('/parser', 'MyParserController@parser');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/welcome',function (){
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'HomeController@index')->name('welcome');
 //Cart
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
@@ -83,3 +79,7 @@ Route::get('/delivery_and_installation',function (){
 Route::get('/figuration',function (){
     return view('figuration');
 })->name('figuration');
+
+Route::get('/bestsellers',function (){
+    return view('bestsellers');
+})->name('bestsellers');
