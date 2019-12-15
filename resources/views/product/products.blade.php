@@ -1,5 +1,5 @@
 @foreach($products as $product)
-    <div class="productList">
+    <div class="productList col-10 col-md-8">
         @if($product->subcategory->id == $subCategory->id)
             <a href="{{ route('product.show', ['product' => $product]) }}">
 {{--                <img src="{{ asset('img/'. $product->product_image) }}" width="100" height="100">--}}
