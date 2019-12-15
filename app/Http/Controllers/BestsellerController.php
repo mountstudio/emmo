@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\BestsellerProduct;
+use App\Cart_product;
+use App\Product;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class BestsellerController extends Controller
 {
@@ -13,7 +18,27 @@ class BestsellerController extends Controller
      */
     public function index()
     {
-        //
+        $cart_products = Cart_product::all()->where('created_at', '>', Carbon::now()->subDays(30));
+        $cart_products = $cart_products->groupBy('product_id')->map(function ($row) {
+        return $row->sum('quantity');
+        });
+
+        $productBestsellers = [];
+        foreach ($cart_products as $product_id => $cart_product)
+        {
+            $productBestsellers[$product_id] = $cart_product;
+        }
+        //сортируем массив по наибольшму количеству продаж то есть от большего к меньшему
+        arsort($productBestsellers);
+
+        $products = [];
+        foreach ($productBestsellers as $key => $productBestseller)
+        {
+            $prod = Product::find($key);
+            $products[$productBestseller] = $prod;
+        }
+//        dd($products);
+        return view('bestsellers', ['products' => $products]);
     }
 
     /**
