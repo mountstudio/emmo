@@ -402,4 +402,9 @@
     </div>
 </div>
 
-@push('script')
+@push('scripts')
+    <script>
+        AOS.init();
+        AOS.refresh();
+    </script>
+@endpush
