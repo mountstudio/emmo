@@ -46,7 +46,7 @@ Route::resources([
     'brand' => 'BrandController',
     'subcategory' => 'SubcategoryController',
     'blog' => 'BlogController',
-    'bestsellers' => 'BestsellerController',
+//    'bestsellers' => 'BestsellerController',
 ]);
 //End resources
 
@@ -81,7 +81,7 @@ Route::get('/figuration',function (){
     return view('figuration');
 })->name('figuration');
 
-//Route::get('/bestsellers',function (){
-//    return view('bestsellers');
-//})->name('bestsellers');
+Route::get('/bestsellers',function (){
+    return view('bestsellers');
+})->name('bestsellers');
 
