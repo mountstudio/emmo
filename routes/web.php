@@ -37,7 +37,6 @@ Route::get('/dashboard/product/create', 'DashboardController@productCreate')->na
 
 Route::get('/dashboard/brand/create', 'DashboardController@brandCreate')->name('dashboard.brand.create');
 Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('dashboard.brand.store');
-
 //Dashboard
 
 
@@ -76,7 +75,6 @@ Route::get('/empty_basket',function (){
 Route::get('/delivery_and_installation',function (){
     return view('delivery_and_installation');
 })->name('delivery_and_installation');
-
 
 Route::get('/figuration',function (){
     return view('figuration');
