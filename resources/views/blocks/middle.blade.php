@@ -6,25 +6,25 @@
                     <h1 class="display-3 text-white text_for_welcome m-0">Summer Tyres</h1>
                     <p class="text-white text_for_welcome h5"> limited time free shipping</p>
                     <hr class="middle_hr">
-                    <div class="row d-flex col-5">
+                    <div class=" d-flex col-5">
                         <p><span class="text-white text_for_welcome pr-4 h5">from</span><span class="text_for_price h1">$99.99</span>
                         </p>
                     </div>
                 </div>
                 <div class="item text-white">
                     <h1 class="display-3 text-white text_for_welcome m-0">Summer Tyres</h1>
-                    <p class="text-white text_for_welcome h5">limited time free shipping</p>
+                    <p class="text-white text_for_welcome h5"> limited time free shipping</p>
                     <hr class="middle_hr">
-                    <div class="d-flex">
+                    <div class=" d-flex col-5">
                         <p><span class="text-white text_for_welcome pr-4 h5">from</span><span class="text_for_price h1">$99.99</span>
                         </p>
                     </div>
                 </div>
                 <div class="item text-white">
                     <h1 class="display-3 text-white text_for_welcome m-0">Summer Tyres</h1>
-                    <p class="text-white text_for_welcome h5">limited time free shipping</p>
+                    <p class="text-white text_for_welcome h5"> limited time free shipping</p>
                     <hr class="middle_hr">
-                    <div class="d-flex">
+                    <div class=" d-flex col-5">
                         <p><span class="text-white text_for_welcome pr-4 h5">from</span><span class="text_for_price h1">$99.99</span>
                         </p>
                     </div>
