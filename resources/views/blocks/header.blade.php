@@ -10,31 +10,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
-        <ul class="navbar-nav mr-auto text-center col-12 col-md-7">
-            <li class="nav-item">
+        <ul class="navbar-nav mr-auto text-center col-12 col-md-7 font-weight-bold">
+            <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES">All
                     tires</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers.index') }}" title="bestsellers">Bestsellers</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('delivery_and_installation') }}"
                    title="DELIVERY & INSTALLERS">Delivery &
                     Installers</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('contact_faq') }}" title="Contacts">Contacts</a>
             </li>
         </ul>
         <div class="col-12 col-md-2 pl-0">
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-5 col-12 col-md-5">
-                <li class="nav-item text-center pt-4 pb-5 px-3"
+                <li class="nav-item text-center pt-4 pb-5 px-3 font-weight-bold"
                     style="background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%);">
                     <a href="{{ route('cart.checkout') }}" class="cart cart-count text-white"
-                       style="position:absolute;padding-top: 38px;padding-left: 4px;"><img
-                            src="{{asset('img/0.png')}}" alt="" class="img-fluid"></a>
+                       style="position:absolute;padding-top: 38px;padding-left: 4px;font-size: 20px;"><img
+                            src="" alt="" class="img-fluid"></a>
                     <a href="{{ route('cart.checkout') }}" class="cart "><img src="{{asset('img/basket.png')}}" alt=""
                                                                               class="img-fluid"></a>
                 </li>
