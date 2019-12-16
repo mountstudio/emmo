@@ -20,25 +20,27 @@ class BestsellerController extends Controller
     {
         $cart_products = Cart_product::all()->where('created_at', '>', Carbon::now()->subDays(30));
         $cart_products = $cart_products->groupBy('product_id')->map(function ($row) {
-        return $row->sum('quantity');
+            return $row->sum('quantity');
         });
 
         $productBestsellers = [];
-        foreach ($cart_products as $product_id => $cart_product)
-        {
+        foreach ($cart_products as $product_id => $cart_product) {
             $productBestsellers[$product_id] = $cart_product;
         }
         //сортируем массив по наибольшму количеству продаж то есть от большего к меньшему
         arsort($productBestsellers);
 
         $products = [];
-        foreach ($productBestsellers as $key => $productBestseller)
-        {
+        foreach ($productBestsellers as $key => $productBestseller) {
             $prod = Product::find($key);
             $products[$productBestseller] = $prod;
         }
-//        dd($products);
-        return view('bestsellers', ['products' => $products]);
+        $allProducts = Product::limit(16 - count($products))->get();
+
+        return view('bestsellers', [
+            'products' => $products,
+            'allProducts' => $allProducts,
+        ]);
     }
 
     /**
@@ -54,7 +56,7 @@ class BestsellerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -65,7 +67,7 @@ class BestsellerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +78,7 @@ class BestsellerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,8 +89,8 @@ class BestsellerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +101,7 @@ class BestsellerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
