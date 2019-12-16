@@ -85,3 +85,6 @@ Route::get('/figuration',function (){
 //    return view('bestsellers');
 //})->name('bestsellers');
 
+Route::get('/about',function (){
+    return view('about');
+})->name('about');
