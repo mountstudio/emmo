@@ -21,7 +21,7 @@
         </div>
 
         @foreach($cartItems as $item)
-            <div class="row border-top border-bottom py-3 align-items-center text-white">
+            <div class="row py-3 align-items-center text-white">
                 <div class="col-12 col-md-3 col-lg-3 order-0 d-flex align-items-center">
                     <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}"
                          style="height: 150px; width: auto;" alt="">
