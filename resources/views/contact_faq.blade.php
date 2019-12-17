@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 @section('content')
     <section class="bg-black pt-5">
         <section class="bg-contacts pt-5">
