@@ -83,3 +83,6 @@ Route::get('/figuration',function (){
 
 
 
+Route::get('/about',function (){
+    return view('about');
+})->name('about');
