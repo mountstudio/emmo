@@ -5,9 +5,9 @@
 
         @foreach($cartItems as $item)
             <div class="row py-3 align-items-center text-white font-roboto">
-                <div class="col-12 col-md-4 col-lg-4 order-0 order-md-0 d-flex">
+                <div class="col-12 col-md-4 col-lg-4 order-0 p-0 px-md-2 order-md-0 d-flex">
                     <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}"
-                         style="height: 150px; width: auto;" alt="">
+                         style="height: 100px; width: auto;" alt="">
                     <p class="small m-0 ml-3">
                         <span
                             class="h5 font-weight-normal">{{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</span>
@@ -51,8 +51,8 @@
                 <div
                     class="col-lg-1 col-6 col-md-1 align-self-md-center align-self-center justify-content-center order-6 order-md-last">
                     <span
-                        class="pointer text-dark mx-auto rounded-pill cart-btn shadow d-flex justify-content-center align-items-center p-2 delete_book"
-                        style="background: white"
+                        class="pointer text-white bg-danger mx-auto rounded-pill cart-btn shadow d-flex justify-content-center align-items-center p-2 delete_book"
+                        style=""
                         data-sizeid="{{ $item->attributes->sizeid }}" data-id="{{ $item->id }}">&times;</span>
                 </div>
             </div>
