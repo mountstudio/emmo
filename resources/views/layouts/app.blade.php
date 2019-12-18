@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     @stack('styles')
+    @laravelPWA
 </head>
 <body>
     <div id="app" class="bg-black">
