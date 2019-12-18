@@ -5,97 +5,51 @@
 
         <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
             <div class="row mb-5">
-                <div class="col-9 text-white">
+                <div class="col-12 text-white">
                     @include('cart.delivery')
-                </div>
-            </div>
-
-            <div class="row text-white">
-                <div class="col-12">
-                    <h2 class="font-weight-bold">Оформите заказ</h2>
                 </div>
             </div>
             <div class="row text-white">
                 <div class="col-lg-7 col-12">
-                    <form action="{{ route('cart.store') }}" class="col-12 col-md-10" style="" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="name">Имя <span class="text-danger">*</span></label>
-                            <input type="text" id="name" name="name" class="form-control input-erudit" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="state_name">Штат <span class="text-danger">*</span></label>
-                            <input type="text" id="state_name" name="state_name" class="form-control input-erudit"
-                                   required>
-                        </div>
-                        <div class="form-group">
-                            <label for="postal_index">Почтовый индекс <span class="text-danger">*</span></label>
-                            <input type="text" id="postal_index" name="postal_index" class="form-control input-erudit" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Адрес <span class="text-danger">*</span></label>
-                            <input type="text" id="address" name="address" class="form-control input-erudit" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон <span class="text-danger">*</span></label>
-                            <input type="tel" id="phone" name="phone" class="form-control input-erudit" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control input-erudit">
-                        </div>
-                        <div class="form-group">
-
-                            <input class="inp-cbx" name="delivery" id="cbx" type="checkbox" style="display: none;"/>
-                            <label class="cbx" for="cbx">
-                                <span>
-                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                    </svg>
-                                </span>
-                                <span>Доставка</span>
-                            </label>
-                        </div>
-
-                        <div id="deliveryGroup" style="display: none;">
-                            <div class="form-group">
-                                <label for="sum">Сумма платежа <span class="text-danger">*</span></label>
-                                <input type="number" id="sum" name="sum" class="form-control input-erudit" min="0" max="1000000">
-                                <div id="diffError" style="display: none;" class="invalid-feedback">
-                                    Сумма меньше Итоговой суммы
-                                </div>
-                            </div>
-                            <input type="hidden" name="total" value="{{ $total }}" id="total">
-                            <div class="form-group">
-                                <label for="diff">Сдача</label>
-                                <input type="text" id="diff" name="diff" class="form-control input-erudit" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Комментарий к заказу</label>
-                            <textarea id="comment" name="comment" rows="6" class="form-control input-erudit scrollbar"></textarea>
-                        </div>
+                    <form class="text-left text-white border border-light p-5 form-bg" action="{{ route('cart.store') }}"
+                          style="border-radius: 10px;background: rgba(34, 34, 34, 0.64);border: 1px solid #929292;">
+                        <p class="h4 mb-4 text-white">Please fill out your shipping address</p>
+                        <label class="text-white">Name</label>
+                        <input type="text" id="" class="form-control mb-4 bg_input"
+                               placeholder="First name">
+                        <label class="text-white">Zip code</label>
+                        <input type="text" id="" class="form-control mb-4 bg_input"
+                               placeholder="Zip code">
+                        <label class="text-white">Phone number</label>
+                        <input type="phone" id="" class="form-control mb-4 bg_input"
+                               placeholder="Phone number">
+                        <label class="text-white">Email</label>
+                        <input type="email" id="" class="form-control mb-4 bg_input"
+                               placeholder="E-mail">
+                        <button class="btn choose_btn " type="submit">Send</button>
                     </form>
                 </div>
-                <div class="col-12 col-lg-5 mt-4 mt-lg-0">
-                    <div style="max-height: 500px; overflow-y: auto">
-                        @foreach($cartItems as $item)
-                            <div class="d-flex py-2">
-                                <div class="col-5 col-md-4 col-lg-5 pr-0">
-                                    <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
-                                </div>
-                                <div class="col p-0">
-                                    <p class="font-weight-bold h6">Бренд: {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
-                                    <p><b>Модель:</b> {{ $item->name }} </p>
-                                    <p><b>Размер:</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
-                                    <p><b>Количество:</b> {{ $item->quantity }} шт.</p>
-                                    <p><b>Стоимость:</b> {{ $item->price }} $</p>
-                                    <p><b>Итог::</b> {{ $item->price * $item->quantity }} $</p>
-                                </div>
+
+            </div>
+            <div class="col-12 col-lg-5 mt-4 mt-lg-0 pt-3 text-white">
+                <div style="max-height: 500px; overflow-y: auto">
+                    @foreach($cartItems as $item)
+                        <div class="d-flex py-2">
+                            <div class="col-5 col-md-4 col-lg-5 pr-0">
+                                <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                             </div>
-                        @endforeach
-                    </div>
+                            <div class="col p-0">
+                                <p class="font-weight-bold h6">Brand : {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
+                                <p class="h4"> {{ $item->name }} </p>
+                                <p class="text-red m-0 "><b >Size :</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
+                                <p class="m-0"><b >Quantity :</b> {{ $item->quantity }} </p>
+                                <p class="m-0"><b>Cost :</b> {{ $item->price }} $</p>
+                                <p><b>Total :</b> {{ $item->price * $item->quantity }} $</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
+
             </div>
             <div class="row justify-content-end mt-5 py-5">
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
@@ -108,10 +62,7 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 p-0 mt-1">
-                    <a href="#" class="btn btn-danger border-0 w-100 text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">
-                        <div class="bg-danger rounded text-center font-weight-bold h6 m-0 p-4">
-                            Оформить заказ
-                        </div>
+                    <a href="#" class="btn choose_btn border-0 w-100 text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Make payment
                     </a>
                 </div>
             </div>
