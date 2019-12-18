@@ -45,13 +45,13 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Price from</label>
-                            <input type="priceFrom" min="1" max="1000000" id="priceFrom" class="form-control mb-4 arrow-for-select text-white">
+                            <input type="number" min="1" max="1000000" name="priceFrom" class="form-control mb-4 arrow-for-select text-white">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Price to</label>
-                            <input type="priceTo" min="1" max="1000000" id="priceTo" class="form-control mb-4 arrow-for-select text-white">
+                            <input type="number" min="1" max="1000000" name="priceTo" class="form-control mb-4 arrow-for-select text-white">
                         </div>
                     </div>
                 </div>
