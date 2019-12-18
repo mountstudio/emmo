@@ -19,31 +19,31 @@ class ProductController extends Controller
         $full_size = $request->width.'/'.$request->profile.$request->diameter;
 //        $full_size = '255/55ZR17';
 //        $full_size = 'P275/35ZR18';
-        $size =  Size::where('full_size', $full_size)->get();
-        $products = [];
-        dd($full_size);
-
-        if (!empty($size[0]) || !empty($size))
+        $size =  Size::where('full_size', $full_size)->get()->first();
+        $products = collect();
+        if (!empty($size))
         {
-            $product_sizes = Product_size::where('size_id', $size[0]->id)->get();
+//            dd($size);
+            $product_sizes = Product_size::where('size_id', $size->id)->get();
+            if ($priceFrom = $request->priceFrom) {
+                $product_sizes = $product_sizes->where('price', '>', $priceFrom);
+            }
+            if ($priceTo = $request->priceTo) {
+                $product_sizes = $product_sizes->where('price', '<', $priceTo);
+            }
             foreach ($product_sizes as $key => $product_size)
             {
-                if ($request->brand_id == 'Choose option')
-                {
-                    if (!empty(Product::where('id', $product_size->product_id)->get()[0]))
-                    {
-                        $products[] = Product::where('id', $product_size->product_id)->get();
+                if ($request->brand_id == 'Choose option') {
+                    if (!empty(Product::where('id', $product_size->product_id)->get())) {
+                        $products = $products->merge(Product::where('id', $product_size->product_id)->get());
                     }
-                }
-                else
-                {
-                    if (!empty(Product::where('id', $product_size->product_id)->where('brand_id', $request->brand_id)->get()[0]))
+                } else {
+                    if (!empty(Product::with('product_sizes')->where('id', $product_size->product_id)->where('brand_id', $request->brand_id)->get()->first()))
                     {
-                        $products[] = Product::where('id', $product_size->product_id)->where('brand_id', $request->brand_id)->get();
+                        $products = $products->merge(Product::where('id', $product_size->product_id)->where('brand_id', $request->brand_id)->get());
                     }
                 }
             }
-//            dd($products);
         }
         $brand = '';
         if ($request->brand_id == 'Choose option')
