@@ -2,43 +2,28 @@
     <p class="h1 pt-3 text-red">Shopping cart</p>
     <p class="text-white">Confirm your items, delivery & installation method, total cost, then proceed.</p>
     @if(count($cartItems))
-        <div class="row d-none d-md-flex text-white">
-            <div class="col-3 h5">
-                Товар
-            </div>
-            <div class="col-2 h5">
-                Размер
-            </div>
-            <div class="col-2 h5">
-                Цена
-            </div>
-            <div class="col-2 h5">
-                Кол-во
-            </div>
-            <div class="col-2 h5">
-                Сумма
-            </div>
-        </div>
 
         @foreach($cartItems as $item)
-            <div class="row py-3 align-items-center text-white">
-                <div class="col-12 col-md-3 col-lg-3 order-0 d-flex align-items-center">
+            <div class="row py-3 align-items-center text-white font-roboto">
+                <div class="col-12 col-md-4 col-lg-4 order-0 order-md-0 d-flex">
                     <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}"
                          style="height: 150px; width: auto;" alt="">
-                    <p class="small m-0 ml-3 font-weight-bold">{{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}
-                        <br> {{ $item->name }}</p>
-                </div>
-                <div class="col-12 col-md-2">
-                    <p class="m-0 text-center pt-1"><span
-                            class="d-inline-block d-md-none"></span>{{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }}
+                    <p class="small m-0 ml-3">
+                        <span
+                            class="h5 font-weight-normal">{{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</span>
+                        <br> <span class="font-weight-bold h2">{{ $item->name }}</span>
+                        <br> <span
+                            class="font-weight-normal h6 text-danger">{{ \App\Size::find($item->attributes->sizeid)->full_size }}</span>
+                        <br> <span
+                            class="font-weight-normal h6">Serv. Desc: {{ \App\Size::find($item->attributes->sizeid)->serv_desc }}</span>
                     </p>
                 </div>
-                <div class="col-12 col-md-2 my-3 my-md-0 col-lg-2 order-2">
-                    <p class=" m-0"><span class="d-inline-block d-md-none">Цена:&nbsp;</span>{{ $item->price }} $</p>
-                </div>
-                <div class="col-lg-2 col-md-2 col-3 my-3 my-md-0 order-3">
-                    <div class="d-flex ml-auto ml-md-0 justify-content-between align-items-center"
+                <div class="col-lg-2 col-md-2 col-6 my-0 my-md-0 order-4 order-md-2">
+                    <div class="row mx-auto ml-md-0 justify-content-between align-items-center"
                          style="width: 100px;">
+                        <div class="text-center col-12 mb-2">
+                            Qty
+                        </div>
                         <span
                             class="pointer text-dark cart-btn rounded-circle shadow p-2 remove_book d-flex justify-content-center align-items-center "
                             data-sizeid="{{ $item->attributes->sizeid }}" data-id="{{ $item->id }}"
@@ -50,13 +35,23 @@
                             style="background: white">+</span>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-12 order-5 d-flex align-items-center">
-                    <p class="m-0 text-left font-weight-bold"><span
-                            class="d-inline-block d-md-none">Итого:&nbsp;</span>{{ $item->getPriceSum() }} $</p>
+                <div class="col-6 col-md-2 my-3 my-md-0 col-lg-2 row m-0 order-2 order-md-3 text-center">
+                    <div class="col-12 mb-2">Price Each</div>
+                    <div class="font-weight-bold col-12">${{ $item->price }}</div>
                 </div>
-                <div class="col-lg-1 col-3  col-md-1 align-self-md-center align-self-start order-1 order-md-last">
+                <div class="col-lg-2 col-md-2 col-6 align-items-center order-3 order-md-4 m-0 row">
+                    <div class="col-12 text-center mb-2">
+                        Item(s) Total
+                    </div>
+                    <div class="col-12 text-center font-weight-bold">
+                        ${{ $item->getPriceSum() }}
+                    </div>
+                </div>
+
+                <div
+                    class="col-lg-1 col-6 col-md-1 align-self-md-center align-self-center justify-content-center order-6 order-md-last">
                     <span
-                        class="pointer text-dark rounded-pill cart-btn shadow d-flex justify-content-center align-items-center p-2 delete_book"
+                        class="pointer text-dark mx-auto rounded-pill cart-btn shadow d-flex justify-content-center align-items-center p-2 delete_book"
                         style="background: white"
                         data-sizeid="{{ $item->attributes->sizeid }}" data-id="{{ $item->id }}">&times;</span>
                 </div>
@@ -66,10 +61,10 @@
         <div class="row justify-content-end mt-5 py-5">
             <div class="col-12 col-sm-8 col-md-5 col-lg-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
                 <div class="col-6 m-0 h6 font-weight-bold text-white">
-                    Итого
+                    Total
                 </div>
                 <div class="col-6 m-0 h5 font-weight-bold text-white">
-                    {{ $total }} $
+                    ${{ $total }}
                 </div>
             </div>
             <div class="w-100"></div>
@@ -77,7 +72,7 @@
                 <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}"
                    class="btn reg_btn border-0 w-100 text-light">
                     <div class="rounded text-center font-weight-bold h6 m-0 p-2">
-                        Оформить заказ
+                        Checkout
                     </div>
                 </a>
             </div>
@@ -89,7 +84,7 @@
                 <p class="h3 text-muted pt-5">Your cart is empty</p>
                 <img src="{{ asset('img/empty_tire.png') }}" alt="">
                 <p class="pt-2">
-                    <a href="{{ route('brand.index') }}" class="btn reg_btn">Shop tires</a>
+                    <a href="{{ route('brand.index') }}" class="btn reg_btn text-white">Shop tires</a>
                 </p>
             </div>
 

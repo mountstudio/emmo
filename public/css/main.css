@@ -43,7 +43,9 @@
 #owl-text .owl-nav {
     text-align: left;
 }
-
+.font-roboto {
+    font-family: "Roboto", sans-serif !important;
+}
 #owl-text .owl-prev {
     margin: 0;
 }
@@ -53,6 +55,12 @@
 }
 #owl-text .owl-next span {
     padding-left: 10px;
+}
+.pointer {
+    cursor: pointer;
+    border-radius: 25px;
+    width: 30px;
+    height: 30px;
 }
 
 #owl-text .owl-prev span:focus {
