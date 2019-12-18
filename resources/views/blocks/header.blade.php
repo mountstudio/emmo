@@ -1,5 +1,5 @@
 <nav
-    class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 {{ \Illuminate\Support\Facades\Request::routeIs('welcome') ? 'bg-transparent' : 'bg-black' }}  fixed-top"
+    class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 pb-0 {{ \Illuminate\Support\Facades\Request::routeIs('welcome') ? 'bg-transparent' : 'bg-black' }}  fixed-top"
     id="header">
     <a class="navbar-brand" href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}"
                                                                class="img-fluid" alt=""></a>
