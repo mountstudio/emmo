@@ -15,7 +15,7 @@ class HomeController extends Controller
         $sizes = Size::all();
         $width = [];
         $profile = [];
-        $diametr = [];
+        $diameter = [];
 
         foreach ($sizes as $key => $size)
         {
@@ -30,8 +30,8 @@ class HomeController extends Controller
                     $repWidth = str_replace('/', '', $repWidth);
                     $p = str_replace($d, '', $repWidth);
                     $profile[$p] = $p;
-//                    $diametr[$d] = str_replace('R', '', $d);
-                    $diametr[$d] = $d;
+//                    $diameter[$d] = str_replace('R', '', $d);
+                    $diameter[$d] = $d;
                 }
                 else if (strpos($size->full_size, 'D') != false)
                 {
@@ -42,15 +42,15 @@ class HomeController extends Controller
                     $repWidth = str_replace('/', '', $repWidth);
                     $p = str_replace($d, '', $repWidth);
                     $profile[$p] = $p;
-//                    $diametr[$d] = str_replace('D', '', $d);
-                    $diametr[$d] = $d;
+//                    $diameter[$d] = str_replace('D', '', $d);
+                    $diameter[$d] = $d;
                 }
             }
         }
 
         asort($width);
         asort($profile);
-        asort($diametr);
+        asort($diameter);
 
 //        dd($sizes, $width, $profile, $diametr, $brands);
         $products = Product::all()->random(8);
@@ -59,7 +59,7 @@ class HomeController extends Controller
             'brands' => $brands,
             'width' => $width,
             'profile' => $profile,
-            'diametr' => $diametr,
+            'diameter' => $diameter,
         ]);
     }
 }

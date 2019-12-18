@@ -86,3 +86,6 @@ Route::get('/figuration',function (){
 Route::get('/about',function (){
     return view('about');
 })->name('about');
+
+
+Route::get('/serach/product', 'ProductController@searchProduct')->name('search.product');

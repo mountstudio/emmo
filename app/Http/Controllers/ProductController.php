@@ -14,6 +14,57 @@ use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
+    public function searchProduct(Request $request)
+    {
+        $full_size = $request->width.'/'.$request->profile.$request->diameter;
+//        $full_size = '255/55ZR17';
+//        $full_size = 'P275/35ZR18';
+        $size =  Size::where('full_size', $full_size)->get();
+        $products = [];
+        dd($full_size);
+
+        if (!empty($size[0]) || !empty($size))
+        {
+            $product_sizes = Product_size::where('size_id', $size[0]->id)->get();
+            foreach ($product_sizes as $key => $product_size)
+            {
+                if ($request->brand_id == 'Choose option')
+                {
+                    if (!empty(Product::where('id', $product_size->product_id)->get()[0]))
+                    {
+                        $products[] = Product::where('id', $product_size->product_id)->get();
+                    }
+                }
+                else
+                {
+                    if (!empty(Product::where('id', $product_size->product_id)->where('brand_id', $request->brand_id)->get()[0]))
+                    {
+                        $products[] = Product::where('id', $product_size->product_id)->where('brand_id', $request->brand_id)->get();
+                    }
+                }
+            }
+//            dd($products);
+        }
+        $brand = '';
+        if ($request->brand_id == 'Choose option')
+        {
+            $brand = $request->brand_id;
+        }
+        else
+        {
+            $brand = Brand::find($request->brand_id);
+            $brand = $brand->name;
+        }
+        return view('search.search_result', [
+            'products' => $products,
+            'brand' => $brand,
+            'size' => $size,
+        ]);
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
