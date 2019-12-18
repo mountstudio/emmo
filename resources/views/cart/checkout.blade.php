@@ -5,17 +5,17 @@
 
         <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
             <div class="row mb-5">
-                <div class="col-9">
+                <div class="col-9 text-white">
                     @include('cart.delivery')
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row text-white">
                 <div class="col-12">
                     <h2 class="font-weight-bold">Оформите заказ</h2>
                 </div>
             </div>
-            <div class="row">
+            <div class="row text-white">
                 <div class="col-lg-7 col-12">
                     <form action="{{ route('cart.store') }}" class="col-12 col-md-10" style="" method="POST">
                         @csrf
