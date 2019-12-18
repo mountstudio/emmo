@@ -53,9 +53,11 @@ class HomeController extends Controller
         asort($diameter);
 
 //        dd($sizes, $width, $profile, $diametr, $brands);
+        $bestsellers = Product::bestsellers();
         $products = Product::all()->random(8);
         return view('welcome', [
             'products' => $products,
+            'bestsellers' => $bestsellers,
             'brands' => $brands,
             'width' => $width,
             'profile' => $profile,

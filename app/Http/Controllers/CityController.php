@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BestsellerProduct;
-use App\Cart_product;
-use App\Product;
+use App\City;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-
-class BestsellerController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +14,7 @@ class BestsellerController extends Controller
      */
     public function index()
     {
-        $products = Product::bestsellers();
-        $allProducts = Product::limit(16 - count($products))->get();
-
-        return view('bestsellers', [
-            'products' => $products,
-            'allProducts' => $allProducts,
-        ]);
+        //
     }
 
     /**
@@ -40,7 +30,7 @@ class BestsellerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,10 +41,10 @@ class BestsellerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(City $city)
     {
         //
     }
@@ -62,10 +52,10 @@ class BestsellerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(City $city)
     {
         //
     }
@@ -73,11 +63,11 @@ class BestsellerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, City $city)
     {
         //
     }
@@ -85,10 +75,10 @@ class BestsellerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(City $city)
     {
         //
     }

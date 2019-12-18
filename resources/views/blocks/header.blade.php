@@ -1,5 +1,5 @@
 <nav
-    class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 {{ \Illuminate\Support\Facades\Request::routeIs('welcome') ? 'bg-transparent' : 'bg-black' }}  fixed-top"
+    class="col-12 navbar navbar-expand-lg navbar-light shadow-none pt-0 pb-0 {{ \Illuminate\Support\Facades\Request::routeIs('welcome') ? 'bg-transparent' : 'bg-black' }}  fixed-top"
     id="header">
     <a class="navbar-brand" href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}"
                                                                class="img-fluid" alt=""></a>
@@ -9,7 +9,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto text-center col-12 col-md-7 font-weight-bold pb-3">
+        <ul class="navbar-nav mr-auto text-center col-12 col-md-7 font-weight-bold">
             <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES" style="font-size: 14px">All
                     tires</a>
@@ -28,10 +28,10 @@
         </ul>
         <div class="col-12 col-md-2 pl-0">
             <ul class="navbar-nav ml-5 col-12 col-md-5">
-                <li class="nav-item text-center pt-4 pb-5 px-3 font-weight-bold"
-                    style="background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%);">
+                <li class="nav-item text-center pt-3 pb-4 px-3 font-weight-bold"
+                    style="background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%); position:relative;">
                     <a href="{{ route('cart.checkout') }}" class="cart cart-count text-white"
-                       style="position:absolute;padding-top: 38px;padding-left: 4px;font-size: 23px;"><img
+                       style="position:absolute;padding-top: 25px;font-size: 23px;left: 50%; transform: translateX(-50%);"><img
                             src="" alt="" class="img-fluid pb-3"></a>
                     <a href="{{ route('cart.checkout') }}" class="cart "><img src="{{asset('img/basket.png')}}" alt=""
                                                                               class="img-fluid pb-3"></a>

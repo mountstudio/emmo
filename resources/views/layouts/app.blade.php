@@ -101,7 +101,7 @@
                         });
 
                         $('.carts').addClass('btn-success');
-                        doBounce($('.cart-count'), 3, 90);
+                        // doBounce($('.cart-count'), 3, 90);
                         cart = fetchCart();
                     },
                     error: () => {
@@ -181,7 +181,9 @@
         });
 
         function freshCartHtml(html, total) {
-            total > 0 ? $('.cart-count').addClass('d-flex').html(total) : $('.cart-count').removeClass('d-flex').html('');
+            console.log(total);
+            $('.cart-count').addClass('d-flex').html(total)
+            // total > 0 ? $('.cart-count').addClass('d-flex').html(total) : $('.cart-count').removeClass('d-flex').html('');
             return $('.modal-body-cart').html(html);
         }
 
