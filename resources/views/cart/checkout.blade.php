@@ -32,13 +32,13 @@
 
             </div>
             <div class="col-12 col-lg-5 mt-4 mt-lg-0 pt-3 text-white">
-                <div style="max-height: 500px; overflow-y: auto">
+                <div style="">
                     @foreach($cartItems as $item)
-                        <div class="d-flex py-2">
-                            <div class="col-5 col-md-4 col-lg-5 pr-0">
+                        <div class="row ">
+                            <div class="col-12 col-md-6 col-lg-6 pr-0">
                                 <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                             </div>
-                            <div class="col p-0">
+                            <div class="col-12 col-md-6 pt-2">
                                 <p class="font-weight-bold h6">Brand : {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
                                 <p class="h4"> {{ $item->name }} </p>
                                 <p class="text-red m-0 "><b >Size :</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
@@ -51,18 +51,18 @@
                 </div>
 
             </div>
-            <div class="row justify-content-end mt-5 py-5">
+            <div class="row justify-content-end mt-5 py-5 text-white">
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
                     <div class="col-6 m-0 h6 font-weight-bold">
-                        Общий итог
+                        Gran Total:
                     </div>
                     <div class="col-6 m-0 h5 font-weight-bold">
                         {{ $total }} $
                     </div>
                 </div>
-                <div class="w-100"></div>
+
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 p-0 mt-1">
-                    <a href="#" class="btn choose_btn border-0 w-100 text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Make payment
+                    <a href="#" class="btn choose_btn text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Make payment
                     </a>
                 </div>
             </div>
