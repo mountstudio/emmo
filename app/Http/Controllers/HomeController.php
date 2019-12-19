@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\Cart;
 use App\Product;
 use App\Product_size;
 use App\Size;
@@ -57,14 +58,23 @@ class HomeController extends Controller
         $bestsellers = Product::bestsellers();
 //        $products = Product::all()->random(8);
         $product_sizes = Product_size::all()->random(8);
-        $products = [];
+        $productsPopular = [];
         foreach ($product_sizes as $ps)
         {
-            $products[] = Product::find($ps->product_id);
+            $productsPopular[] = Product::find($ps->product_id);
         }
 //        dd($products, $product_sizes, $prod);
+
+        $productsNew = Product::latest()->limit(8)->get();
+        $pn = [];
+        foreach ($productsNew as $key => $p)
+        {
+            $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
+        }
+//        dd($productsNew, $pn);
         return view('welcome', [
-            'products' => $products,
+            'productsPopular' => $productsPopular,
+            'productsNew' => $pn,
             'bestsellers' => $bestsellers,
             'brands' => $brands,
             'width' => $width,
