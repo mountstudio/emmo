@@ -23,11 +23,14 @@
                         @foreach($products as $product)
                             <div class="col mb-4" data-aos="fade-right">
                                 <div class="card border-0 h-100">
-                                    <img src="{{ asset('img/kartinka.jpg') }}" class="card-img-top" alt="...">
+                                    <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top" alt="...">
                                     <div class="card-body px-0">
-                                        <h3 class="card-title text-white h5 font-weight-bold" style="min-height: 45px;">{{ $product->name }}</h3>
+                                        <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">{{ $product->name }}</h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
-                                            $<span class="pr-3 h5 font-weight-bold">{{ round(\App\Product_size::find($product->id)->price, 2) }}</span>
+                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::find($product->id)->price, 2) }}$</span>
                                         </p>
                                         <div class="d-flex justify-content-between">
                                             <a href="" class="text-white buy_btn">Buy now</a>
