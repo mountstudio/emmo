@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Product;
+use App\Product_size;
 use App\Size;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,14 @@ class HomeController extends Controller
 
 //        dd($sizes, $width, $profile, $diametr, $brands);
         $bestsellers = Product::bestsellers();
-        $products = Product::all()->random(8);
+//        $products = Product::all()->random(8);
+        $product_sizes = Product_size::all()->random(8);
+        $products = [];
+        foreach ($product_sizes as $ps)
+        {
+            $products[] = Product::find($ps->product_id);
+        }
+//        dd($products, $product_sizes, $prod);
         return view('welcome', [
             'products' => $products,
             'bestsellers' => $bestsellers,

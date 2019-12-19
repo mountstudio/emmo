@@ -30,7 +30,8 @@
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
                                         <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
-                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::find($product->id)->price, 2) }}$</span>
+                                                <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::where('product_id', $product->id)->get()[0]->price, 2) }}$</span>
+{{--                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::find($product->id)->price, 2) }}$</span>--}}
                                         </p>
                                         <div class="d-flex justify-content-between">
                                             <a href="" class="text-white buy_btn">Buy now</a>
