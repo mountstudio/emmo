@@ -8,17 +8,17 @@
                        data-toggle="tab"
                        href="#nav-financialbenefit"
                        role="tab" aria-controls="nav-home" aria-selected="true"><img
-                            src="{{ asset('icons/dollar.png') }}" class="d-md-none" alt="dollar"><span class="d-none d-md-block">You will have financial benefit</span></a>
+                            data-src="{{ asset('icons/dollar.png') }}" src="" class="d-md-none lazy" alt="dollar"><span class="d-none d-md-block">You will have financial benefit</span></a>
                     <a class="col  px-0 nav-item nav-link text-grey" id="nav-freeshipping-tab " data-toggle="tab"
                        href="#nav-freeshipping"
                        role="tab"
-                       aria-controls="nav-profile" aria-selected="false"><img src="{{ asset('icons/cargo-ship.png') }}" class="d-md-none" alt="Free shipping"><span class="d-none d-md-block">Free shipping</span></a>
+                       aria-controls="nav-profile" aria-selected="false"><img data-src="{{ asset('icons/cargo-ship.png') }}" src="" class="d-md-none lazy" alt="Free shipping"><span class="d-none d-md-block">Free shipping</span></a>
                     <a class="col  px-0 nav-item nav-link text-grey" id="nav-nodeposit-tab" data-toggle="tab"
                        href="#nav-nodeposit" role="tab"
-                       aria-controls="nav-contact" aria-selected="false"><img src="{{ asset('icons/no-money.png') }}" class="d-md-none" alt="no-deposit"><span class="d-none d-md-block">No deposit</span></a>
+                       aria-controls="nav-contact" aria-selected="false"><img data-src="{{ asset('icons/no-money.png') }}" src="" class="d-md-none lazy" alt="no-deposit"><span class="d-none d-md-block">No deposit</span></a>
                     <a class="col px-0 nav-item nav-link text-grey" id="nav-tires-tab" data-toggle="tab" href="#nav-tires"
                        role="tab"
-                       aria-controls="nav-contact" aria-selected="false"><img src="{{ asset('icons/tire.png') }}" class="d-md-none" alt=""><span class="d-none d-md-block">A large selection of tires</span></a>
+                       aria-controls="nav-contact" aria-selected="false"><img data-src="{{ asset('icons/tire.png') }}" src="" class="d-md-none lazy" alt=""><span class="d-none d-md-block">A large selection of tires</span></a>
                 </div>
             </nav>
             <div class="tab-content img-our" id="nav-tabContent">
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 col-md-6 pt-4 pr-0 ">
-                                <img src="{{asset('img/benefit.png')}}" alt="">
+                                <img class="lazy" data-src="{{asset('img/benefit.png')}}" src="" alt="">
                             </div>
                             <div class="col-12 col-md-6 pt-5 text-left pr-0 pr-md-2 pl-md-0 ">
                                 <p><span class="h5">You will have </span><span
@@ -50,7 +50,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 col-md-6 pt-4 pr-0 ">
-                                <img src="{{asset('img/shiip.png')}}" alt="">
+                                <img data-src="{{asset('img/shiip.png')}}" src="" class="lazy" alt="">
                             </div>
                             <div class="col-12 col-md-6 pt-5 text-left pr-0 pr-md-2 pl-md-0 ">
                                 <p><span class="text-red h5">Free </span>  <span class="h5">shipping</span></p>
@@ -68,7 +68,7 @@
                     <div class="col-12 ">
                         <div class="row">
                             <div class="col-12 col-md-6 pt-4 pr-0 ">
-                                <img src="{{asset('img/no_deposit.png')}}" alt="">
+                                <img class="lazy" data-src="{{asset('img/no_deposit.png')}}" src="" alt="">
                             </div>
                             <div class="col-12 col-md-6 pt-5 text-left pr-0 pr-md-2 pl-md-0 ">
                                 <p><span class="text-red h5">No deposit</span></p>
@@ -86,7 +86,7 @@
                     <div class="col-12 ">
                         <div class="row">
                             <div class="col-12 col-md-6 pt-4 pr-0 ">
-                                <img src="{{asset('img/tires.png')}}" alt="">
+                                <img class="lazy" data-src="{{asset('img/tires.png')}}" src="" alt="">
                             </div>
                             <div class="col-12 col-md-6 pt-5 text-left  pr-0 pr-md-2 pl-md-0 ">
                                 <p><span class="h5">A large selection of</span>  <span class="text-red h5">tires</span></p>

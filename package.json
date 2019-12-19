@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
+        "jquery-lazy": "^1.7.10",
         "mdbootstrap": "^4.10.0"
     }
 }

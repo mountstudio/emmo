@@ -38,7 +38,12 @@
     <script src="{{ asset('js/mmenu.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.lazy.js') }}"></script>
+    <script>
+        $(function() {
+            $('.lazy').Lazy();
+        });
+    </script>
     @stack('scripts')
     <script>
         let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";

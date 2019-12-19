@@ -23,7 +23,7 @@
                         @foreach($products as $product)
                             <div class="col mb-4" data-aos="fade-right">
                                 <div class="card border-0 h-100">
-                                    <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top" alt="...">
+                                    <img data-src="{{ asset('img/'.$product->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">{{ $product->name }}</h3>
                                         <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
@@ -50,7 +50,7 @@
                     <div class="row row-cols-1 row-cols-md-4">
                         <div class="col mb-4" data-aos="fade-right">
                             <div class="card border-0 h-100">
-                                <img src="{{ asset('img/kartinka.jpg') }}" class="card-img-top" alt="...">
+                                <img data-src="{{ asset('img/kartinka.jpg') }}" src="" class="lazy card-img-top" alt="...">
                                 <div class="card-body px-0">
                                     <h5 class="card-title text-for-desc">Some description here</h5>
                                     <p class="card-text"><span class="text-for-price-1 pr-3">$27.51</span><span

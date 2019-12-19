@@ -20673,7 +20673,6 @@ table.table a.btn.btn-black {
   font-weight: 400;
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    background: transparent;
 }
 
 .card[class*=border] {
@@ -20843,7 +20842,7 @@ table.table a.btn.btn-black {
 
 .navbar.navbar-light .navbar-toggler-icon {
   cursor: pointer;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .navbar.navbar-light .breadcrumb .nav-item .nav-link,
@@ -21253,10 +21252,10 @@ body.scrollable {
 .modal-dialog.cascading-modal .modal-c-tabs {
   /*
   .md-tabs {
-   border-radius: $md-cart-border-radius;
+   border-radius: $md-card-border-radius;
    .nav-item {
      .nav-link {
-       border-radius: $md-cart-border-radius;
+       border-radius: $md-card-border-radius;
        background-color: inherit;
        color: $white-base;
      }

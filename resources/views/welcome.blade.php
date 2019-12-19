@@ -11,8 +11,7 @@
         </section>
         <section style="padding: 30px;filter: blur(10px);margin-top: -36px;margin-bottom: -15px;background: black;">
         </section>
-        <section class="bg-black py-5"
-                 style="background: url({{ asset('img/bg.png') }}) no-repeat;">
+        <section class="bg-black py-5 lazy" data-src="{{ asset('img/bg.png') }}">
             @include('blocks.our_advantages')
             @include('blocks.nav_cards')
             {{--@include('blocks.best_sellers')--}}
