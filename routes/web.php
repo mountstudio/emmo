@@ -89,3 +89,4 @@ Route::get('/about',function (){
 
 
 Route::get('/serach/product', 'ProductController@searchProduct')->name('search.product');
+

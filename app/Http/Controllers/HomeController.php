@@ -66,15 +66,15 @@ class HomeController extends Controller
 //        dd($products, $product_sizes, $prod);
 
         $productsNew = Product::latest()->limit(8)->get();
-        $pn = [];
-        foreach ($productsNew as $key => $p)
-        {
-            $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
-        }
+//        $pn = [];
+//        foreach ($productsNew as $key => $p)
+//        {
+//            $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
+//        }
 //        dd($productsNew, $pn);
         return view('welcome', [
             'productsPopular' => $productsPopular,
-            'productsNew' => $pn,
+            'productsNew' => $productsNew,
             'bestsellers' => $bestsellers,
             'brands' => $brands,
             'width' => $width,
