@@ -6,44 +6,49 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row row-cols-1 row-cols-md-4">
-
                         @foreach($products as $key => $product)
                             <div class="col mb-4">
                                 <div class="card border-0 h-100">
                                     <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top"
                                          alt="...">
                                     <div class="card-body px-0">
-                                        <p class="card-title h5 text-for-brand">{{ $product->brand->name }}</p>
-                                        <h3 class="card-title text-for-desc">{{ $product->name }}</h3>
+                                        <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
+                                            <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a></h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
-                                            $<span class="h5 font-weight-bold pr-3">{{ \App\Product_size::all()->firstWhere('product_id', $product->id)->price }}</span>
+                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::where('product_id', $product->id)->get()[0]->price, 2) }}$</span>
                                         </p>
-                                        <div class="d-flex justify-content-between">
-                                            <a href="" class="text-white buy_btn">Buy now</a>
-                                            <a href="" class="text-white add-in-cart_btn">Add in a cart</a>
-                                        </div>
+{{--                                        <div class="d-flex justify-content-between">--}}
+{{--                                            <a href="" class="text-white buy_btn">Buy now</a>--}}
+{{--                                            <a href="" class="text-white add-in-cart_btn">Add in a cart</a>--}}
+{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                         @foreach($allProducts as $product)
-                                <div class="col mb-4">
-                                    <div class="card border-0 h-100">
-                                        <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top"
-                                             alt="...">
-                                        <div class="card-body px-0">
-                                            <p class="card-title h5 text-for-brand">{{ $product->brand->name }}</p>
-                                            <h3 class="card-title text-for-desc">{{ $product->name }}</h3>
-                                            <p class="card-text text-white">
-                                                $<span class="h5 font-weight-bold pr-3">{{ \App\Product_size::all()->firstWhere('product_id', $product->id)->price }}</span>
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <a href="" class="text-white buy_btn">Buy now</a>
-                                                <a href="" class="text-white add-in-cart_btn">Add in a cart</a>
-                                            </div>
-                                        </div>
+                            <div class="col mb-4">
+                                <div class="card border-0 h-100">
+                                    <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top"
+                                         alt="...">
+                                    <div class="card-body px-0">
+                                        <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
+                                            <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a></h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
+                                        <p class="card-text text-white">
+                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::where('product_id', $product->id)->get()[0]->price, 2) }}$</span>
+                                        </p>
+                                        {{--                                        <div class="d-flex justify-content-between">--}}
+                                        {{--                                            <a href="" class="text-white buy_btn">Buy now</a>--}}
+                                        {{--                                            <a href="" class="text-white add-in-cart_btn">Add in a cart</a>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
+                            </div>
                         @endforeach
                     </div>
                 </div>
