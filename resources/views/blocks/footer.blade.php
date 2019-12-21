@@ -29,7 +29,7 @@
             <h2 style="color: #FD595A">WHO WE ARE</h2>
             <hr class="footer_hr">
             <ul class="text-white" style="list-style: none;padding-left: 0px;">
-                <li><a href="" class="text-white footer_text">About Emmo Tires</a></li>
+                <li><a href="{{ route('about') }}" class="text-white footer_text">About Emmo Tires</a></li>
                 <li><a href="" class="text-white footer_text">Privacy Policy</a></li>
                 <li><a href="" class="text-white footer_text">Terms and Conditions</a></li>
             </ul>

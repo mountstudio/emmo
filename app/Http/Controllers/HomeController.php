@@ -7,7 +7,6 @@ use App\Cart;
 use App\Product;
 use App\Product_size;
 use App\Size;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -65,20 +64,21 @@ class HomeController extends Controller
         }
 
         $productsNew = Product::latest()->limit(8)->get();
-        $pn = [];
-        foreach ($productsNew as $key => $p)
-        {
-            $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
-        }
+//        $pn = [];
+//        foreach ($productsNew as $key => $p)
+//        {
+//            $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
+//        }
 
         $productsBestsellers = Product::bestsellers();
         $allProducts = Product::limit(16 - count($productsBestsellers))->get();
 
         return view('welcome', [
             'productsPopular' => $productsPopular,
-            'productsNew' => $pn,
+//            'productsNew' => $pn,
             'productsBestsellers' => $productsBestsellers,
             'allProducts' => $allProducts,
+            'productsNew' => $productsNew,
             'bestsellers' => $bestsellers,
             'brands' => $brands,
             'width' => $width,

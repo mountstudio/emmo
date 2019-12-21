@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @seoTags()
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/fontawesome.js') }}" crossorigin="anonymous"></script>
@@ -38,7 +38,12 @@
     <script src="{{ asset('js/mmenu.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.lazy.js') }}"></script>
+    <script>
+        $(function() {
+            $('.lazy').Lazy();
+        });
+    </script>
     @stack('scripts')
     <script>
         let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";

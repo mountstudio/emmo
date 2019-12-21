@@ -21,13 +21,6 @@
                     participates in NHRA drag racing and SCCA road racing.</p>
             </div>
             <div class="row">
-                <div class="d-flex justify-content-between">
-                    <a href="" class="text-white " style="padding:9px 32px;text-transform: uppercase;background: linear-gradient(90deg, #911617 2.37%, #911617 100%);border-radius: 5px;">Products</a>
-                    <a href="" class="text-white " style="padding:9px 32px;text-transform: uppercase;background: linear-gradient(90deg, #FD595A 2.37%, #911617 100%);border-radius: 5px;">New</a>
-                    <a href="" class="text-white " style="padding:9px 32px;text-transform: uppercase;background: linear-gradient(90deg, #FD595A 2.37%, #911617 100%);border-radius: 5px;">Special offers</a>
-                </div>
-            </div>
-            <div class="row">
                 <p class="h4 pt-3" style="color: #FD595A">PASSENGER TIRES</p>
             </div>
         </div>
