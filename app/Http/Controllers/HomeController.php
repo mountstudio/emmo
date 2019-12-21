@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use App\Brand;
 use App\Cart;
 use App\Product;
@@ -73,12 +74,14 @@ class HomeController extends Controller
         $productsBestsellers = Product::bestsellers();
         $allProducts = Product::limit(16 - count($productsBestsellers))->get();
 
+        $blogs = Blog::latest()->limit(3)->get();
+
         return view('welcome', [
             'productsPopular' => $productsPopular,
             'productsNew' => $pn,
             'productsBestsellers' => $productsBestsellers,
             'allProducts' => $allProducts,
-//            'productsNew' => $productsNew,
+            'blogs' => $blogs,
             'bestsellers' => $bestsellers,
             'brands' => $brands,
             'width' => $width,

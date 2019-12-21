@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function searchProduct(Request $request)
     {
-        $full_size = $request->width.'/'.$request->profile.$request->diameter;
+s        $full_size = $request->width.'/'.$request->profile.$request->diameter;
 //        $full_size = '255/55ZR17';
 //        $full_size = 'P275/35ZR18';
         $size =  Size::where('full_size', $full_size)->get()->first();
