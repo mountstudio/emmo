@@ -4,24 +4,13 @@
             <h1 class="text-white py-5 " style="text-transform: uppercase;">Our brands</h1>
             <div class="col-12">
                 <div id="owl-brands" class="owl-carousel owl-theme ">
-                    <div class="item">
-                        <img src="{{ asset('img/Yokohama-logo.png') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('img/dunlop.png') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('img/mastergraft.png') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('img/coopertires.png') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('img/good-year.png') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('img/michelin.png') }}" class="img-fluid" alt="">
-                    </div>
+                    @foreach($brands as $brand)
+                        <div class="item">
+                            <a href="{{ route('brand.show', $brand) }}">
+                                <img data-src="{{ asset('img/'. $brand->image) }}" src="" class="img-fluid lazy" alt="">
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="py-3">
@@ -33,7 +22,7 @@
     @push('scripts')
         <script>
             $('#owl-brands').owlCarousel({
-                items: 3,
+                items: 5,
                 loop: true,
                 margin: 10,
                 mouseDrag: false,
