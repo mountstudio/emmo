@@ -7,6 +7,7 @@ use App\Cart;
 use App\Product;
 use App\Product_size;
 use App\Size;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -54,7 +55,6 @@ class HomeController extends Controller
         asort($profile);
         asort($diameter);
 
-//        dd($sizes, $width, $profile, $diametr, $brands);
         $bestsellers = Product::bestsellers();
 //        $products = Product::all()->random(8);
         $product_sizes = Product_size::all()->random(8);
@@ -63,7 +63,6 @@ class HomeController extends Controller
         {
             $productsPopular[] = Product::find($ps->product_id);
         }
-//        dd($products, $product_sizes, $prod);
 
         $productsNew = Product::latest()->limit(8)->get();
         $pn = [];
@@ -71,10 +70,15 @@ class HomeController extends Controller
         {
             $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
         }
-//        dd($productsNew, $pn);
+
+        $productsBestsellers = Product::bestsellers();
+        $allProducts = Product::limit(16 - count($productsBestsellers))->get();
+
         return view('welcome', [
             'productsPopular' => $productsPopular,
             'productsNew' => $pn,
+            'productsBestsellers' => $productsBestsellers,
+            'allProducts' => $allProducts,
             'bestsellers' => $bestsellers,
             'brands' => $brands,
             'width' => $width,
