@@ -11,7 +11,7 @@
                                     <p class="card-text text-white">{{ $blog->description }}</p>
                                 </div>
                                 <div>
-                                    <a href="" class="text-white choose_btn">More</a>
+                                    <a href="{{ route('blog.post', ['blog' => $blog->id]) }}" class="text-white choose_btn">More</a>
                                 </div>
                             </div>
                         </div>

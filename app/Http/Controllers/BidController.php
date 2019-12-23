@@ -30,11 +30,12 @@ class BidController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+
         $bid = new Bid();
         $bid->width = $request->width;
         $bid->profile = $request->profile;
@@ -42,13 +43,13 @@ class BidController extends Controller
         $bid->zip_code = $request->zip_code;
         $bid->phone_number = $request->phone_number;
         $bid->save();
-        return redirect()->back();
+        return view('response_for_bid', ['bid' => $bid]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bid  $bid
+     * @param \App\Bid $bid
      * @return \Illuminate\Http\Response
      */
     public function show(Bid $bid)
@@ -59,7 +60,7 @@ class BidController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bid  $bid
+     * @param \App\Bid $bid
      * @return \Illuminate\Http\Response
      */
     public function edit(Bid $bid)
@@ -70,8 +71,8 @@ class BidController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bid  $bid
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Bid $bid
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Bid $bid)
@@ -82,7 +83,7 @@ class BidController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bid  $bid
+     * @param \App\Bid $bid
      * @return \Illuminate\Http\Response
      */
     public function destroy(Bid $bid)
