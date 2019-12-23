@@ -45,20 +45,20 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Price from</label>
-                            <input type="number" min="1" max="1000000" name="priceFrom" class="form-control mb-4 arrow-for-select text-white">
+                            <input type="number" min="1" max="1000000" name="priceFrom" class="form-control mb-4 arrow-for-select text-white" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Price to</label>
-                            <input type="number" min="1" max="1000000" name="priceTo" class="form-control mb-4 arrow-for-select text-white">
+                            <input type="number" min="1" max="1000000" name="priceTo" class="form-control mb-4 arrow-for-select text-white" required>
                         </div>
                     </div>
                 </div>
                 <label>Tire size</label>
                 <div class="form-row">
                     <div class="col-12 col-md-4">
-                        <select name="width" class="browser-default custom-select mb-4 arrow-for-select text-white">
+                        <select name="width" class="browser-default custom-select mb-4 arrow-for-select text-white" required>
                             <option value="" disabled>Choose option</option>
                             @foreach($width as $w)
                                 <option value="{{ $w }}">{{ $w }}</option>
@@ -66,7 +66,7 @@
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
-                        <select name="profile" class="browser-default custom-select mb-4 arrow-for-select text-white">
+                        <select name="profile" class="browser-default custom-select mb-4 arrow-for-select text-white" required>
                             <option value="" disabled>Choose option</option>
                             @foreach($profile as $p)
                                 <option value="{{ $p }}">{{ $p }}</option>
@@ -74,7 +74,7 @@
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
-                        <select name="diameter" class="browser-default custom-select mb-4 arrow-for-select text-white">
+                        <select name="diameter" class="browser-default custom-select mb-4 arrow-for-select text-white" required>
                             <option value="" disabled>Choose option</option>
                             @foreach($diameter as $d)
                                 <option value="{{ $d }}">{{ $d }}</option>
