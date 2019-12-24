@@ -16,6 +16,12 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function post_show($id)
+    {
+        $blog = Blog::find($id);
+        return view('post', ['post' => $blog]);
+    }
+
     public function index()
     {
         return view('blog.index',

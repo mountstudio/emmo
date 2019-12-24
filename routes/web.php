@@ -89,4 +89,7 @@ Route::get('/about',function (){
 
 
 Route::get('/serach/product', 'ProductController@searchProduct')->name('search.product');
+Route::get('/bid/store', 'BidController@store')->name('bid.store');
+
+Route::get('/post/{id}', 'BlogController@post_show')->name('blog.post');
 

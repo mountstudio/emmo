@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="bg-black pt-5">
+    <section class="bg-black pt-5" >
         <div class="container pt-5">
             <h1 class="text-white text-center py-2 mb-4"><br>Search tires<br></h1>
             <div class="row justify-content-center">
@@ -53,8 +53,8 @@
                         {{--                                    </div>--}}
                     @endforeach
                 @else
-                    <h5> Не было найдено покышек {{ $brand != 'Choose option' ? $brand : '' }} нужного вам
-                        размера </h5>
+                    <p class="h5 text-white" style="padding-bottom: 235px"> No tires found {{ $brand != 'Choose option' ? $brand : '' }} you need
+                        the size </p>
                 @endif
             </div>
         </div>
