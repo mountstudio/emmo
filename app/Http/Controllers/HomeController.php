@@ -70,8 +70,8 @@ class HomeController extends Controller
             $pn[$p->id] = Product_size::where('product_id', $p->id)->first();
         }
 
-        $productsBestsellers = Product::bestsellers();
-        $allProducts = Product::limit(16 - count($productsBestsellers))->get();
+        $productsBestsellers = Product::bestsellers(8);
+        $allProducts = Product::limit(8 - count($productsBestsellers))->get();
 
         return view('welcome', [
             'productsPopular' => $productsPopular,

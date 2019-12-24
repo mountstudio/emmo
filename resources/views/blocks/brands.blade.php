@@ -22,7 +22,7 @@
     @push('scripts')
         <script>
             $('#owl-brands').owlCarousel({
-                items: 5,
+                items: 8,
                 loop: true,
                 margin: 10,
                 mouseDrag: false,
@@ -32,6 +32,7 @@
                 nav: true,
                 navigation: true,
                 autoplayTimeout: 5000,
+
             });
         </script>
         <script>

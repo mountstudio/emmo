@@ -29,7 +29,7 @@ class Product extends Model
         return $this->hasMany(Cart_product::class);
     }
 
-    public static function bestsellers()
+    public static function bestsellers($limit = null)
     {
         $cart_products = Cart_product::all()->where('created_at', '>', Carbon::now()->subDays(30));
         $cart_products = $cart_products->groupBy('product_id')->map(function ($row) {
@@ -47,6 +47,10 @@ class Product extends Model
         foreach ($productBestsellers as $key => $productBestseller) {
             $prod = Product::find($key);
             $products[$productBestseller] = $prod;
+        }
+
+        if ($limit) {
+            $products = array_slice($products, 0, 5);
         }
 
         return $products;

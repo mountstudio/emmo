@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @push('seo')
-    <title>{{ $product->name }}</title>
-    <meta name="title" content="{{ $product->name .'| Emmo Tires'}}">
+    <title>{{ $product->brand->name . ' ' .$product->name .' | Emmo Tires' }}</title>
+    <meta name="title" content="{{ $product->name .' in brand ' .$product->brand->name. ' | Emmo Tires' }}">
     <meta name="description" content="{{ strip_tags($product->description) }}">
-    <meta property="og:title" content="{{ $product->name }}">
+    <meta property="og:title" content="{{ $product->brand->name . ' ' .$product->name .' | Emmo Tires' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:image" content="{{ asset('img/'.$product->product_image) }}">

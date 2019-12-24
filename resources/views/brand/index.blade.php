@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('seo')
+    <title>Brands in our store {{ request()->segment(0) }}</title>
+@endpush
+
 @section('content')
     <div class="container" style="padding-top: 70px;">
 
