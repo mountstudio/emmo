@@ -39,7 +39,6 @@ Route::get('/dashboard/brand/create', 'DashboardController@brandCreate')->name('
 Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('dashboard.brand.store');
 //Dashboard
 
-
 //Resources
 Route::resources([
     'product' => 'ProductController',

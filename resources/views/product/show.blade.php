@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @push('seo')
-    <title>{{ $product->brand->name . ' ' .$product->name .' | Emmo Tires' }}</title>
-    <meta name="title" content="{{ $product->name .' in brand ' .$product->brand->name. ' | Emmo Tires' }}">
+    <title>{{ $product->brand->name . ' ' .$product->name }} {{ request()->has('city') ? ' in ' . request('city') : '' }} | Emmo Tires</title>
+    <meta name="title" content="{{ $product->name .' in brand ' .$product->brand->nam }} {{ request()->has('city') ? ' in ' . request('city') : '' }} | Emmo Tires">
     <meta name="description" content="{{ strip_tags($product->description) }}">
-    <meta property="og:title" content="{{ $product->brand->name . ' ' .$product->name .' | Emmo Tires' }}">
+    <meta property="og:title" content="{{ $product->brand->name . ' ' .$product->name }} {{ request()->has('city') ? ' in ' . request('city') : '' }} | Emmo Tires">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:image" content="{{ asset('img/'.$product->product_image) }}">
@@ -54,30 +54,35 @@
 
                            </div>
                            <h5>All sizes</h5>
+                           <div class="row">
                            @for($i=0; $i < count($sizes); $i++)
-                               <ul class="column">
                                    <div id="selected-size"></div>
                                    @if($i == 0)
-                                       <h5>{{ $sizes[$i]->number_size }}</h5>
-                                       <li class="sizes-group list-unstyled">
-                                           <a href="#" class="size-object" data-size="{{ $sizes[$i] }}">
-                                               <span class="sizes">{{ $sizes[$i]->full_size }}</span>
-                                               <span class="servDesc">{{ $sizes[$i]->serv_desc  }}</span>
-                                           </a>
-                                       </li>
-                                   @else
-                                       @if($sizes[$i-1]->number_size != $sizes[$i]->number_size)
+                                       <div class="col-12 col-md-4 col-lg-3">
                                            <h5>{{ $sizes[$i]->number_size }}</h5>
-                                       @endif
-                                       <li class="sizes-group list-unstyled">
-                                           <a href="#" class="size-object" data-size="{{ $sizes[$i] }}">
-                                               <span class="sizes">{{ $sizes[$i]->full_size }}</span>
-                                               <span class="servDesc">{{ $sizes[$i]->serv_desc  }}</span>
-                                           </a>
-                                       </li>
+                                           <div class="sizes-group list-unstyled">
+                                               <a href="#" class="size-object" data-size="{{ $sizes[$i] }}">
+                                                   <span class="sizes">{{ $sizes[$i]->full_size }}</span>
+                                                   <span class="servDesc">{{ $sizes[$i]->serv_desc  }}</span>
+                                               </a>
+                                           </div>
+                                       </div>
+                                   @else
+                                       <div class=" col-12 col-md-4 col-lg-3">
+                                           @if($sizes[$i-1]->number_size != $sizes[$i]->number_size)
+                                               <h5>{{ $sizes[$i]->number_size }}</h5>
+                                           @endif
+                                           <div class="sizes-group list-unstyled">
+                                               <a href="#" class="size-object" data-size="{{ $sizes[$i] }}">
+                                                   <span class="sizes">{{ $sizes[$i]->full_size }}</span>
+                                                   <span class="servDesc">{{ $sizes[$i]->serv_desc  }}</span>
+                                               </a>
+                                           </div>
+                                       </div>
                                    @endif
-                               </ul>
                            @endfor
+                           </div>
+
                        </div>
                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                            {!! $product->specs !!}
@@ -87,6 +92,39 @@
            </div>
        </div>
    </section>
+    <section class="mt-5 text-white">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2>Sames as this product</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($sames as $product)
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <div class="card border-0 h-100">
+                            <img src="{{ asset('img/'.optional($product)->product_image) }}" class="card-img-top" alt="...">
+                            <div class="card-body px-0">
+                                <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
+                                    <a href="{{ route('product.show', ['product' => $product->id, 'city' => request('city')]) }}">{{ $product->name }}</a></h3>
+                                <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
+                                <p class="text-white mb-0 mt-0x" style="min-height: 42px;"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
+                                <p class="card-text text-white">
+{{--                                    <span class="pr-4 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::find($product->id)->price, 2) }}$</span>--}}
+                                    <span class="">{{ $product->created_at->format('Y-m-d') }}</span>
+                                </p>
+                                {{--                                        <div class="d-flex justify-content-between">--}}
+                                {{--                                            <a href="" class="text-white buy_btn">Buy now</a>--}}
+                                {{--                                            <a href="" class="text-white add-in-cart_btn" data-id="{{ $product->id }}">Add to cart</a>--}}
+                                {{--                                        </div>--}}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 @endsection
 
 @push('scripts')

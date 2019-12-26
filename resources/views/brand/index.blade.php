@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @push('seo')
-    <title>Brands in our store {{ request()->segment(0) }}</title>
+    <title>Brands in Emmo Tires {{ request()->has('city') ? 'in ' . request()->get('city') : '' }}</title>
+    <meta name="title" content="Brands in Emmo Tires {{ request()->has('city') ? 'in ' . request()->get('city') : '' }}">
+    <meta name="description" content="Brands in Emmo Tires {{ request()->has('city') ? 'in ' . request()->get('city') : '' }}">
+    <meta property="og:title" content="Brands in Emmo Tires {{ request()->has('city') ? 'in ' . request()->get('city') : '' }}">
+    <meta property="og:description" content="Brands in Emmo Tires {{ request()->has('city') ? 'in ' . request()->get('city') : '' }}">
+    <meta property="og:url" content="{{ request()->fullUrl() }}">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="{{ request()->fullUrl() }}">
 @endpush
 
 @section('content')

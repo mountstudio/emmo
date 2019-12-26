@@ -29,38 +29,40 @@
                         <button class="btn choose_btn " type="submit">Send</button>
                     </form>
                 </div>
+                <div class="col-12 col-lg-5 mt-4 mt-lg-0 pt-3 text-white">
+                    <div style="">
+                        @foreach($cartItems as $item)
+                            <div class="row ">
+                                <div class="col-12 col-md-6 col-lg-6 pr-0">
+                                    <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
+                                </div>
+                                <div class="col-12 col-md-6 pt-2">
+                                    <p class="font-weight-bold h6">Brand : {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
+                                    <p class="h4"> {{ $item->name }} </p>
+                                    <p class="text-red m-0 "><b >Size :</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
+                                    <p class="m-0"><b >Quantity :</b> {{ $item->quantity }} </p>
+                                    <p class="m-0"><b>Cost :</b> {{ $item->price }} $</p>
+                                    <p><b>Total :</b> {{ $item->price * $item->quantity }} $</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
 
+                </div>
             </div>
-            <div class="col-12 col-lg-5 mt-4 mt-lg-0 pt-3 text-white">
-                <div style="">
-                    @foreach($cartItems as $item)
-                        <div class="row ">
-                            <div class="col-12 col-md-6 col-lg-6 pr-0">
-                                <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
-                            </div>
-                            <div class="col-12 col-md-6 pt-2">
-                                <p class="font-weight-bold h6">Brand : {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
-                                <p class="h4"> {{ $item->name }} </p>
-                                <p class="text-red m-0 "><b >Size :</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
-                                <p class="m-0"><b >Quantity :</b> {{ $item->quantity }} </p>
-                                <p class="m-0"><b>Cost :</b> {{ $item->price }} $</p>
-                                <p><b>Total :</b> {{ $item->price * $item->quantity }} $</p>
-                            </div>
+
+            <div class="row justify-content-end py-5 text-white">
+                <div class="col-12 col-sm-8 col-md-5 col-lg-4 px-3" style="background: rgba(0, 0, 0, 0.03);">
+                    <div class="row">
+                        <div class="col-6 m-0 h6 font-weight-bold">
+                            Grand Total:
                         </div>
-                    @endforeach
-                </div>
-
-            </div>
-            <div class="row justify-content-end mt-5 py-5 text-white">
-                <div class="col-12 col-sm-8 col-md-5 col-lg-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
-                    <div class="col-6 m-0 h6 font-weight-bold">
-                        Gran Total:
-                    </div>
-                    <div class="col-6 m-0 h5 font-weight-bold">
-                        {{ $total }} $
+                        <div class="col-6 m-0 h5 font-weight-bold">
+                            {{ $total }} $
+                        </div>
                     </div>
                 </div>
-
+                <div class="w-100"></div>
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 p-0 mt-1">
                     <a href="#" class="btn choose_btn text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Make payment
                     </a>

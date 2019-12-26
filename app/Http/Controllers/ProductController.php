@@ -181,10 +181,14 @@ class ProductController extends Controller
         {
             $sizes[] = $productSize->size;
         }
+
+        $products = Product::all()->random(8);
+
         return view('product.show', [
             'brand' => $brand,
             'product' => $product,
             'sizes' => $sizes,
+            'sames' => $products,
         ]);
     }
 
