@@ -121,7 +121,7 @@
                 <label>Zip code</label>
                 <input type="number" name="zip_code" min="1" max="1000000" class="form-control mb-4 arrow-for-select text-white" required>
                 <label>Telephone number</label>
-                <input type="number" name="phone_number" class="form-control mb-4 arrow-for-select text-white" required>
+                <input type="text" name="phone_number" class="form-control mb-4 arrow-for-select text-white phone_number_input" required>
                 <div>
                     <button type="submit"  class="text-white btn-emmo">Find!</button>
                 </div>
@@ -134,6 +134,16 @@
           href="{{ asset('https://raw.githubusercontent.com/daneden/animate.css/master/animate.css') }}">
 @endpush
 @push('scripts')
+    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+    <script>
+        $('.phone_number_input').mask('(000) 000-0000', {
+            translation: {
+                '0': {
+                    pattern: /[0-9]/, optional: true
+                }
+            }
+        });
+    </script>
     <script>
         $('#owl-text').owlCarousel({
             items: 1,
