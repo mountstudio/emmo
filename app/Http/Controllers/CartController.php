@@ -116,12 +116,12 @@ class CartController extends Controller
     }
 
     public function add(Request $request){
-        $product = Product::find($request->prod_id);
+        $product = Product::find($request->product_id);
         $count = $request->count;
         $size = $request->size;
-        $sizeid = $request->sizeid;
+        $sizeid = $request->size_id;
         $token = $request->token ? $request->token : uniqid();
-        $product_id = $request->product_id;
+        $product_id = $request->id;
 
         if (!$product) {
             return response()->json([
@@ -150,11 +150,11 @@ class CartController extends Controller
         $product = Product::find($request->product_id);
         $count = $request->count;
         $token = $request->token;
-        $product_id = $request->product_id;
+        $product_id = $request->id;
 
         if (!$product) {
             return response()->json([
-                'message' => 'book not found',
+                'message' => 'Tire not found',
                 'status' => 'error',
             ]);
         }
@@ -163,7 +163,7 @@ class CartController extends Controller
         if (!Cart::remove($product, $count, $token, ['product_id' => $product_id])) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'book not found in cart',
+                'message' => 'Tire not found in cart',
                 'cart' => CartFacade::session($token)->getContent(),
                 'token' => $token,
             ]);
@@ -186,11 +186,11 @@ class CartController extends Controller
         $token = $request->token;
         $size = $request->size;
         $color = $request->color;
-        $product_id = $request->product_id;
+        $product_id = $request->id;
 
         if (!$product) {
             return response()->json([
-                'message' => 'product not found',
+                'message' => 'Tire not found',
                 'status' => 'error'
             ]);
         }

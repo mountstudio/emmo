@@ -28,14 +28,13 @@ class Cart extends Model
                 return CartFacade::session($token)->update($options['product_id'], [
                     'quantity' => $count,
                 ]);
-            }else{
+            } else {
                 $product_size = Product_size::find($product->id);
-                return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size'], 'sizeid'=> $options['sizeid'], 'prod_id' => $product->id]);
+                return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size'], 'sizeid'=> $options['sizeid'], 'product_id' => $product->id]);
             }
-
         } else {
             $product_size = Product_size::find($product->id);
-            return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size'], 'sizeid'=> $options['sizeid'], 'prod_id' => $product->id]);
+            return CartFacade::session($token)->add($options['product_id'], $product->name, $product_size->price, $count ? $count : 1, ['size'=> $options['size'], 'sizeid'=> $options['sizeid'], 'product_id' => $product->id]);
         }
     }
 

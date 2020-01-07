@@ -84,23 +84,22 @@
                 console.log('registered');
                 let btn = $(e.currentTarget);
                 let id = btn.data('id');
-                let cart = null;
+                let product_id = btn.data('product_id');
                 let size = btn.data('size');
-                let sizeid = btn.data('sizeid');
-                let newId = id + sizeid;
-                newId = newId + 'id';
-                console.log(id, size);
+                let size_id = btn.data('size_id');
+                let cart = null;
+                console.log(id);
 
                 $.ajax({
                     url: '{{ route('cart.add') }}',
                     data: {
                         // product_id: newId,
-                        product_id: size ? newId : id,
-                        prod_id: id,
+                        id: id,
+                        product_id: product_id,
                         count: 1,
                         token: token,
                         size: size,
-                        sizeid: sizeid,
+                        size_id: size_id,
                     },
                     success: data => {
                         btn.addClass('btn-success').delay(2000).queue(function(){
@@ -126,16 +125,16 @@
         function registerCartRemoveButtons(data) {
             data.click(e => {
                 e.preventDefault();
-                console.log('registered');
-
                 let btn = $(e.currentTarget);
                 let id = btn.data('id');
+                let product_id = btn.data('product_id');
                 let cart = null;
 
                 $.ajax({
                     url: '{{ route('cart.remove') }}',
                     data: {
-                        product_id: id,
+                        id: id,
+                        product_id: product_id,
                         count: 1,
                         token: token,
                     },
@@ -157,12 +156,14 @@
 
                 let btn = $(e.currentTarget);
                 let id = btn.data('id');
+                let product_id = btn.data('product_id');
                 let cart = null;
 
                 $.ajax({
                     url: '{{ route('cart.delete') }}',
                     data: {
-                        product_id: id,
+                        product_id: product_id,
+                        id: id,
                         token: token,
                     },
                     success: data => {

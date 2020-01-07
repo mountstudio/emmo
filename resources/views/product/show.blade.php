@@ -141,8 +141,8 @@
             $('div#for-add-cart-btn').empty();
             const element = $('                <a href="#"' +
                 '                   class="btn reg_btn btn-block text-fut-book but-hov text-white buy_book d-lg-block d-none w-50"' +
-                '                   data-id=" {{ $product->id }}" data-size="' + size.full_size +' '+ size.serv_desc + '"' +
-                '                   data-sizeid="' + size.id + '"' +
+                '                   data-id="{{ $product->id }}' + size.id + '" data-product_id="{{ $product->id }}" data-size="' + size.full_size +' '+ size.serv_desc + '"' +
+                '                   data-size_id="' + size.id + '"' +
                 '                   id="basket">Add to cart' +
                 '                </a>');
 
