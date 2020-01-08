@@ -11,6 +11,7 @@ use App\Size;
 use App\Subcategory;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
@@ -229,5 +230,17 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function datatable(Request $request)
+    {
+        return view('admin.products.index', [
+            'products' => Product::all(),
+        ]);
+    }
+
+    public function datatableData(Request $request)
+    {
+        return DataTables::of(Product::query())->make(true);
     }
 }

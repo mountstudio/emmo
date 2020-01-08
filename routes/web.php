@@ -46,6 +46,11 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::resource('category', 'CategoryController')->except(['index', 'show']);
     Route::resource('size', 'SizeController')->except(['index', 'show']);
     Route::resource('comment', 'CommentController')->except(['index', 'show']);
+    Route::resource('product', 'ProductController')->except(['index', 'show']);
+    Route::resource('brand', 'BrandController')->except(['index', 'show']);
+    Route::resource('subcategory', 'SubcategoryController')->except(['index', 'show']);
+    Route::resource('blog', 'BlogController')->except(['index', 'show']);
+    Route::resource('bestsellers', 'BestsellerController')->except(['index', 'show']);
 
 });
 // End Admin Routes
@@ -62,13 +67,11 @@ Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('d
 //Dashboard
 
 //Resources
-Route::resources([
-    'product' => 'ProductController',
-    'brand' => 'BrandController',
-    'subcategory' => 'SubcategoryController',
-    'blog' => 'BlogController',
-    'bestsellers' => 'BestsellerController',
-]);
+Route::resource('product', 'ProductController')->only(['index', 'show']);
+Route::resource('brand', 'BrandController')->only(['index', 'show']);
+Route::resource('subcategory', 'SubcategoryController')->only(['index', 'show']);
+Route::resource('blog', 'BlogController')->only(['index', 'show']);
+Route::resource('bestsellers', 'BestsellerController')->only(['index', 'show']);
 //End resources
 
 Route::get('/products', 'Api\ProductController@index')->name('product.all');
