@@ -20,6 +20,11 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
+    public function sizes()
+    {
+        return $this->belongsToMany(Size::class);
+    }
+
     public function product_sizes() {
         return $this->hasMany(Product_size::class);
     }

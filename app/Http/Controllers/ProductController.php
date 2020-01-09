@@ -241,6 +241,12 @@ class ProductController extends Controller
 
     public function datatableData(Request $request)
     {
-        return DataTables::of(Product::query())->make(true);
+        $products = Product::with('sizes');
+        return DataTables::of($products)->addColumn('sizes', function ($model) {
+            return $model->sizes->map(function($size) {
+                return str_limit($size->full_size, 30, '...');
+            })->implode(", ");
+        })
+            ->toJson();
     }
 }

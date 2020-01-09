@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 
 @section('dashboard_content')
-    <form class="border container p-4 bg-white z-depth-1" action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+    <form class="border container p-4 bg-white z-depth-1" action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-6">
