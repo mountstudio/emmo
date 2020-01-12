@@ -1,11 +1,16 @@
-@extends('layouts.app')
+@extends('admin.dashboard')
 
-@section('content')
-    <section style="background-color: #060606;">
-        @include('blocks.header')
-    </section>
+@push('styles')
+    <style>
+        .mce-notification.mce-notification-warning {
+            display: none !important;
+        }
+    </style>
+@endpush
+
+@section('dashboard_content')
     <div class="container">
-        <form class="border container p-4 bg-white z-depth-1" action="{{ route('dashboard.blog.store') }}" method="post" enctype="multipart/form-data">
+        <form class="border container p-4 bg-white z-depth-1" action="{{ route('admin.blog.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-6 form-group ">

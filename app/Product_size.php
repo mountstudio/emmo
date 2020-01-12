@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product_size extends Model
 {
+    protected $table = 'product_size';
+
     public function size() {
         return $this->belongsTo(Size::class);
     }

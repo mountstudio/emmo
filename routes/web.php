@@ -45,14 +45,16 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::resource('subcategory', 'SubcategoryController')->except(['index', 'show']);
     Route::resource('blog', 'BlogController')->except(['index', 'show']);
     Route::resource('bestsellers', 'BestsellerController')->except(['index', 'show']);
-
+    Route::get('/blog', 'BlogController@datatable')->name('blog.datatable');
+    Route::get('/blog/datatable', 'BlogController@datatableData')->name('blog.datatable.data');
+//Dashboard
+    Route::get('/dashboard/blog/create', 'DashboardController@blogCreate')->name('dashboard.blog.create');
+    Route::post('/dashboard/blog/store', 'DashboardController@blogStore')->name('dashboard.blog.store');
 });
 // End Admin Routes
 
 
-//Dashboard
-Route::get('/dashboard/blog/create', 'DashboardController@blogCreate')->name('dashboard.blog.create');
-Route::post('/dashboard/blog/store', 'DashboardController@blogStore')->name('dashboard.blog.store');
+
 
 Route::get('/dashboard/product/create', 'DashboardController@productCreate')->name('dashboard.product.create');
 

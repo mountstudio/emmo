@@ -34,10 +34,10 @@
                         @foreach($cartItems as $item)
                             <div class="row ">
                                 <div class="col-12 col-md-6 col-lg-6 pr-0">
-                                    <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->prod_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
+                                    <img src="{{ asset('img/'.\App\Product::all()->find($item->attributes->product_id)->product_image) }}" style="height: 150px; width: auto;" alt="">
                                 </div>
                                 <div class="col-12 col-md-6 pt-2">
-                                    <p class="font-weight-bold h6">Brand : {{ \App\Brand::find(\App\Product::find($item->attributes->prod_id)->brand_id)->name }}</p>
+                                    <p class="font-weight-bold h6">Brand : {{ \App\Brand::find(\App\Product::find($item->attributes->product_id)->brand_id)->name }}</p>
                                     <p class="h4"> {{ $item->name }} </p>
                                     <p class="text-red m-0 "><b >Size :</b> {{ \App\Size::find($item->attributes->sizeid)->full_size }} {{ \App\Size::find($item->attributes->sizeid)->serv_desc }} </p>
                                     <p class="m-0"><b >Quantity :</b> {{ $item->quantity }} </p>

@@ -60,7 +60,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('dashboard.blog.create');
+        return view('admin.blog.create');
     }
 
     /**
@@ -93,7 +93,7 @@ class BlogController extends Controller
             Image::make($request->blog_image)->save(public_path('img/'. $blogImageName ), 40);
             $blog->blog_image = $blogImageName;
             $blog->save();
-            return redirect()->back();
+            return redirect()->route('admin.blog.datatable');
         }
     }
 
@@ -147,7 +147,7 @@ class BlogController extends Controller
 
     public function datatable(Request $request)
     {
-        return view('blog.index', ['blogs'=>Blog::all()]);
+        return view('admin.blog.index');
     }
     public function datatableData(Request $request)
     {
