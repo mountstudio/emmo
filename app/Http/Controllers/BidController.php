@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Bid;
+use App\Blog;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class BidController extends Controller
 {
@@ -89,5 +91,14 @@ class BidController extends Controller
     public function destroy(Bid $bid)
     {
         //
+    }
+
+    public function datatable(Request $request)
+    {
+        return view('admin.bid.index');
+    }
+    public function datatableData(Request $request)
+    {
+        return DataTables::of(Bid::query())->make(true);
     }
 }

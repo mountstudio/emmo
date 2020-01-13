@@ -6,7 +6,7 @@
 @section('content')
     <div class="bg-black">
         <section class="bg-black pb-5"
-                 style="background: url({{ asset('img/bg_emmo.png') }}) no-repeat; background-size: cover; padding-top: 150px;">
+                 style="background: url({{ asset('img/bg_emmo.jpg') }}) no-repeat; background-size: cover; padding-top: 150px;">
             @include('blocks.middle')
         </section>
         <section style="padding: 30px;filter: blur(10px);margin-top: -36px;margin-bottom: -15px;background: black;">

@@ -42,11 +42,14 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::get('/order/datatable', 'CartController@datatableData')->name('order.datatable.data');
     Route::resource('size', 'SizeController')->except(['index', 'show']);
     Route::resource('brand', 'BrandController')->except(['index', 'show']);
+    Route::resource('bid', 'BidController')->except(['index', 'show']);
     Route::resource('subcategory', 'SubcategoryController')->except(['index', 'show']);
     Route::resource('blog', 'BlogController')->except(['index', 'show']);
     Route::resource('bestsellers', 'BestsellerController')->except(['index', 'show']);
     Route::get('/blog', 'BlogController@datatable')->name('blog.datatable');
     Route::get('/blog/datatable', 'BlogController@datatableData')->name('blog.datatable.data');
+    Route::get('/bid', 'BidController@datatable')->name('bid.datatable');
+    Route::get('/bid/datatable', 'BidController@datatableData')->name('bid.datatable.data');
 //Dashboard
     Route::get('/dashboard/blog/create', 'DashboardController@blogCreate')->name('dashboard.blog.create');
     Route::post('/dashboard/blog/store', 'DashboardController@blogStore')->name('dashboard.blog.store');

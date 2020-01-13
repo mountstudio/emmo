@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'Emmo-tires.com',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'Emmo Tires'),
+        'short_name' => 'Emmo',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
         'display' => 'standalone',
-        'orientation'=> 'any',
+        'orientation'=> 'portrait',
         'icons' => [
             '72x72' => '/images/icons/icon-72x72.png',
             '96x96' => '/images/icons/icon-96x96.png',

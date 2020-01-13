@@ -23,7 +23,7 @@
                         @foreach($productsPopular as $product)
                             <div class="col mb-4" data-aos="fade-right">
                                 <div class="card border-0 h-100">
-                                    <img src="{{ asset('img/'.$product->product_image) }}" src="" class="lazy card-img-top" alt="...">
+                                    <img data-src="{{ asset('img/'.$product->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
                                             <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a></h3>
@@ -51,7 +51,7 @@
                         @foreach($productsNew as $product)
                             <div class="col mb-4" data-aos="fade-right">
                                 <div class="card border-0 h-100">
-                                    <img src="{{ asset('img/'.optional(\App\Product::find($product->product_id))->product_image) }}" class="card-img-top" alt="...">
+                                    <img data-src="{{ asset('img/'.optional(\App\Product::find($product->product_id))->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
                                             <a href="{{ route('product.show', $product->product_id) }}">{{ \App\Product::find($product->product_id)->name }}</a></h3>
@@ -105,7 +105,7 @@
                         @foreach($productsBestsellers as $product)
                             <div class="col mb-4">
                                 <div class="card border-0 h-100">
-                                    <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top"
+                                    <img data-src="{{ asset('img/'.$product->product_image) }}" src="" class="lazy card-img-top"
                                          alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
@@ -127,7 +127,7 @@
                         @foreach($allProducts as $product)
                             <div class="col mb-4">
                                 <div class="card border-0 h-100">
-                                    <img src="{{ asset('img/'.$product->product_image) }}" class="card-img-top"
+                                    <img data-src="{{ asset('img/'.$product->product_image) }}" src="" class="lazy card-img-top"
                                          alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
