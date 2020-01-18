@@ -26,8 +26,8 @@
                                     <img data-src="{{ asset('img/'.$product->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
-                                            <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a></h3>
-                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                            <a href="{{ route('product.show', ['city' => 'city', 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
                                         <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
@@ -54,8 +54,8 @@
                                     <img data-src="{{ asset('img/'.optional(\App\Product::find($product->product_id))->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
-                                            <a href="{{ route('product.show', $product->product_id) }}">{{ \App\Product::find($product->product_id)->name }}</a></h3>
-                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', \App\Product::find($product->product_id)->brand->id) }}">{{ \App\Product::find($product->product_id)->brand->name }}</a></p>
+                                            <a href="{{ route('product.show', ['city' => 'city', 'brand' => \App\Product::find($product->product->id)->brand, 'product' => \App\Product::find($product->product->id)]) }}">{{ \App\Product::find($product->product_id)->name }}</a></h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => \App\Product::find($product->product->id)->brand]) }}">{{ \App\Product::find($product->product_id)->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ \App\Product::find($product->product_id)->subcategory->category->name }}</p>
                                         <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', \App\Product::find($product->product_id)->subcategory->id) }}">{{ \App\Product::find($product->product_id)->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
@@ -109,8 +109,8 @@
                                          alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
-                                            <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a></h3>
-                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                            <a href="{{ route('product.show', ['city' => 'city', 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
                                         <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
@@ -131,8 +131,8 @@
                                          alt="...">
                                     <div class="card-body px-0">
                                         <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
-                                            <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a></h3>
-                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                            <a href="{{ route('product.show', ['city' => 'city', 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
+                                        <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
                                         <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">

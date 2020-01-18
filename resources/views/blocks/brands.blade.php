@@ -6,16 +6,16 @@
                 <div id="owl-brands" class="owl-carousel owl-theme ">
                     @foreach($brands as $brand)
                         <div class="item">
-                            <a href="{{ route('brand.show', $brand) }}">
+                            <a href="{{ route('brand.show', ['city' => 'city', 'brand' => $brand]) }}">
                                 <img data-src="{{ asset('img/'. $brand->image) }}" src="" class="img-fluid lazy" alt="">
                             </a>
                         </div>
                     @endforeach
                 </div>
             </div>
-            <div class="py-3">
-                <a href="{{ route('brand.index')  }}" class="text-white btn-all-brands ">All brands</a>
-            </div>
+{{--            <div class="py-3">--}}
+{{--                <a href="{{ route('brand.index')  }}" class="text-white btn-all-brands ">All brands</a>--}}
+{{--            </div>--}}
         </div>
     </div>
 </div>

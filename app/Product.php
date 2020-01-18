@@ -3,11 +3,28 @@
 namespace App;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use Sluggable;
+
     protected $fillable = ['name', 'description', 'description_image', 'specs','brand_id', 'subcategory_id',];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     protected $casts = [
         'sizes' => 'array',

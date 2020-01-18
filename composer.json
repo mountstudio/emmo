@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1.3",
         "ammadeuss/laravel-html-dom-parser": "^1.1",
+        "cviebrock/eloquent-sluggable": "4.6.*",
         "darryldecode/cart": "^4.0",
         "digitaldream/laravel-seo-tools": "^1.3",
         "doctrine/dbal": "^2.10",

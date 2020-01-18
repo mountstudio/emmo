@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -66,8 +67,14 @@ Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('d
 //Dashboard
 
 //Resources
-Route::resource('product', 'ProductController')->only(['index', 'show']);
-Route::resource('brand', 'BrandController')->only(['index', 'show']);
+Route::prefix('{city}')->group(function () {
+//    Route::get('/', 'BrandController@index')->name('brand.index');
+    Route::get('/{brand}', 'BrandController@show')->name('brand.show');
+    Route::prefix('{brand}')->group(function () {
+//        Route::get('/{brand}/', 'ProductController@index')->name('product.index');
+        Route::get('/{product}', 'ProductController@show')->name('product.show');
+    });
+});
 Route::resource('subcategory', 'SubcategoryController')->only(['index', 'show']);
 Route::resource('blog', 'BlogController')->only(['index', 'show']);
 Route::resource('bestsellers', 'BestsellerController')->only(['index', 'show']);

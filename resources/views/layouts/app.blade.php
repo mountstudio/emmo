@@ -42,7 +42,7 @@
     <script>
         $(function() {
             $('.lazy').lazy({
-                delay: 10000
+                delay: 100
             });
         });
     </script>

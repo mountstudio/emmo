@@ -11,8 +11,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto text-center col-12 col-md-7 font-weight-bold">
             <li class="nav-item mr-2">
-                <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES" style="font-size: 14px">All
-                    tires</a>
+{{--                <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES" style="font-size: 14px">All--}}
+{{--                    tires</a>--}}
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers.index') }}" title="bestsellers" style="font-size: 14px">Bestsellers</a>

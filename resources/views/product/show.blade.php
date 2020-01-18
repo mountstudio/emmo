@@ -106,8 +106,8 @@
                             <img src="{{ asset('img/'.optional($product)->product_image) }}" class="card-img-top" alt="...">
                             <div class="card-body px-0">
                                 <h3 class="card-title text-white h5 font-weight-bold mb-0" style="min-height: 45px;">
-                                    <a href="{{ route('product.show', ['product' => $product->id, 'city' => request('city')]) }}">{{ $product->name }}</a></h3>
-                                <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', $product->brand->id) }}">{{ $product->brand->name }}</a></p>
+                                    <a href="{{ route('product.show', ['city' => request()->segment(1), 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
+                                <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => request()->segment(1), 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                 <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
                                 <p class="text-white mb-0 mt-0x" style="min-height: 42px;"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                 <p class="card-text text-white">
