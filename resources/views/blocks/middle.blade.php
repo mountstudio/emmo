@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12 col-md-6 pt-3 text-white">
             <form action="{{ route('search.product') }}" class="text-left border border-light p-5 form-bg">
-                <p class="h4 mb-3">Search by tires brand</p>
+                <p class="h4 mb-3">Search tires by brand</p>
                 <label>Brand</label>
                 <select name="brand_id" class="browser-default custom-select mb-4 text-white arrow-for-select">
                     <option value="Choose option">Choose option</option>
@@ -60,7 +60,7 @@
         <div class="col-12 col-md-6 pt-3 text-white">
             <form class="text-left border border-light p-5 form-bg text-white" action="{{ route('bid.store') }}">
                 <p class="h4 mb-3">Find me a tire</p>
-                <label>Tire size</label>
+{{--                <label>Tire size</label>--}}
 {{--                <div class="form-row">--}}
 {{--                    <div class="col-12 col-md-4">--}}
 {{--                        <select name="width" class="browser-default text-white custom-select mb-4 arrow-for-select">--}}
@@ -89,7 +89,7 @@
 {{--                </div>--}}
                 <label>Zip code</label>
                 <input type="number" name="zip_code" min="1" max="1000000" class="form-control mb-4 arrow-for-select text-white" required>
-                <label>Telephone number</label>
+                <label>Phone number</label>
                 <input type="text" name="phone_number" class="form-control mb-4 arrow-for-select text-white phone_number_input" required>
                 <div>
                     <button type="submit"  class="text-white btn-emmo">Find!</button>

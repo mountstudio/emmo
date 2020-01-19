@@ -50,7 +50,7 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Request $request, $city, Brand $brand)
     {
         $products = Product::Where('brand_id', $brand->id)->get();
 

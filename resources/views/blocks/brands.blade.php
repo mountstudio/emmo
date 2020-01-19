@@ -1,7 +1,7 @@
 <div class="container-fluid pt-3 pb-5"  style="background: rgba(255, 255, 255, 0.45);font-family: 'Open Sans',sans-serif;">
     <div class="container">
         <div class="row justify-content-center align-items-center">
-            <h1 class="text-white py-5 " style="text-transform: uppercase;">Our brands</h1>
+            <h2 class="text-white py-5 " style="text-transform: uppercase;">Our brands</h2>
             <div class="col-12">
                 <div id="owl-brands" class="owl-carousel owl-theme ">
                     @foreach($brands as $brand)

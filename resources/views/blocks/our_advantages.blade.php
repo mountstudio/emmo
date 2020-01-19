@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="text-white text-center pb-5">Why Emmotires.com?</h1>
+    <h2 class="text-white text-center pb-5">Why Emmotires.com?</h2>
     <div class="row">
         <div class="col-12 text-center">
             <nav>

@@ -68,7 +68,7 @@ Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('d
 
 //Resources
 Route::prefix('{city}')->group(function () {
-//    Route::get('/', 'BrandController@index')->name('brand.index');
+    Route::get('/brand', 'BrandController@index')->name('brand.index');
     Route::get('/{brand}', 'BrandController@show')->name('brand.show');
     Route::prefix('{brand}')->group(function () {
 //        Route::get('/{brand}/', 'ProductController@index')->name('product.index');

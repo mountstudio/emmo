@@ -4,6 +4,7 @@
 
 @endsection
 @section('content')
+    <h1 class="d-none">Emmo Tires</h1>
     <div class="bg-black">
         <section class="bg-black pb-5"
                  style="background: url({{ asset('img/bg_emmo.jpg') }}) no-repeat; background-size: cover; padding-top: 150px;">

@@ -4,7 +4,7 @@
             <img src="{{asset('img/logo_footer.png')}}" alt="">
         </div>
         <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 mb-4 mb-md-0">
-            <h2 style="color: #FD595A">CONTACT DETAILS</h2>
+            <p class="h2" style="color: #FD595A">CONTACT DETAILS</p>
             <hr class="footer_hr">
             <ul class="" style="list-style: none;padding-left: 0px;">
                 <li><a href="tel:(949) 954-7575" class="text-white">Phone:  (949) 954-7575</a></li>
@@ -16,7 +16,7 @@
             </ul>
         </div>
         <div class="col-12 col-sm-3 col-md-3 mb-4 mb-md-0">
-            <h2 style="color: #FD595A">SUPPORT</h2>
+            <p class="h2" style="color: #FD595A">SUPPORT</p>
             <hr class="footer_hr">
             <ul class="text-white" style="list-style: none;padding-left: 0px;">
                 <li><a href="" class="text-white footer_text">Tire Buying 101</a></li>
@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="col-12 col-sm-3 col-md-3 mb-4 mb-md-0">
-            <h2 style="color: #FD595A">WHO WE ARE</h2>
+            <p class="h2" style="color: #FD595A">WHO WE ARE</p>
             <hr class="footer_hr">
             <ul class="text-white" style="list-style: none;padding-left: 0px;">
                 <li><a href="{{ route('about') }}" class="text-white footer_text">About Emmo Tires</a></li>
