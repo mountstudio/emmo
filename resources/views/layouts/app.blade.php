@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
+{{--    <link rel="canonical" href="{{ request()->fullUrl() }}">--}}
     <!-- Scripts -->
     <script src="{{ asset('js/fontawesome.js') }}" crossorigin="anonymous"></script>
     <!-- Fonts -->
