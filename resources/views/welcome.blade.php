@@ -19,7 +19,7 @@
             <section class="my-5">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-3">
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-3">
                             <div class="card shadow-none">
                                 <img src="{{ asset('icons/tires.png') }}" style="width: 100px;" class="text-center mx-auto card-img-top" alt="">
                                 <div class="card-body text-white text-center">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-3">
                             <div class="card shadow-none">
                                 <img src="{{ asset('icons/free-shipping.png') }}" style="width: 100px;" class="text-center mx-auto card-img-top" alt="">
                                 <div class="card-body text-white text-center">
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-3">
                             <div class="card shadow-none">
                                 <img src="{{ asset('icons/business-and-finance.png') }}" style="width: 100px;" class="text-center mx-auto card-img-top" alt="">
                                 <div class="card-body text-white text-center">

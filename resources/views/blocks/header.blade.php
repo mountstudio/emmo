@@ -6,10 +6,10 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="{{ __('Toggle navigation') }}" style="color: white!important;">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars text-white"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto text-center col-12 col-md-7 font-weight-bold">
+        <ul class="navbar-nav mr-auto text-center col-12 col-lg-7 font-weight-bold">
             <li class="nav-item mr-2">
 {{--                <a class="nav-link text-uppercase text-white" href="{{ route('brand.index') }}" title="ALL TIRES" style="font-size: 14px">All--}}
 {{--                    tires</a>--}}
@@ -26,8 +26,8 @@
                 <a class="nav-link text-uppercase text-white" href="{{ route('contact_faq') }}" title="Contacts" style="font-size: 14px">Contacts</a>
             </li>
         </ul>
-        <div class="col-12 col-md-2 pl-0">
-            <ul class="navbar-nav ml-5 col-12 col-md-5">
+        <div class="pl-0">
+            <ul class="navbar-nav">
                 <li class="nav-item text-center pt-3 pb-4 px-3 font-weight-bold"
                     style="background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%); position:relative;">
                     <a href="{{ route('cart.checkout') }}" class="cart cart-count text-white"

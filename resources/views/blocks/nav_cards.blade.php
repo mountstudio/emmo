@@ -16,12 +16,12 @@
                 </li>
             </ul>
         </div>
-        <div class="tab-content col-12" id="pills-tabContent">
+        <div class="tab-content col-12 px-0 px-md-2" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="col-12">
                     <div class="row row-cols-1 row-cols-md-4">
                         @foreach($productsPopular as $product)
-                            <div class="col mb-4" data-aos="fade-right">
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-md-2 mb-4" data-aos="fade-right">
                                 <div class="card border-0 h-100">
                                     <img data-src="{{ asset('img/small/'.$product->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="row row-cols-1 row-cols-md-4">
                         @foreach($productsNew as $product)
-                            <div class="col mb-4" data-aos="fade-right">
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-md-2 mb-4" data-aos="fade-right">
                                 <div class="card border-0 h-100">
                                     <img data-src="{{ asset('img/small/'.optional(\App\Product::find($product->product_id))->product_image) }}" src="" class="lazy card-img-top" alt="...">
                                     <div class="card-body px-0">
@@ -103,7 +103,7 @@
                 <div class="col-12">
                     <div class="row row-cols-1 row-cols-md-4">
                         @foreach($productsBestsellers as $product)
-                            <div class="col mb-4">
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-md-2 mb-4">
                                 <div class="card border-0 h-100">
                                     <img data-src="{{ asset('img/small/'.$product->product_image) }}" src="" class="lazy card-img-top"
                                          alt="...">
@@ -125,7 +125,7 @@
                             </div>
                         @endforeach
                         @foreach($allProducts as $product)
-                            <div class="col mb-4">
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-md-2 mb-4">
                                 <div class="card border-0 h-100">
                                     <img data-src="{{ asset('img/small/'.$product->product_image) }}" src="" class="lazy card-img-top"
                                          alt="...">
