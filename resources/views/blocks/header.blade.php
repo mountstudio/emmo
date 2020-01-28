@@ -15,12 +15,13 @@
 {{--                    tires</a>--}}
             </li>
             <li class="nav-item mr-2">
-                <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers.index') }}" title="bestsellers" style="font-size: 14px">Bestsellers</a>
+                <a class="nav-link text-uppercase text-white" href="{{ route('bestsellers.index', ['city' => 'city']) }}" title="bestsellers" style="font-size: 14px">Bestsellers</a>
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('delivery_and_installation') }}"
                    title="DELIVERY & INSTALLERS" style="font-size: 14px">Delivery &
                     Installers</a>
+
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link text-uppercase text-white" href="{{ route('contact_faq') }}" title="Contacts" style="font-size: 14px">Contacts</a>

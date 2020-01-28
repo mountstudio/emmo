@@ -68,6 +68,8 @@ Route::post('/dashboard/brand/store', 'DashboardController@brandStore')->name('d
 
 //Resources
 Route::prefix('{city}')->group(function () {
+    Route::get('/bestsellers', 'BestsellerController@index')->name('bestsellers.index');
+
     Route::get('/brand', 'BrandController@index')->name('brand.index');
     Route::get('/{brand}', 'BrandController@show')->name('brand.show');
     Route::prefix('{brand}')->group(function () {
@@ -77,7 +79,6 @@ Route::prefix('{city}')->group(function () {
 });
 Route::resource('subcategory', 'SubcategoryController')->only(['index', 'show']);
 Route::resource('blog', 'BlogController')->only(['index', 'show']);
-Route::resource('bestsellers', 'BestsellerController')->only(['index', 'show']);
 //End resources
 
 Route::get('/products', 'Api\ProductController@index')->name('product.all');

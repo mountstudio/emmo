@@ -54,6 +54,8 @@
         url += '?token=' + token;
         $('.cart').attr('href', url);
 
+
+
         function fetchCart() {
             $.ajax({
                 url: '{{ route('cart.index') }}',
@@ -81,6 +83,12 @@
 
         function registerCartBuyButtons(data) {
             data.click(e => {
+                const alertAdded = $('<div class="alert fixed-bottom alert-success alert-dismissible fade show" role="alert">\n' +
+                    '  <strong>Product has added to cart</strong>\n' +
+                    '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                    '    <span aria-hidden="true">&times;</span>\n' +
+                    '  </button>\n' +
+                    '</div>');
                 e.preventDefault();
                 console.log('registered');
                 let btn = $(e.currentTarget);
@@ -90,6 +98,7 @@
                 let size_id = btn.data('size_id');
                 let cart = null;
                 console.log(id);
+
 
                 $.ajax({
                     url: '{{ route('cart.add') }}',
@@ -106,6 +115,7 @@
                         btn.addClass('btn-success').delay(2000).queue(function(){
                             btn.removeClass("btn-success").dequeue();
                         });
+                        $('body').append(alertAdded);
 
                         $('.carts').addClass('btn-success');
                         // doBounce($('.cart-count'), 3, 90);

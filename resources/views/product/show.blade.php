@@ -101,7 +101,7 @@
             </div>
             <div class="row">
                 @foreach($sames as $product)
-                    <div class="col-12 col-md-4 col-lg-3">
+                    <div class="col-6 col-md-4 col-lg-3">
                         <div class="card border-0 h-100">
                             <img src="{{ asset('img/'.optional($product)->product_image) }}" class="card-img-top" alt="...">
                             <div class="card-body px-0">
@@ -139,13 +139,22 @@
             $('div#selectSizes').append('<p><span>' + size.full_size + ' ' + size.serv_desc + '</span><br></p>');
 
             $('div#for-add-cart-btn').empty();
+
+            const alert = $('<div class="alert fixed-bottom alert-success alert-dismissible fade show" role="alert">\n' +
+                '  <strong>You have selected ' + size.full_size +' '+ size.serv_desc + '</strong>\n' +
+                '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                '    <span aria-hidden="true">&times;</span>\n' +
+                '  </button>\n' +
+                '</div>')
+
             const element = $('                <a href="#"' +
-                '                   class="btn reg_btn btn-block text-fut-book but-hov text-white buy_book d-lg-block d-none w-50"' +
+                '                   class="btn reg_btn btn-block text-fut-book but-hov text-white buy_book w-50"' +
                 '                   data-id="{{ $product->id }}' + size.id + '" data-product_id="{{ $product->id }}" data-size="' + size.full_size +' '+ size.serv_desc + '"' +
                 '                   data-size_id="' + size.id + '"' +
                 '                   id="basket">Add to cart' +
                 '                </a>');
 
+            $('body').append(alert);
             $('div#for-add-cart-btn').append(element);
             registerCartBuyButtons(element);
         });
