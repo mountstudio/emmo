@@ -76,6 +76,7 @@ class HomeController extends Controller
 
         $blogs = Blog::latest()->limit(3)->get();
 
+
         return view('welcome', [
             'productsPopular' => $productsPopular,
             'productsNew' => $pn,

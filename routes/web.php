@@ -30,6 +30,10 @@ Route::get('/cart/delete/book', 'CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
 //End Cart
 
+Route::get('/serach/product', 'ProductController@searchProduct')->name('search.product');
+Route::get('/bid/store', 'BidController@store')->name('bid.store');
+
+Route::get('/post/{id}', 'BlogController@post_show')->name('blog.post');
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
@@ -119,8 +123,4 @@ Route::get('/about',function (){
 })->name('about');
 
 
-Route::get('/serach/product', 'ProductController@searchProduct')->name('search.product');
-Route::get('/bid/store', 'BidController@store')->name('bid.store');
-
-Route::get('/post/{id}', 'BlogController@post_show')->name('blog.post');
 

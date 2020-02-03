@@ -75,6 +75,8 @@ class Product extends Model
             $products = array_slice($products, 0, 5);
         }
 
+        $products = collect($products);
+
         return $products;
     }
 }

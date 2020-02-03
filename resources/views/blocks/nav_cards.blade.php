@@ -102,7 +102,8 @@
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <div class="col-12">
                     <div class="row row-cols-1 row-cols-md-4">
-                        @foreach($productsBestsellers as $product)
+
+                    @foreach($productsBestsellers as $product)
                             <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-md-2 mb-4">
                                 <div class="card border-0 h-100">
                                     <img data-src="{{ asset('img/small/'.$product->product_image) }}" src="" class="lazy card-img-top"
@@ -114,7 +115,7 @@
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
                                         <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
-                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::where('product_id', $product->id)->get()[0]->price, 2) }}$</span>
+                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(optional($product->sizes->first())->price, 2) }}$</span>
                                         </p>
                                         {{--                                        <div class="d-flex justify-content-between">--}}
                                         {{--                                            <a href="" class="text-white buy_btn">Buy now</a>--}}

@@ -11,25 +11,32 @@
             </div>
             <div class="row text-white">
                 <div class="col-lg-7 col-12">
-                    <form class="text-left text-white border border-light p-5 form-bg" action="{{ route('cart.store') }}"
+                    <form id="cart-checkout-final" class="text-left text-white border border-light p-5 form-bg" method="post" action="{{ route('cart.store') }}"
                           style="border-radius: 10px;background: rgba(34, 34, 34, 0.64);border: 1px solid #929292;">
                         <p class="h4 mb-4 text-white">Please fill out your shipping address</p>
-                        <label class="text-white">Name</label>
-                        <input type="text" id="" class="form-control mb-4 bg_input"
-                               placeholder="First name">
-                        <label class="text-white">Zip code</label>
-                        <input type="text" id="" class="form-control mb-4 bg_input"
-                               placeholder="Zip code">
-                        <label class="text-white">Phone number</label>
-                        <input type="phone" id="" class="form-control mb-4 bg_input"
-                               placeholder="Phone number">
-                        <label class="text-white">Email</label>
-                        <input type="email" id="" class="form-control mb-4 bg_input"
-                               placeholder="E-mail">
-                        <button class="btn choose_btn " type="submit">Send</button>
+                        <div class="form-group">
+                            <label class="text-white">Name</label>
+                            <input type="text" id="" name="name" class="form-control mb-1 bg_input"
+                                   placeholder="First name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-white">Zip code</label>
+                            <input type="text" id="" name="zip" class="form-control mb-1 bg_input"
+                                   placeholder="Zip code" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-white">Phone number</label>
+                            <input type="phone" id="" name="phone" class="form-control mb-1 bg_input"
+                                   placeholder="Phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-white">Email</label>
+                            <input type="email" name="email" id="" class="form-control mb-1 bg_input"
+                                   placeholder="E-mail" required>
+                        </div>
                     </form>
                 </div>
-                <div class="col-12 col-lg-5 mt-4 mt-lg-0 pt-3 text-white">
+                <div class="col-12 col-lg-5 mt-4 mt-lg-0 pt-3 text-white" style="max-height: 450px; overflow-y: scroll">
                     <div style="">
                         @foreach($cartItems as $item)
                             <div class="row ">
@@ -64,8 +71,9 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 p-0 mt-1">
-                    <a href="#" class="btn choose_btn text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Make payment
+                    <a href="#" class="btn choose_btn text-light" id="makePayment">Make payment
                     </a>
+                    <p class="small d-lg-none text-danger" style="display:none;">You have to fill inputs</p>
                 </div>
             </div>
         </div>
@@ -82,13 +90,17 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/button-checkbox.css') }}">
+    <style>
+        .error {
+            color: red;
+            font-size: 80%;
+        }
+    </style>
 @endpush
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_ru.js">
-    </script>
     <script>
         $('#cbx').change(e => {
             let check = $(e.currentTarget);
@@ -118,5 +130,29 @@
                 }
             }
         });
+
+        $('#makePayment').click(e => {
+            e.preventDefault();
+            let btn = $(e.currentTarget);
+
+            let form = $('form#cart-checkout-final');
+
+            form.validate({
+                rules: {
+                    name: 'required',
+                    zip: 'required',
+                    phone: 'required',
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                }
+            });
+
+            if (form.valid()) {
+                console.log('valid');
+                form.submit();
+            }
+        })
     </script>
 @endpush

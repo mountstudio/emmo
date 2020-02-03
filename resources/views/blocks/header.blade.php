@@ -32,8 +32,7 @@
                 <li class="nav-item text-center pt-3 pb-4 px-3 font-weight-bold"
                     style="background: linear-gradient(180deg, #FD595A 0%, #8C1314 100%); position:relative;">
                     <a href="{{ route('cart.checkout') }}" class="cart cart-count text-white"
-                       style="position:absolute;padding-top: 25px;font-size: 23px;left: 50%; transform: translateX(-50%);"><img
-                            src="" alt="" class="img-fluid pb-3"></a>
+                       style="position:absolute;padding-top: 25px;font-size: 23px;left: 50%; transform: translateX(-50%);">0</a>
                     <a href="{{ route('cart.checkout') }}" class="cart "><img src="{{asset('img/basket.png')}}" alt=""
                                                                               class="img-fluid pb-3"></a>
                 </li>
