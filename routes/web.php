@@ -29,6 +29,7 @@ Route::get('/cart/add/book', 'CartController@add')->name('cart.add');
 Route::get('/cart/delete/book', 'CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/book', 'CartController@remove')->name('cart.remove');
 //End Cart
+Route::resource('subcategory', 'SubcategoryController')->only(['index', 'show']);
 
 Route::get('/serach/product', 'ProductController@searchProduct')->name('search.product');
 Route::get('/bid/store', 'BidController@store')->name('bid.store');
@@ -81,7 +82,6 @@ Route::prefix('{city}')->group(function () {
         Route::get('/{product}', 'ProductController@show')->name('product.show');
     });
 });
-Route::resource('subcategory', 'SubcategoryController')->only(['index', 'show']);
 Route::resource('blog', 'BlogController')->only(['index', 'show']);
 //End resources
 

@@ -21,7 +21,7 @@
                    <img src="{{ asset('img/'.$brand->image) }}" class="mt-5 mb-3 img-thumbnail" alt="">
                    <p class="h1">{{ $brand->name }}</p>
                    <h4>{{ $product->name }}</h4>
-                   <a href="{{ route('subcategory.show', ['id' => $product->subcategory_id]) }}">
+                   <a href="{{ route('subcategory.show', $product->subcategory) }}">
                        <h6>{{ \App\Subcategory::find($product->subcategory_id)->name }}</h6>
                    </a>
                    <div>

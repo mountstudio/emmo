@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section style="background-color: white;padding-top: 100px;">
+    <section class="pb-5" style="background-color: white;padding-top: 120px;">
         <div class="container">
             <div class="row justify-content-center">
                 @include('subcategory.subcategories')

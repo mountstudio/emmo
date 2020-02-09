@@ -29,7 +29,7 @@
                                             <a href="{{ route('product.show', ['city' => 'city', 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
                                         <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
-                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
                                                 <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::where('product_id', $product->id)->get()[0]->price, 2) }}$</span>
 {{--                                            <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::find($product->id)->price, 2) }}$</span>--}}
@@ -57,7 +57,7 @@
                                             <a href="{{ route('product.show', ['city' => 'city', 'brand' => \App\Product::find($product->product->id)->brand, 'product' => \App\Product::find($product->product->id)]) }}">{{ \App\Product::find($product->product_id)->name }}</a></h3>
                                         <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => \App\Product::find($product->product->id)->brand]) }}">{{ \App\Product::find($product->product_id)->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ \App\Product::find($product->product_id)->subcategory->category->name }}</p>
-                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', \App\Product::find($product->product_id)->subcategory->id) }}">{{ \App\Product::find($product->product_id)->subcategory->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', \App\Product::find($product->product_id)->subcategory) }}">{{ \App\Product::find($product->product_id)->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
                                             <span class="pr-4 h5 font-weight-bold"><b>Price: </b>{{ round($product->price, 2) }}$</span>
                                             <span class="pl-5">{{ $product->created_at->format('Y-m-d') }}</span>
@@ -113,7 +113,7 @@
                                             <a href="{{ route('product.show', ['city' => 'city', 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
                                         <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
-                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
                                             <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(optional($product->sizes->first())->price, 2) }}$</span>
                                         </p>
@@ -135,7 +135,7 @@
                                             <a href="{{ route('product.show', ['city' => 'city', 'brand' => $product->brand, 'product' => $product]) }}">{{ $product->name }}</a></h3>
                                         <p class="text-white mb-0 mt-0"><b>Brand: </b><a href="{{ route('brand.show', ['city' => 'city', 'brand' => $product->brand]) }}">{{ $product->brand->name }}</a></p>
                                         <p class="text-white mb-0 mt-0"><b>Category: </b>{{ $product->subcategory->category->name }}</p>
-                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory->id) }}">{{ $product->subcategory->name }}</a></p>
+                                        <p class="text-white mb-0 mt-0x"><b>Subcategory: </b> <a href="{{ route('subcategory.show', $product->subcategory) }}">{{ $product->subcategory->name }}</a></p>
                                         <p class="card-text text-white">
                                             <span class="pr-3 h5 font-weight-bold"><b>Price: </b>{{ round(\App\Product_size::where('product_id', $product->id)->get()[0]->price, 2) }}$</span>
                                         </p>
